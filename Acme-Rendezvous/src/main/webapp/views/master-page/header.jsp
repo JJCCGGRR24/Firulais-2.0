@@ -81,14 +81,22 @@
 					<li class="arrow"></li>
 					<li><a  href="dashboard/administrator/display.do"><spring:message
 						code="master.page.administrator.dashboard" /></a></li>
+					<li><a  href="servicce/administrator/list.do"><spring:message
+						code="master.page.services" /></a></li>
 				</ul></li>
+		</security:authorize>
+		
+		<security:authorize access="hasRole('USER')">
+			<li><a class="fNiv" href="service/user/list.do"><spring:message
+						code="master.page.services" /></a></li>
 		</security:authorize>
 
 		<security:authorize access="permitAll">
 			<li><a class="fNiv" href="user/list.do"><spring:message
 						code="master.page.users" /></a></li>
 			<li><a class="fNiv" href="rendezvous/list.do"><spring:message
-						code="master.page.rendezvous" /></a> <security:authorize
+						code="master.page.rendezvous" /></a> 
+				<security:authorize
 					access="hasRole('USER')">
 					<ul>
 						<li class="arrow"></li>
@@ -126,6 +134,7 @@
 
 					<li><a href="j_spring_security_logout"><spring:message
 								code="master.page.logout" /> </a></li>
+
 				</ul></li>
 		</security:authorize>
 	</ul>

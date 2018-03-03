@@ -79,6 +79,8 @@ public interface RendezvousRepository extends JpaRepository<Rendezvous, Integer>
 	@Query("select (select count (a) from Answer a where a.question.rendezvous.id=r.id) from Rendezvous r")
 	List<Long> queryA2partSttdev();
 
-	//	@Query("select avg(r.servicces.size) from Rendezvous r join r.servicces s group by s.category")
+	//	@Query("select(select count(s.category) from Servicce s join s.requests rq where rq.rendezvous = r) from Rendezvous r")
+	//	@Query("select count(rq.servicce.category) from Rendezvous r join r.requests rq")
 	//	Double queryNewB1();
+
 }

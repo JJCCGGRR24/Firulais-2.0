@@ -38,7 +38,7 @@
 			access="permitAll" />
 
 		<security:intercept-url pattern="/security/login.do"
-			access="permitAll" requires-channel="https" />
+			access="permitAll"  />
 
 		<security:intercept-url pattern="/security/loginFailure.do"
 			access="permitAll" />
@@ -131,6 +131,9 @@
 			access="hasRole('USER')" />
 		<security:intercept-url pattern="/reply/user/edit.do"
 			access="hasRole('USER')" />
+			
+			<security:intercept-url pattern="/service/user/list.do"
+			access="hasRole('USER')" />
 
 		<!-- ADMIN -->
 
@@ -158,7 +161,12 @@
 
 		<security:intercept-url pattern="/reply/administrator/list.do"
 			access="hasRole('ADMIN')" />
-
+			
+		<security:intercept-url pattern="/servicce/administrator/list.do"
+			access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/servicce/administrator/cancell.do"
+			access="hasRole('ADMIN')" />
+			
 
 		<!-- <security:intercept-url pattern="/profile/action-1.do" access="isAuthenticated()" 
 			/> -->

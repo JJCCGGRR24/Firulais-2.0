@@ -62,4 +62,9 @@ public class ServicceService {
 
 	// Other business methods -------------------------------------------------
 
+	public void cancell(final Servicce servicce) {
+		Assert.isTrue(servicce.getCancelled() == false, "The service is cancelled already");
+		servicce.setCancelled(true);
+		this.servicceRepository.save(servicce);
+	}
 }

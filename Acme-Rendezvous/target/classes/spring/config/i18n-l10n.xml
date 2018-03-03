@@ -29,6 +29,7 @@
 		<value>/views/dashboard/messages</value>
 		<value>/views/comment/messages</value>
 		<value>/views/reply/messages</value>
+		<value>/views/service/messages</value>
 		
 	</util:list>
 
