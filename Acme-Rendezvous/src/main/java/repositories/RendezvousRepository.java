@@ -32,6 +32,24 @@ public interface RendezvousRepository extends JpaRepository<Rendezvous, Integer>
 	@Query("select r from Rendezvous r where r.moment > CURRENT_TIMESTAMP and r.adultsOnly = false")
 	List<Rendezvous> listRendezvousFutureFF();
 
+	//	@Query("select r from Rendezvous r join r.users u where u.id = ?1 and (r.moment < CURRENT_TIMESTAMP)")
+	//	List<Rendezvous> listRSVPdPast(int id);
+	//
+	//	@Query("select r from Rendezvous r join r.users u where u.id = ?1 and (r.moment > CURRENT_TIMESTAMP)")
+	//	List<Rendezvous> listRSVPdFuture(int id);
+	//
+	//	@Query("select r from Rendezvous r join r.users u where u.id = ?1")
+	//	List<Rendezvous> listRSVPd(int id);
+
+	@Query("select r from Rendezvous r where r.user.id = ?1 and (r.moment < CURRENT_TIMESTAMP)")
+	List<Rendezvous> listMyPastRendezvous(int id);
+
+	@Query("select r from Rendezvous r where r.user.id = ?1 and (r.moment > CURRENT_TIMESTAMP)")
+	List<Rendezvous> listMyFutureRendezvous(int id);
+
+	@Query("select r from Rendezvous r where r.deleted = false and (r.moment > CURRENT_TIMESTAMP)")
+	List<Rendezvous> posibleToLink();
+
 	//queries for dashboard
 
 	@Query("select avg(r.users.size), stddev(r.users.size) * 1.0 from Rendezvous r")
@@ -61,22 +79,6 @@ public interface RendezvousRepository extends JpaRepository<Rendezvous, Integer>
 	@Query("select (select count (a) from Answer a where a.question.rendezvous.id=r.id) from Rendezvous r")
 	List<Long> queryA2partSttdev();
 
-	//	@Query("select r from Rendezvous r join r.users u where u.id = ?1 and (r.moment < CURRENT_TIMESTAMP)")
-	//	List<Rendezvous> listRSVPdPast(int id);
-	//
-	//	@Query("select r from Rendezvous r join r.users u where u.id = ?1 and (r.moment > CURRENT_TIMESTAMP)")
-	//	List<Rendezvous> listRSVPdFuture(int id);
-	//
-	//	@Query("select r from Rendezvous r join r.users u where u.id = ?1")
-	//	List<Rendezvous> listRSVPd(int id);
-
-	@Query("select r from Rendezvous r where r.user.id = ?1 and (r.moment < CURRENT_TIMESTAMP)")
-	List<Rendezvous> listMyPastRendezvous(int id);
-
-	@Query("select r from Rendezvous r where r.user.id = ?1 and (r.moment > CURRENT_TIMESTAMP)")
-	List<Rendezvous> listMyFutureRendezvous(int id);
-
-	@Query("select r from Rendezvous r where r.deleted = false and (r.moment > CURRENT_TIMESTAMP)")
-	List<Rendezvous> posibleToLink();
-
+	//	@Query("select avg(r.servicces.size) from Rendezvous r join r.servicces s group by s.category")
+	//	Double queryNewB1();
 }

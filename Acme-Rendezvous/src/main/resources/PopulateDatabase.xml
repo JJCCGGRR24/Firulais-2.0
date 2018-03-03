@@ -125,7 +125,7 @@
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
-					<property name="authority" value="USER" />
+					<property name="authority" value="MANAGER" />
 				</bean>
 			</list>
 		</property>
@@ -137,7 +137,7 @@
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
-					<property name="authority" value="USER" />
+					<property name="authority" value="MANAGER" />
 				</bean>
 			</list>
 		</property>
@@ -149,7 +149,19 @@
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
-					<property name="authority" value="USER" />
+					<property name="authority" value="MANAGER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+		<bean id="managerAccount4" class="security.UserAccount">
+		<property name="username" value="manager4" />
+		<property name="password" value="e1ec6fc941af3ba79a4ac5242dd39735" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="MANAGER" />
 				</bean>
 			</list>
 		</property>
@@ -1078,6 +1090,24 @@ Thank you for all the great music that you and AC/DC created﻿" />
 		</property>
 	</bean>
 	
+	<bean id="manager4" class="domain.Manager">
+		<property name="vat" value="EL069644930" />
+		<property name="name" value="Guillermon" />
+		<property name="surname" value="Guillermon" />
+		<property name="email" value="guillermon@pdold.com" />
+		<property name="phone" value="314-224-4415" />
+		<property name="postalAddress" value="6660 Digi world" />
+		<property name="userAccount" ref="managerAccount4" />
+		<property name="birthdate">
+			<bean factory-bean="birthdateDate" factory-method="parse">
+				<constructor-arg value="01/09/2009" />
+			</bean>
+		</property>
+		<property name="servicces">
+			<list></list>
+		</property>
+	</bean>
+	
 	<!-- #Category -->
 	<bean id="CATEGORY" class="domain.Category">
 		<property name="name" value="CATEGORY" />
@@ -1255,20 +1285,37 @@ Thank you for all the great music that you and AC/DC created﻿" />
 		<property name="description" value="description3" />
 		<property name="cancelled" value="false"/>
 <!-- 		<property name="category" ref="category2" /> -->
-		<property name="manager" ref="manager1" />
+		<property name="manager" ref="manager3" />
 		<property name="requests"><list></list></property>
 	</bean>
 	
 		<bean id="servicce4" class="domain.Servicce">
 		<property name="picture" value="http://asd.com" />
-		<property name="name" value="a" />
-		<property name="description" value="b" />
-		<property name="cancelled" value="false"/>
+		<property name="name" value="name4" />
+		<property name="description" value="description4" />
+		<property name="cancelled" value="true"/>
 <!-- 		<property name="category" ref="category3" /> -->
-		<property name="manager" ref="manager1" />
+		<property name="manager" ref="manager2" />
 		<property name="requests"><list></list></property>
 	</bean>
 	
+	<bean id="servicce5" class="domain.Servicce">
+		<property name="picture" value="http://asd.com" />
+		<property name="name" value="name5" />
+		<property name="description" value="description5" />
+		<property name="cancelled" value="true"/>
+		<property name="manager" ref="manager4" />
+		<property name="requests"><list></list></property>
+	</bean>
+	
+	<bean id="servicce6" class="domain.Servicce">
+		<property name="picture" value="http://asd.com" />
+		<property name="name" value="name6" />
+		<property name="description" value="description6" />
+		<property name="cancelled" value="true"/>
+		<property name="manager" ref="manager4" />
+		<property name="requests"><list></list></property>
+	</bean>
 	
 	<!-- #Request -->
 	<bean id="request1" class="domain.Request">
