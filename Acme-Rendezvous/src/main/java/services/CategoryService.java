@@ -152,4 +152,12 @@ public class CategoryService {
 	public List<Category> getFathers() {
 		return this.categoryRepository.getFathers();
 	}
+
+	public Double queryNewB2() {
+		return this.categoryRepository.queryNewB2();
+	}
+
+	public Double[] queryNewB3() {
+		return this.categoryRepository.queryNewB3();
+	}
 }

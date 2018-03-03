@@ -62,4 +62,11 @@ public class ManagerService {
 
 	// Other business methods -------------------------------------------------
 
+	public Collection<Manager> queryNewC2() {
+		return this.managerRepository.queryNewC2();
+	}
+
+	public Collection<Manager> queryNewC3() {
+		return this.managerRepository.queryNewC3();
+	}
 }

@@ -1264,7 +1264,7 @@ Thank you for all the great music that you and AC/DC created﻿" />
 		<property name="name" value="name1" />
 		<property name="description" value="description2" />
 		<property name="cancelled" value="false"/>
-<!-- 		<property name="category" ref="category1" /> -->
+	<property name="category" ref="Water" /> 
 		<property name="manager" ref="manager1" />
 		<property name="requests"><list></list></property>
 	</bean>
@@ -1274,7 +1274,7 @@ Thank you for all the great music that you and AC/DC created﻿" />
 		<property name="name" value="name2" />
 		<property name="description" value="description2" />
 		<property name="cancelled" value="false"/>
-<!-- 		<property name="category" ref="category2" /> -->
+	<property name="category" ref="Safari" /> 
 		<property name="manager" ref="manager1" />
 		<property name="requests"><list></list></property>
 	</bean>
@@ -1284,7 +1284,7 @@ Thank you for all the great music that you and AC/DC created﻿" />
 		<property name="name" value="name3" />
 		<property name="description" value="description3" />
 		<property name="cancelled" value="false"/>
-<!-- 		<property name="category" ref="category2" /> -->
+		<property name="category" ref="Safari" /> 
 		<property name="manager" ref="manager3" />
 		<property name="requests"><list></list></property>
 	</bean>
@@ -1294,7 +1294,7 @@ Thank you for all the great music that you and AC/DC created﻿" />
 		<property name="name" value="name4" />
 		<property name="description" value="description4" />
 		<property name="cancelled" value="true"/>
-<!-- 		<property name="category" ref="category3" /> -->
+		<property name="category" ref="Climbing" /> 
 		<property name="manager" ref="manager2" />
 		<property name="requests"><list></list></property>
 	</bean>
