@@ -91,6 +91,15 @@
 						code="master.page.services" /></a></li>
 		</security:authorize>
 
+		<security:authorize access="hasRole('MANAGER')">
+			<li><a class="fNiv"><spring:message
+						code="master.page.services" /></a>
+					<ul><li class="arrow"></li>
+						<li><a href="servicce/manager/allServicces.do"><spring:message
+							code="master.page.allServicces" /></a></li>
+					</ul></li>
+		</security:authorize>
+		
 		<security:authorize access="permitAll">
 			<li><a class="fNiv" href="user/list.do"><spring:message
 						code="master.page.users" /></a></li>
