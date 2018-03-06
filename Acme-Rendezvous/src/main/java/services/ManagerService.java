@@ -1,17 +1,23 @@
 
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import repositories.ManagerRepository;
+import security.Authority;
+import security.UserAccount;
 import domain.Manager;
-import domain.Rendezvous;
+import domain.Servicce;
+import forms.RegisterManagerForm;
 
 ;
 
@@ -32,8 +38,21 @@ public class ManagerService {
 	}
 
 	// Simple CRUD methods ----------------------------------------------------
-	public Manager create(final Rendezvous rendezvous) {
+	public Manager create() {
 		final Manager r = new Manager();
+
+		final UserAccount userAccount = new UserAccount();
+		final Authority aut = new Authority();
+		aut.setAuthority(Authority.MANAGER);
+		final Collection<Authority> authorities = userAccount.getAuthorities();
+		authorities.add(aut);
+		userAccount.setAuthorities(authorities);
+
+		final List<Servicce> servicces = new ArrayList<>();
+
+		r.setUserAccount(userAccount);
+		r.setServicces(servicces);
+
 		return r;
 	}
 
@@ -68,5 +87,25 @@ public class ManagerService {
 
 	public Collection<Manager> queryNewC3() {
 		return this.managerRepository.queryNewC3();
+	}
+
+	public Manager reconstruct(final RegisterManagerForm form) {
+		final Manager m = this.create();
+
+		final Md5PasswordEncoder encoder = new Md5PasswordEncoder();
+		final UserAccount u = m.getUserAccount();
+		u.setPassword(encoder.encodePassword(form.getPassword(), null));
+		u.setUsername(form.getUsername());
+		m.setUserAccount(u);
+
+		m.setName(form.getName());
+		m.setSurname(form.getSurname());
+		m.setEmail(form.getEmail());
+		m.setPhone(form.getPhone());
+		m.setBirthdate(form.getBirthdate());
+		m.setPostalAddress(form.getPostalAddress());
+		m.setVat(form.getVat());
+
+		return m;
 	}
 }

@@ -34,7 +34,7 @@ public class ServicceAdministratorController extends AbstractController {
 	public ModelAndView list() {
 		final ModelAndView res = new ModelAndView("service/list");
 		final Collection<Servicce> servicces = this.servicceService.findAll();
-		res.addObject("services", servicces);
+		res.addObject("servicces", servicces);
 		res.addObject("requestURI", "servicce/administrator/list.do");
 
 		return res;
@@ -73,7 +73,7 @@ public class ServicceAdministratorController extends AbstractController {
 
 		result = new ModelAndView("service/list");
 		final Collection<Servicce> servicces = this.servicceService.findAll();
-		result.addObject("services", servicces);
+		result.addObject("servicces", servicces);
 		result.addObject("message", message);
 
 		return result;

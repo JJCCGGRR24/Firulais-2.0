@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -75,7 +76,7 @@ public class Servicce extends DomainEntity {
 
 	@NotNull
 	@ElementCollection
-	@OneToMany(mappedBy = "servicce")
+	@OneToMany(mappedBy = "servicce", cascade = CascadeType.REMOVE)
 	public List<Request> getRequests() {
 		return this.requests;
 	}

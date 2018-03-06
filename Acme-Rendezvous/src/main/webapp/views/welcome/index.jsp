@@ -15,7 +15,19 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
+<!-- ES EN -->
 
-<p><spring:message code="welcome.greeting.prefix" /> <jstl:out value="${name}"/><spring:message code="welcome.greeting.suffix" /></p>
+<%-- <jstl:if test="$"/> --%>
+<%-- <jstl:set var=""/> --%>
 
-<p><spring:message code="welcome.greeting.current.time" /> <jstl:out value="${moment}"/></p> 
+
+
+
+<script>
+	if (getCookie('language') == "es") {
+		var a = '<jstl:out value="${ES}" />';
+	} else {
+		var a = '<jstl:out value="${EN}" />';
+	}
+	document.write(a);
+</script>

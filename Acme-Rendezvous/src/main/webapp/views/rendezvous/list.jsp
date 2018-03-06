@@ -188,6 +188,23 @@
 			</jstl:if>
 		</display:column>
 	</security:authorize>
+	
+	<security:authorize access="hasRole('USER')">
+	<security:authentication property="principal.username" var="prin" />
+	 <display:column>
+  <jstl:if
+    test="${row.user.userAccount.username eq prin }">
+   
+    
+    <input type="button"
+				value="<spring:message code="rendezvous.requests" />"
+				onclick="document.location.href='request/user/list.do?rendezvousId='+ ${row.id};" />
+    
+    
+  </jstl:if>
+  </display:column>
+  </security:authorize>
+	
 </display:table>
 
 <!-- List Rendezvous Going to Attend-->
@@ -376,6 +393,26 @@
 			</jstl:if>
 		</display:column>
 	</security:authorize>
+	
+	
+	
+	
+		<security:authorize access="hasRole('USER')">
+	<security:authentication property="principal.username" var="prin" />
+	 <display:column>
+  <jstl:if
+    test="${row.user.userAccount.username eq prin }">
+   
+    
+    <input type="button"
+				value="<spring:message code="rendezvous.requests" />"
+				onclick="document.location.href='request/user/list.do?rendezvousId='+ ${row.id};" />
+    
+     
+  </jstl:if>
+  </display:column>
+  </security:authorize>
+	
 </display:table>
 
 <br />

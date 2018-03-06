@@ -57,6 +57,9 @@
 		<bean class="converters.RequestToStringConverter" />
 		<bean class="converters.ServicceToStringConverter" />
 		
+		<bean class="converters.ConfigurationToStringConverter" />
+		<bean class="converters.StringToConfigurationConverter" />
+		
 	</util:list>
 	
 </beans>

@@ -29,20 +29,22 @@
 	
 	
 	<spring:message code="category.name" var="name"></spring:message>
-	<display:column property="name" title="${name}"></display:column>
+	<display:column title="${name}">
+		<a href="servicce/all/list.do?categoryId=${row.id}">${row.name}</a>
+	</display:column>
 	<spring:message code="category.description" var="description"></spring:message>
 	<display:column property="description" title="${description}"></display:column>
 	
 	<spring:message code="category.children" var="children"></spring:message>
 	<display:column  title="${children}">
 		<jstl:forEach items="${row.categoriesChildren}" var="x">
-			<a href="trip/all/list.do?categoryId=${x.id}">${x.name}</a>
+			<a href="servicce/all/list.do?categoryId=${x.id}">${x.name}</a>
 		</jstl:forEach><br/>
 	</display:column>
 	
 	<spring:message code="category.father" var="father"></spring:message>
 	<display:column  title="${father}">
-			<a href="trip/all/list.do?categoryId=${row.id}">${row.categoryFather.name}</a><br/>
+			<a href="servicce/all/list.do?categoryId=${row.categoryFather.id}">${row.categoryFather.name}</a><br/>
 	</display:column>
 	
 </display:table>

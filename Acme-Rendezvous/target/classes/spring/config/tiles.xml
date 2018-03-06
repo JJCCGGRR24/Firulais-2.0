@@ -35,7 +35,10 @@
 		<value>/views/dashboard/tiles.xml</value>
 		<value>/views/comment/tiles.xml</value>
 		<value>/views/reply/tiles.xml</value>
-		<value>/views/service/tiles.xml</value>
+		<value>/views/servicce/tiles.xml</value>
+		<value>/views/manager/tiles.xml</value>
+		<value>/views/request/tiles.xml</value>
+		<value>/views/configuration/tiles.xml</value>
 		
 	</util:list>
 

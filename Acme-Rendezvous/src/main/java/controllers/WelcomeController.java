@@ -10,9 +10,6 @@
 
 package controllers;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,16 +29,9 @@ public class WelcomeController extends AbstractController {
 
 	@RequestMapping(value = "/index")
 	public ModelAndView index(@RequestParam(required = false) final String name) {
-		ModelAndView result;
-		SimpleDateFormat formatter;
-		String moment;
-
-		formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-		moment = formatter.format(new Date());
+		ModelAndView result = null;
 
 		result = new ModelAndView("welcome/index");
-		result.addObject("name", name);
-		result.addObject("moment", moment);
 
 		return result;
 	}

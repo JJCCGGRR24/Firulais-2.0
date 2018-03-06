@@ -67,8 +67,15 @@
 
 		<security:intercept-url pattern="/register/user.do"
 			access="permitAll" />
+			
+			<security:intercept-url pattern="/register/manager.do"
+			access="permitAll" />
 
 		<security:intercept-url pattern="/announcement/list.do"
+			access="permitAll" />
+			
+			
+		<security:intercept-url pattern="/servicce/all/list.do"
 			access="permitAll" />
 
 		<!-- USER -->
@@ -132,10 +139,22 @@
 		<security:intercept-url pattern="/reply/user/edit.do"
 			access="hasRole('USER')" />
 			
-			<security:intercept-url pattern="/service/user/list.do"
+			<security:intercept-url pattern="/servicce/user/list.do"
+			access="hasRole('USER')" />
+			
+			<security:intercept-url pattern="/request/user/create.do"
+			access="hasRole('USER')" />
+	
+				<security:intercept-url pattern="/request/user/edit.do"
+			access="hasRole('USER')" />
+			
+		<security:intercept-url pattern="/request/user/list.do"
 			access="hasRole('USER')" />
 
 		<!-- ADMIN -->
+		
+		
+		<security:intercept-url pattern="/configuration/admin/edit.do" access="hasRole('ADMIN')" />
 
 		<security:intercept-url pattern="/category/admin/create.do" access="hasRole('ADMIN')" />
 		<security:intercept-url pattern="/category/admin/edit.do" access="hasRole('ADMIN')" />
@@ -167,7 +186,17 @@
 		<security:intercept-url pattern="/servicce/administrator/cancell.do"
 			access="hasRole('ADMIN')" />
 			
+		<!-- MANAGER -->
+		
 		<security:intercept-url pattern="/servicce/manager/allServicces.do"
+			access="hasRole('MANAGER')" />
+		<security:intercept-url pattern="/servicce/manager/myservicces.do"
+			access="hasRole('MANAGER')" />
+		<security:intercept-url pattern="/servicce/manager/create.do"
+			access="hasRole('MANAGER')" />
+		<security:intercept-url pattern="/servicce/manager/edit.do"
+			access="hasRole('MANAGER')" />
+		<security:intercept-url pattern="/servicce/manager/delete.do"
 			access="hasRole('MANAGER')" />
 			
 

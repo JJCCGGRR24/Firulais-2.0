@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -37,6 +38,7 @@ public class Category extends DomainEntity {
 	}
 
 	@NotBlank
+	@Column(columnDefinition = "BLOB")
 	@SafeHtml(whitelistType = WhiteListType.NONE)
 	public String getDescription() {
 		return this.description;
@@ -85,4 +87,5 @@ public class Category extends DomainEntity {
 	public void setServicces(final List<Servicce> servicces) {
 		this.servicces = servicces;
 	}
+
 }

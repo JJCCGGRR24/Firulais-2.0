@@ -13,6 +13,9 @@ import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
 
 @Entity
+//@Table(uniqueConstraints = @UniqueConstraint(columnNames = {
+//	"rendezvous", "servicce"
+//}))
 @Access(AccessType.PROPERTY)
 public class Request extends DomainEntity {
 

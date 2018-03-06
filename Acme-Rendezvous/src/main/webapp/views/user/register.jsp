@@ -36,7 +36,7 @@
 		<acme:textbox code="user.surname" path="surname" />
 		<acme:textbox code="user.phone" path="phone" />
 		<acme:textbox code="user.email" path="email" />
-		<acme:date code="user.birthdate" path="birthdate" />
+		<acme:date code="user.birthdate" path="birthdate" placeholder="dd/MM/yyyy" />
 		<acme:textbox code="user.postalAddress" path="postalAddress" />
 	</fieldset>
 
@@ -53,8 +53,8 @@
 	<form:errors path="check" cssClass="error" />
 	
 	<acme:cancel2 url=""/>
-	<input type="submit" id="send" name="save"
-		value='<spring:message code="general.save"/>'>
+	
+	<acme:submit name="save" code="general.save" />
 
 </form:form>
 

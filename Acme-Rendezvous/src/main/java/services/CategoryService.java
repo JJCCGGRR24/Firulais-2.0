@@ -134,21 +134,26 @@ public class CategoryService {
 
 	public String validate(final Category category) {
 		String s = null;
-		final Category cBBDD = this.findOne(category.getId());
-		if (category.getId() != 0) //edit
-			Assert.isTrue(this.validFathers(cBBDD).contains(category.getCategoryFather()));
-		else
-			Assert.isTrue(category.getCategoryFather() != null);
-		//		if (category.getName().toUpperCase().equals("CATEGORY"))
-		//			s = "category.reserved";
-		for (final Category cat : this.findOne(category.getCategoryFather().getId()).getCategoriesChildren())
-			if (cat.getName().toUpperCase().equals(category.getName().toUpperCase())) {
-				s = "category.used";
-				break;
-			}
+		String name = null;
+		if (category.getId() != 0) {
+			final Category cBBDD = this.findOne(category.getId());
+			name = cBBDD.getName();
+			Assert.isTrue(category.getCategoryFather() == null || (category.getCategoryFather() != null && this.validFathers(cBBDD).contains(category.getCategoryFather())));
+		}
+		if (category.getId() == 0 || !category.getName().equals(name)) {
+			List<Category> lcs = new ArrayList<Category>();
+			if (category.getCategoryFather() == null)
+				lcs = this.getFathers();
+			else
+				lcs = category.getCategoryFather().getCategoriesChildren();
+			for (final Category cat : lcs)
+				if (cat.getName().toUpperCase().equals(category.getName().toUpperCase())) {
+					s = "category.used";
+					break;
+				}
+		}
 		return s;
 	}
-
 	public List<Category> getFathers() {
 		return this.categoryRepository.getFathers();
 	}

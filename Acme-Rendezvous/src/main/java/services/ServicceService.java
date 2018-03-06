@@ -2,6 +2,7 @@
 package services;
 
 import java.util.Collection;
+import java.util.List;
 
 import javax.transaction.Transactional;
 
@@ -10,7 +11,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import repositories.ServicceRepository;
-import domain.Rendezvous;
 import domain.Servicce;
 
 ;
@@ -32,7 +32,7 @@ public class ServicceService {
 	}
 
 	// Simple CRUD methods ----------------------------------------------------
-	public Servicce create(final Rendezvous rendezvous) {
+	public Servicce create() {
 		final Servicce r = new Servicce();
 		return r;
 	}
@@ -53,9 +53,10 @@ public class ServicceService {
 	}
 
 	public void delete(final Servicce service) {
+		service.setCategory(null);
+		this.save(service);
 		this.servicceRepository.delete(service);
 	}
-
 	public void flush() {
 		this.servicceRepository.flush();
 	}
@@ -66,5 +67,9 @@ public class ServicceService {
 		Assert.isTrue(servicce.getCancelled() == false, "The service is cancelled already");
 		servicce.setCancelled(true);
 		this.servicceRepository.save(servicce);
+	}
+
+	public List<Servicce> servicesByRendezvous(final int rendezvousId) {
+		return this.servicceRepository.servicesByRendezvous(rendezvousId);
 	}
 }

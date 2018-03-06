@@ -1109,9 +1109,9 @@ Thank you for all the great music that you and AC/DC created﻿" />
 	</bean>
 	
 	<!-- #Category -->
-	<bean id="CATEGORY" class="domain.Category">
-		<property name="name" value="CATEGORY" />
-		<property name="description" value="Very very dangerous" />
+	<bean id="Qeusqoo" class="domain.Category">
+		<property name="name" value="Qeusqoo" />
+		<property name="description" value="In the province of Dawhax it is tradition to carry the thinly covered body of a deceased person to their final resting place. It's supposed to help the living with their mourning process." />
 		<property name="servicces">
 			<list></list>
 		</property>
@@ -1120,10 +1120,10 @@ Thank you for all the great music that you and AC/DC created﻿" />
 		</property>
 	</bean>
 
-	<bean id="Safari" class="domain.Category">
-		<property name="name" value="Safari" />
-		<property name="categoryFather" ref="CATEGORY" />
-		<property name="description" value="Very very dangerous" />
+	<bean id="Dalqi" class="domain.Category">
+		<property name="name" value="Dalqi" />
+		<property name="categoryFather" ref="Qeusqoo" />
+		<property name="description" value="In the nation of Zatristan it is tradition for women to try and hide from their significant other for a period of time on the summer solstice. It's supposed to be a symbol of confidence and decisiveness and it's usually part of a larger life ceremony that can last for a week." />
 		<property name="servicces">
 			<list>			</list>
 		</property>
@@ -1132,10 +1132,10 @@ Thank you for all the great music that you and AC/DC created﻿" />
 		</property>
 	</bean>
 
-	<bean id="Ground" class="domain.Category">
-		<property name="name" value="Ground" />
-		<property name="categoryFather" ref="Safari" />
-		<property name="description" value="Very very dangerous" />
+	<bean id="Xceeqo" class="domain.Category">
+		<property name="name" value="Xceeqo" />
+		<property name="categoryFather" ref="Dalqi" />
+		<property name="description" value="In the village of Woshya it is tradition for women to catch a small animal once they become adults. It's supposed to be a symbol of trust and generosity and it's usually part of a coming of age ritual or festivity that can last for half a week." />
 		<property name="servicces">
 			<list></list>
 		</property>
@@ -1144,10 +1144,10 @@ Thank you for all the great music that you and AC/DC created﻿" />
 		</property>
 	</bean>
 
-	<bean id="Savana_Ground" class="domain.Category">
-		<property name="name" value="Savana" />
-		<property name="categoryFather" ref="Ground" />
-		<property name="description" value="Very very dangerous" />
+	<bean id="Rkousk_Xceeqo" class="domain.Category">
+		<property name="name" value="Rkousk" />
+		<property name="categoryFather" ref="Xceeqo" />
+		<property name="description" value="In the nation of Meswar it is tradition to mark a new born baby's forehead with a painted symbol. It's supposed to bless the lives of all those around the baby." />
 		<property name="servicces">
 			<list></list>
 		</property>
@@ -1156,10 +1156,10 @@ Thank you for all the great music that you and AC/DC created﻿" />
 		</property>
 	</bean>
 
-	<bean id="Mountain_Ground" class="domain.Category">
-		<property name="name" value="Mountain" />
-		<property name="categoryFather" ref="Ground" />
-		<property name="description" value="Very very dangerous" />
+	<bean id="Tdeazoi_Xceeqo" class="domain.Category">
+		<property name="name" value="Tdeazoi" />
+		<property name="categoryFather" ref="Xceeqo" />
+		<property name="description" value="In the nation of Meswar it is tradition to mark a new born baby's forehead with a painted symbol. It's supposed to bless the lives of all those around the baby." />
 		<property name="servicces">
 			<list></list>
 		</property>
@@ -1168,10 +1168,10 @@ Thank you for all the great music that you and AC/DC created﻿" />
 		</property>
 	</bean>
 
-	<bean id="Water" class="domain.Category">
-		<property name="name" value="Water" />
-		<property name="categoryFather" ref="Safari" />
-		<property name="description" value="Very very dangerous" />
+	<bean id="Dzoree" class="domain.Category">
+		<property name="name" value="Dzoree" />
+		<property name="categoryFather" ref="Dalqi" />
+		<property name="description" value="In the village of Doswa it is tradition for people to burn a homemade doll once they become adults. It's supposed to be a symbol of grace and creativity and it's usually part of a religious ritual or festivity that can last for over a week." />
 		<property name="servicces">
 			<list></list>
 		</property>
@@ -1180,10 +1180,10 @@ Thank you for all the great music that you and AC/DC created﻿" />
 		</property>
 	</bean>
 
-	<bean id="River_Water" class="domain.Category">
-		<property name="name" value="River" />
-		<property name="categoryFather" ref="Water" />
-		<property name="description" value="Very very dangerous" />
+	<bean id="Meascue_Dzoree" class="domain.Category">
+		<property name="name" value="Meascue" />
+		<property name="categoryFather" ref="Dzoree" />
+		<property name="description" value="In the city of Beslus it is tradition to cover the eyes, ears and mouths of the deceased. It's supposed to help both the spirit of the deceased and the mourning process of the living." />
 		<property name="servicces">
 			<list></list>
 		</property>
@@ -1192,10 +1192,10 @@ Thank you for all the great music that you and AC/DC created﻿" />
 		</property>
 	</bean>
 
-	<bean id="Lake_Water" class="domain.Category">
-		<property name="name" value="Lake" />
-		<property name="categoryFather" ref="Water" />
-		<property name="description" value="Very very dangerous" />
+	<bean id="Zxaoxsi_Dzoree" class="domain.Category">
+		<property name="name" value="Zxaoxsi" />
+		<property name="categoryFather" ref="Dzoree" />
+		<property name="description" value="In the state of Xeglua it is tradition for women to hide small gifts around their homes on the first full moon of the year. It's supposed to be a symbol of attractiveness and intelligence and it's usually part of a rite of passage that can last for days." />
 		<property name="servicces">
 			<list></list>
 		</property>
@@ -1204,10 +1204,10 @@ Thank you for all the great music that you and AC/DC created﻿" />
 		</property>
 	</bean>
 
-	<bean id="Climbing" class="domain.Category">
-		<property name="name" value="Climbing" />
-		<property name="categoryFather" ref="Safari" />
-		<property name="description" value="Very very dangerous" />
+	<bean id="Skocou" class="domain.Category">
+		<property name="name" value="Skocou" />
+		<property name="categoryFather" ref="Dalqi" />
+		<property name="description" value="In the district of Fesmil it is tradition to gift a newly wed couple sweets and desserts. It's supposed to bring fortune to the married couple." />
 		<property name="servicces">
 			<list></list>
 		</property>
@@ -1216,10 +1216,10 @@ Thank you for all the great music that you and AC/DC created﻿" />
 		</property>
 	</bean>
 
-	<bean id="River_Climbing" class="domain.Category">
-		<property name="name" value="River" />
-		<property name="categoryFather" ref="Climbing" />
-		<property name="description" value="Very very dangerous" />
+	<bean id="Meascue_Skocou" class="domain.Category">
+		<property name="name" value="Meascue" />
+		<property name="categoryFather" ref="Skocou" />
+		<property name="description" value="In the province of Muswyae it is tradition to take a picture of a recently deceased person and immediately burn it. It's supposed to help the living with their mourning process." />
 		<property name="servicces">
 			<list></list>
 		</property>
@@ -1228,10 +1228,10 @@ Thank you for all the great music that you and AC/DC created﻿" />
 		</property>
 	</bean>
 
-	<bean id="Mountain_Climbing" class="domain.Category">
-		<property name="name" value="Mountain" />
-		<property name="categoryFather" ref="Climbing" />
-		<property name="description" value="Very very dangerous" />
+	<bean id="Tdeazoi_Skocou" class="domain.Category">
+		<property name="name" value="Tdeazoi" />
+		<property name="categoryFather" ref="Skocou" />
+		<property name="description" value="In the city of Weswil it is tradition for women to take care of all the children in the family for a period of time on a specific date of the year. It's supposed to be a symbol of attractiveness and humbleness and it's usually part of a larger life ceremony that can last for almost a week." />
 		<property name="servicces">
 			<list></list>
 		</property>
@@ -1264,7 +1264,7 @@ Thank you for all the great music that you and AC/DC created﻿" />
 		<property name="name" value="name1" />
 		<property name="description" value="description2" />
 		<property name="cancelled" value="false"/>
-	<property name="category" ref="Water" /> 
+	<property name="category" ref="Dzoree" /> 
 		<property name="manager" ref="manager1" />
 		<property name="requests"><list></list></property>
 	</bean>
@@ -1274,7 +1274,7 @@ Thank you for all the great music that you and AC/DC created﻿" />
 		<property name="name" value="name2" />
 		<property name="description" value="description2" />
 		<property name="cancelled" value="false"/>
-	<property name="category" ref="Safari" /> 
+	<property name="category" ref="Dalqi" /> 
 		<property name="manager" ref="manager1" />
 		<property name="requests"><list></list></property>
 	</bean>
@@ -1284,7 +1284,7 @@ Thank you for all the great music that you and AC/DC created﻿" />
 		<property name="name" value="name3" />
 		<property name="description" value="description3" />
 		<property name="cancelled" value="false"/>
-		<property name="category" ref="Safari" /> 
+		<property name="category" ref="Dalqi" /> 
 		<property name="manager" ref="manager3" />
 		<property name="requests"><list></list></property>
 	</bean>
@@ -1294,7 +1294,7 @@ Thank you for all the great music that you and AC/DC created﻿" />
 		<property name="name" value="name4" />
 		<property name="description" value="description4" />
 		<property name="cancelled" value="true"/>
-		<property name="category" ref="Climbing" /> 
+		<property name="category" ref="Skocou" /> 
 		<property name="manager" ref="manager2" />
 		<property name="requests"><list></list></property>
 	</bean>
@@ -1323,6 +1323,15 @@ Thank you for all the great music that you and AC/DC created﻿" />
 		<property name="creditCard" ref="creditCard1" />
 		<property name="rendezvous" ref="rendezvous1" />
 		<property name="servicce" ref="servicce1" />
+	</bean>
+	
+	
+	<!-- #Request -->
+	<bean id="configuration" class="domain.Configuration">
+		<property name="nameBusiness" value="Adventure meetups" />
+		<property name="banner" value="https://tinyurl.com/adventure-meetup" />
+		<property name="messageES" value="Tu sitio para organizar quedadas de aventura" />
+		<property name="messageEN" value="Your place to organise your adventure meetups!" />
 	</bean>
 	
 </beans>

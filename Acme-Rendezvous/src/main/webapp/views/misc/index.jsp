@@ -17,3 +17,4 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
 <jsp:forward page="/welcome/index.do" />
+

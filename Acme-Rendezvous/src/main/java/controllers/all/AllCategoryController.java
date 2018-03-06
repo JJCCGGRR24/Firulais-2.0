@@ -34,7 +34,7 @@ public class AllCategoryController extends AbstractController {
 	@RequestMapping("/flat")
 	public ModelAndView flat() {
 		final ModelAndView res = new ModelAndView("category/flat");
-		res.addObject("category", this.categoryService.getFathers());
+		res.addObject("categories", this.categoryService.getFathers());
 		return res;
 	}
 }

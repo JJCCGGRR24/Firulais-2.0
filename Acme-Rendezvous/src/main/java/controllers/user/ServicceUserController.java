@@ -13,33 +13,28 @@ import controllers.AbstractController;
 import domain.Servicce;
 
 @Controller
-@RequestMapping("/service/user")
-public class ServiceUserController extends AbstractController {
+@RequestMapping("/servicce/user")
+public class ServicceUserController extends AbstractController {
 
-	//Service------------------------------------------------------------------------
+	//Servicce------------------------------------------------------------------------
 
 	@Autowired
-	private ServicceService	serviceService;
+	private ServicceService	servicceService;
 
 
 	//Constructor---------------------------------------------------------------------
 
-	public ServiceUserController() {
+	public ServicceUserController() {
 		super();
 	}
 
 	// List ---------------------------------------------------------------
 	@RequestMapping("/list")
 	public ModelAndView list() {
-
-		final ModelAndView res = new ModelAndView("service/list");
-
-		final Collection<Servicce> s = this.serviceService.findAll();
-
-		res.addObject("services", s);
-
-		res.addObject("requestURI", "service/user/list.do");
+		final ModelAndView res = new ModelAndView("servicce/list");
+		final Collection<Servicce> s = this.servicceService.findAll();
+		res.addObject("servicces", s);
+		res.addObject("requestURI", "servicce/user/list.do");
 		return res;
 	}
-
 }
