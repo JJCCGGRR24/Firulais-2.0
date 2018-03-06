@@ -10,14 +10,21 @@
 
 package controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.ConfigurationService;
+
 @Controller
 @RequestMapping("/welcome")
 public class WelcomeController extends AbstractController {
+
+	@Autowired
+	private ConfigurationService	configService;
+
 
 	// Constructors -----------------------------------------------------------
 
@@ -32,7 +39,8 @@ public class WelcomeController extends AbstractController {
 		ModelAndView result = null;
 
 		result = new ModelAndView("welcome/index");
-
+		result.addObject("ES", this.configService.find().getMessageES());
+		result.addObject("EN", this.configService.find().getMessageEN());
 		return result;
 	}
 }

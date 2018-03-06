@@ -24,6 +24,8 @@
 <spring:message code="dashboard.queryA1" var="q9"/>
 <spring:message code="dashboard.queryA2" var="q10"/>
 <spring:message code="dashboard.queryA3" var="q11"/>
+<spring:message code="dashboard.queryNewC2" var="q12"/>
+
 
 
 
@@ -182,4 +184,10 @@
 		<spring:message code="dashboard.nodata"/>
 	</jstl:if><br/>
 </b><br/><br/> 
+
+
+<jstl:out value="${q12}:"/><br/>
+<display:table name="${queryNewC2}" id="row" class="displaytag">
+	<acme:column code="dashboard.manager.vat" property ="vat"/>
+</display:table><br/><br/><br/>
  

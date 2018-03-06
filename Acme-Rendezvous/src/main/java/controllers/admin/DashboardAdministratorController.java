@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.CommentService;
+import services.ManagerService;
 import services.RendezvousService;
 import services.UserService;
 import controllers.AbstractController;
@@ -25,6 +26,9 @@ public class DashboardAdministratorController extends AbstractController {
 
 	@Autowired
 	private CommentService		commentService;
+
+	@Autowired
+	private ManagerService		managerService;
 
 
 	// Constructors -----------------------------------------------------------
@@ -47,6 +51,7 @@ public class DashboardAdministratorController extends AbstractController {
 		res.addObject("queryA1", this.rendezvousService.queryA1());
 		res.addObject("queryA2", this.rendezvousService.queryA2());
 		res.addObject("queryA3", this.commentService.queryA3());
+		res.addObject("queryNewC2", this.managerService.queryNewC2());
 
 		return res;
 	}
