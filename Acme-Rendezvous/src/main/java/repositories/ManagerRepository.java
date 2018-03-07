@@ -16,7 +16,7 @@ public interface ManagerRepository extends JpaRepository<Manager, Integer> {
 	@Query("select m from Manager m where m.servicces.size > (select avg(mm.servicces.size) from Manager mm)")
 	List<Manager> queryNewC2();
 
-	@Query("select max(m) from Manager m join m.servicces s where s.cancelled = true")
+	@Query("select (select max(s.manager) from Servicce s where s.cancelled=true and s.manager = m.id) from Manager m")
 	List<Manager> queryNewC3();
 
 }

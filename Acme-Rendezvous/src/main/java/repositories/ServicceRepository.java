@@ -12,6 +12,9 @@ import domain.Servicce;
 @Repository
 public interface ServicceRepository extends JpaRepository<Servicce, Integer> {
 
+	@Query("select s from Servicce s where s.requests.size = (select max(ss.requests.size) from Servicce ss) and s.cancelled = false")
+	List<Servicce> queryNewC1B4();
+
 	@Query("select r.servicce from Request r where r.rendezvous.id =?1")
 	List<Servicce> servicesByRendezvous(int rendezvousId);
 

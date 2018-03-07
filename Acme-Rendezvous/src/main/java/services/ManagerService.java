@@ -86,9 +86,13 @@ public class ManagerService {
 	}
 
 	public Collection<Manager> queryNewC3() {
-		return this.managerRepository.queryNewC3();
+		final List<Manager> pre = this.managerRepository.queryNewC3();
+		final List<Manager> post = new ArrayList<Manager>();
+		for (final Manager m : pre)
+			if (m != null)
+				post.add(m);
+		return post;
 	}
-
 	public Manager reconstruct(final RegisterManagerForm form) {
 		final Manager m = this.create();
 

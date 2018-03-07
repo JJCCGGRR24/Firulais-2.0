@@ -72,4 +72,8 @@ public class ServicceService {
 	public List<Servicce> servicesByRendezvous(final int rendezvousId) {
 		return this.servicceRepository.servicesByRendezvous(rendezvousId);
 	}
+
+	public Collection<Servicce> queryNewC1B4() {
+		return this.servicceRepository.queryNewC1B4();
+	}
 }

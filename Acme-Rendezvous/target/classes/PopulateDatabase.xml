@@ -1303,7 +1303,7 @@ Thank you for all the great music that you and AC/DC created﻿" />
 		<property name="picture" value="http://asd.com" />
 		<property name="name" value="name5" />
 		<property name="description" value="description5" />
-		<property name="cancelled" value="true"/>
+		<property name="cancelled" value="false"/>
 		<property name="manager" ref="manager4" />
 		<property name="requests"><list></list></property>
 	</bean>

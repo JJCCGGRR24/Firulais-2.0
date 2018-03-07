@@ -6,9 +6,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.CategoryService;
 import services.CommentService;
 import services.ManagerService;
 import services.RendezvousService;
+import services.ServicceService;
 import services.UserService;
 import controllers.AbstractController;
 
@@ -29,6 +31,12 @@ public class DashboardAdministratorController extends AbstractController {
 
 	@Autowired
 	private ManagerService		managerService;
+
+	@Autowired
+	private CategoryService		categoryService;
+
+	@Autowired
+	private ServicceService		servicceService;
 
 
 	// Constructors -----------------------------------------------------------
@@ -52,6 +60,10 @@ public class DashboardAdministratorController extends AbstractController {
 		res.addObject("queryA2", this.rendezvousService.queryA2());
 		res.addObject("queryA3", this.commentService.queryA3());
 		res.addObject("queryNewC2", this.managerService.queryNewC2());
+		res.addObject("queryNewC3", this.managerService.queryNewC3());
+		res.addObject("queryNewB2", this.categoryService.queryNewB2());
+		res.addObject("queryNewB3", this.categoryService.queryNewB3());
+		res.addObject("queryNewC1B4", this.servicceService.queryNewC1B4());
 
 		return res;
 	}

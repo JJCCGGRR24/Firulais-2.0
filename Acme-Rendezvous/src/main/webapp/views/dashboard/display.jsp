@@ -24,7 +24,12 @@
 <spring:message code="dashboard.queryA1" var="q9"/>
 <spring:message code="dashboard.queryA2" var="q10"/>
 <spring:message code="dashboard.queryA3" var="q11"/>
-<spring:message code="dashboard.queryNewC2" var="q12"/>
+<spring:message code="dashboard.queryNewC2" var="q13"/>
+<spring:message code="dashboard.queryNewC3" var="q14"/>
+<spring:message code="dashboard.queryNewC1B4" var="q15"/>
+<spring:message code="dashboard.queryNewB2" var="q16"/>
+<spring:message code="dashboard.queryNewB3" var="q17"/>
+
 
 
 
@@ -186,8 +191,56 @@
 </b><br/><br/> 
 
 
-<jstl:out value="${q12}:"/><br/>
+<jstl:out value="${q13}:"/><br/>
 <display:table name="${queryNewC2}" id="row" class="displaytag">
+	<acme:column code="dashboard.manager.name" property ="name"/>
+	<acme:column code="dashboard.manager.surname" property ="surname"/>
+	<acme:column code="dashboard.manager.email" property ="email"/>
+	<acme:column code="dashboard.manager.phone" property ="phone"/>
+	<acme:column code="dashboard.manager.postalAddress" property ="postalAddress"/>
 	<acme:column code="dashboard.manager.vat" property ="vat"/>
 </display:table><br/><br/><br/>
+
+<jstl:out value="${q14}:"/><br/>
+<display:table name="${queryNewC3}" id="row" class="displaytag">
+	
+	<acme:column code="dashboard.manager.name" property ="name"/>
+	<acme:column code="dashboard.manager.surname" property ="surname"/>
+	<acme:column code="dashboard.manager.email" property ="email"/>
+	<acme:column code="dashboard.manager.phone" property ="phone"/>
+	<acme:column code="dashboard.manager.postalAddress" property ="postalAddress"/>
+	<acme:column code="dashboard.manager.vat" property ="vat"/>
+</display:table><br/><br/><br/>
+
+<jstl:out value="${q15}:"/><br/>
+<display:table name="${queryNewC1B4}" id="row" class="displaytag">
+	
+	<acme:column code="servicce.name" property ="name"/>
+	<acme:column code="servicce.description" property ="description"/>
+	<spring:message code="servicce.picture" var="pictureS"/>
+	<display:column title="${pictureS}">
+		<img src="picture"/>
+	</display:column>
+	<acme:column code="servicce.category" property ="category.name"/>
+</display:table><br/><br/><br/>
  
+<jstl:out value="${q16}:"/><br/><b>
+	<fmt:formatNumber value="${queryNewB2}" maxFractionDigits="2"/><jstl:if test="${queryNewB2 eq null}">
+	</jstl:if>
+</b><br/><br/><br/>
+
+ 
+<jstl:out value="${q17}:"/><br/><b>
+	<spring:message code="dashboard.avg"/> <fmt:formatNumber value="${queryNewB3[0]}" maxFractionDigits="2"/><jstl:if test="${queryNewB3[0] eq null}">
+		<spring:message code="dashboard.nodata"/>
+	</jstl:if><br/>
+	<spring:message code="dashboard.min"/> <fmt:formatNumber value="${queryNewB3[1]}" maxFractionDigits="2"/><jstl:if test="${queryNewB3[1] eq null}">
+		<spring:message code="dashboard.nodata"/>
+		</jstl:if><br/>
+	<spring:message code="dashboard.max"/> <fmt:formatNumber value="${queryNewB3[2]}" maxFractionDigits="2"/><jstl:if test="${queryNewB3[2] eq null}">
+		<spring:message code="dashboard.nodata"/>
+	</jstl:if><br/>
+	<spring:message code="dashboard.stdev"/> <fmt:formatNumber value="${queryNewB3[3]}" maxFractionDigits="2"/><jstl:if test="${queryNewB3[3] eq null}">
+		<spring:message code="dashboard.nodata"/>
+		</jstl:if>
+</b><br/><br/>  
