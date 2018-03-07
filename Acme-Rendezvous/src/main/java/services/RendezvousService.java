@@ -213,6 +213,10 @@ public class RendezvousService {
 		return res;
 	}
 
+	public Double queryNewB1() {
+		return this.rendezvousRepository.queryNewB1();
+	}
+
 	//	public List<Rendezvous> listRSVPd() {
 	//		return this.rendezvousRepository.listRSVPd(this.loginService.getPrincipalActor().getId());
 	//	}

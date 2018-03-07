@@ -64,6 +64,7 @@ public class DashboardAdministratorController extends AbstractController {
 		res.addObject("queryNewB2", this.categoryService.queryNewB2());
 		res.addObject("queryNewB3", this.categoryService.queryNewB3());
 		res.addObject("queryNewC1B4", this.servicceService.queryNewC1B4());
+		res.addObject("queryNewB1", this.rendezvousService.queryNewB1());
 
 		return res;
 	}

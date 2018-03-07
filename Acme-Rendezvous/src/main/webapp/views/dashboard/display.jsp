@@ -29,6 +29,7 @@
 <spring:message code="dashboard.queryNewC1B4" var="q15"/>
 <spring:message code="dashboard.queryNewB2" var="q16"/>
 <spring:message code="dashboard.queryNewB3" var="q17"/>
+<spring:message code="dashboard.queryNewB1" var="q18"/>
 
 
 
@@ -226,6 +227,7 @@
  
 <jstl:out value="${q16}:"/><br/><b>
 	<fmt:formatNumber value="${queryNewB2}" maxFractionDigits="2"/><jstl:if test="${queryNewB2 eq null}">
+	<spring:message code="dashboard.nodata"/>
 	</jstl:if>
 </b><br/><br/><br/>
 
@@ -244,3 +246,9 @@
 		<spring:message code="dashboard.nodata"/>
 		</jstl:if>
 </b><br/><br/>  
+
+<jstl:out value="${q18}:"/><br/><b>
+	<fmt:formatNumber value="${queryNewB1}" maxFractionDigits="2"/><jstl:if test="${queryNewB1 eq null}">
+	<spring:message code="dashboard.nodata"/>
+	</jstl:if>
+</b><br/><br/><br/>
