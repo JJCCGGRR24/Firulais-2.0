@@ -9,10 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import services.CategoryService;
-import services.CommentService;
 import services.ManagerService;
-import services.RendezvousService;
 import services.ServicceService;
 import utilities.AbstractTest;
 
@@ -25,19 +22,10 @@ public class UseCase06part2Test extends AbstractTest {
 
 	//SUT
 	@Autowired
-	private ManagerService		managerService;
+	private ManagerService	managerService;
 
 	@Autowired
-	private CommentService		commentService;
-
-	@Autowired
-	private ServicceService		servicceService;
-
-	@Autowired
-	private RendezvousService	rendezvousService;
-
-	@Autowired
-	private CategoryService		categoryService;
+	private ServicceService	servicceService;
 
 
 	//An actor who is authenticated as an administrator must be able to display a dashboard 
@@ -45,24 +33,41 @@ public class UseCase06part2Test extends AbstractTest {
 	//		The best-selling services.
 	//		The managers who provide more services than the average.
 	//		The managers who have got more services cancelled.
-	//		The average number of categories per rendezvous.
-	//		The average ratio of services in each category.
-	//	 	The average, the minimum, the maximum, and the standard deviation of services requested per rendezvous.
-	//	 	The top-selling services.
 
 	@Test
 	public void testDisplayDashboardByAdmin() {
 
 		super.authenticate("admin");
+
+		//Se intenta acceder a las queries del dashboard pertenecientes al caso de uso 6.2
+		//como el autenticado es admin se le permite el acceso a dichas queries
+		this.servicceService.queryNewC1B4();
 		this.managerService.queryNewC2();
+		this.managerService.queryNewC3();
 		super.unauthenticate();
 	}
 
-	@Test
-	public void testDisplayDashboardByOtherActor() {
+	@Test(expected = IllegalArgumentException.class)
+	public void testDisplayDashboardByUser() {
 
+		//Se intenta acceder a las queries del dashboard pertenecientes al caso de uso 6.2
+		//como el autenticado es user1 no se le permite el acceso a dichas queries
 		super.authenticate("user1");
+		this.servicceService.queryNewC1B4();
 		this.managerService.queryNewC2();
+		this.managerService.queryNewC3();
+		super.unauthenticate();
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testDisplayDashboardByManager() {
+
+		//Se intenta acceder a las queries del dashboard pertenecientes al caso de uso 6.2
+		//como el autenticado es manager1 no se le permite el acceso a dichas queries
+		super.authenticate("manager1");
+		this.servicceService.queryNewC1B4();
+		this.managerService.queryNewC2();
+		this.managerService.queryNewC3();
 		super.unauthenticate();
 	}
 
