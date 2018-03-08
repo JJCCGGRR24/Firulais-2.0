@@ -34,6 +34,7 @@ public class CategoryService {
 
 	// Simple CRUD methods ----------------------------------------------------
 	public Category create() {
+		Assert.isTrue(LoginService.isPrincipalAdmin(), "Principal login isn't admin");
 		final Category c = new Category();
 		c.setCategoriesChildren(new ArrayList<Category>());
 		c.setServicces(new ArrayList<Servicce>());
