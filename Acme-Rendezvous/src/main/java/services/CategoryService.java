@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import repositories.CategoryRepository;
+import security.LoginService;
 import domain.Category;
 import domain.Servicce;
 
@@ -159,10 +160,13 @@ public class CategoryService {
 	}
 
 	public Double queryNewB2() {
+		Assert.isTrue(LoginService.isPrincipalAdmin(), "Principal login isn't admin");
 		return this.categoryRepository.queryNewB2();
 	}
 
 	public Double[] queryNewB3() {
+
+		Assert.isTrue(LoginService.isPrincipalAdmin(), "Principal login isn't admin");
 		return this.categoryRepository.queryNewB3();
 	}
 }

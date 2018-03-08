@@ -33,20 +33,14 @@ public class UseCase11part1Test extends AbstractTest {
 	private ServicceService	servicceService;
 
 
-	//An actor who is authenticated as an administrator must be able to display a dashboard 
-	//with the following information:
-	//		The best-selling services.
-	//		The managers who provide more services than the average.
-	//		The managers who have got more services cancelled.
-	//		The average number of categories per rendezvous.
-	//		The average ratio of services in each category.
-	//	 	The average, the minimum, the maximum, and the standard deviation of services requested per rendezvous.
-	//	 	The top-selling services.
+	//	An actor who is authenticated as an administrator must be able to:
+	//	Manage the categories of services, which includes listing, creating, updating, 
+	//	deleting, and re-organising them in the category hierarchies.
 
 	@Test
 	public void testCreateCategoryByAdmin() {
 
-		super.authenticate("use1");
+		super.authenticate("user1");
 		final Category cat = this.categoryService.create();
 
 		cat.setName("Difficult");

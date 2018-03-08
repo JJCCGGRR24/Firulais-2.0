@@ -9,7 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import services.CategoryService;
+import services.CommentService;
 import services.ManagerService;
+import services.RendezvousService;
+import services.ServicceService;
 import utilities.AbstractTest;
 
 @ContextConfiguration(locations = {
@@ -21,7 +25,19 @@ public class UseCase06part2Test extends AbstractTest {
 
 	//SUT
 	@Autowired
-	private ManagerService	managerService;
+	private ManagerService		managerService;
+
+	@Autowired
+	private CommentService		commentService;
+
+	@Autowired
+	private ServicceService		servicceService;
+
+	@Autowired
+	private RendezvousService	rendezvousService;
+
+	@Autowired
+	private CategoryService		categoryService;
 
 
 	//An actor who is authenticated as an administrator must be able to display a dashboard 

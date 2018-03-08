@@ -84,6 +84,7 @@ public class CommentService {
 	}
 
 	public Double[] queryA3() {
+		Assert.isTrue(LoginService.isPrincipalAdmin(), "Principal login isn't admin");
 		return this.commentRepository.queryA3();
 	}
 

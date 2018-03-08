@@ -14,6 +14,7 @@ import org.springframework.util.Assert;
 
 import repositories.ManagerRepository;
 import security.Authority;
+import security.LoginService;
 import security.UserAccount;
 import domain.Manager;
 import domain.Servicce;
@@ -82,10 +83,12 @@ public class ManagerService {
 	// Other business methods -------------------------------------------------
 
 	public Collection<Manager> queryNewC2() {
+		Assert.isTrue(LoginService.isPrincipalAdmin(), "Principal login isn't admin");
 		return this.managerRepository.queryNewC2();
 	}
 
 	public Collection<Manager> queryNewC3() {
+		Assert.isTrue(LoginService.isPrincipalAdmin(), "Principal login isn't admin");
 		final List<Manager> pre = this.managerRepository.queryNewC3();
 		final List<Manager> post = new ArrayList<Manager>();
 		for (final Manager m : pre)

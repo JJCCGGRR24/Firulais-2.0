@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import repositories.ServicceRepository;
+import security.LoginService;
 import domain.Servicce;
 
 ;
@@ -74,6 +75,7 @@ public class ServicceService {
 	}
 
 	public Collection<Servicce> queryNewC1B4() {
+		Assert.isTrue(LoginService.isPrincipalAdmin(), "Principal login isn't admin");
 		return this.servicceRepository.queryNewC1B4();
 	}
 }

@@ -170,18 +170,22 @@ public class RendezvousService {
 	}
 
 	public Double[] queryB1() {
+		Assert.isTrue(LoginService.isPrincipalAdmin(), "Principal login isn't admin");
 		return this.rendezvousRepository.queryB1();
 	}
 
 	public Collection<Rendezvous> queryB2() {
+		Assert.isTrue(LoginService.isPrincipalAdmin(), "Principal login isn't admin");
 		return this.rendezvousRepository.queryB2();
 	}
 
 	public Collection<Rendezvous> queryB3() {
+		Assert.isTrue(LoginService.isPrincipalAdmin(), "Principal login isn't admin");
 		return this.rendezvousRepository.queryB3();
 	}
 
 	public Double[] queryA1() {
+		Assert.isTrue(LoginService.isPrincipalAdmin(), "Principal login isn't admin");
 		return this.rendezvousRepository.queryA1();
 	}
 
@@ -214,6 +218,7 @@ public class RendezvousService {
 	}
 
 	public Double queryNewB1() {
+		Assert.isTrue(LoginService.isPrincipalAdmin(), "Principal login isn't admin");
 		return this.rendezvousRepository.queryNewB1();
 	}
 
