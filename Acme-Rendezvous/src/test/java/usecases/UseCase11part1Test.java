@@ -41,8 +41,11 @@ public class UseCase11part1Test extends AbstractTest {
 	public void driver() {
 		final Object testingData[][] = {
 			{
+				//accedemos a crear categoria con admin, no debe de haber problema pues es el unico que puede
+				//crear categorias
 				"admin", "Difficult", "Very very difficult", "Qeusqoo", "servicce1", null
 			}, {
+				//accedemos a crear categoria con user, debería de saltar la excepción pues esto es ilegal
 				"user1", "Difficult", "Very very difficult", "Qeusqoo", "servicce1", IllegalArgumentException.class
 			}
 		};
@@ -58,8 +61,13 @@ public class UseCase11part1Test extends AbstractTest {
 
 		caught = null;
 		try {
+			//me autentico 
 			super.authenticate(username);
+
+			//creo categoria
 			final Category cat = this.categoryService.create();
+
+			//introduzco datos a la categoria
 			cat.setName(name);
 			cat.setDescription(description);
 			final Category catFather = this.categoryService.findOne(categoryId);
@@ -67,6 +75,7 @@ public class UseCase11part1Test extends AbstractTest {
 			final List<Servicce> servicces = new ArrayList<Servicce>();
 			servicces.add(this.servicceService.findOne(servicceId));
 			cat.setServicces(servicces);
+
 		} catch (final Throwable oops) {
 			caught = oops.getClass();
 		}
