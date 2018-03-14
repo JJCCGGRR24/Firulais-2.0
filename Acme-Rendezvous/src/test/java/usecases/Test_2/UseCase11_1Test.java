@@ -1,5 +1,5 @@
 
-package usecases;
+package usecases.Test_2;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +23,7 @@ import domain.Servicce;
 })
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
-public class UseCase11part1Test extends AbstractTest {
+public class UseCase11_1Test extends AbstractTest {
 
 	//SUT
 	@Autowired

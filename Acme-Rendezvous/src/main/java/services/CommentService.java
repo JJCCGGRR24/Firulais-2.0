@@ -67,6 +67,7 @@ public class CommentService {
 	}
 
 	public void delete(final Comment comment) {
+		Assert.isTrue(LoginService.isPrincipalAdmin());
 		this.commentRepository.delete(comment);
 	}
 

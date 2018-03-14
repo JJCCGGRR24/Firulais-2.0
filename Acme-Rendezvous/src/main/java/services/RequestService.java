@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import repositories.RequestRepository;
+import security.LoginService;
 import domain.Rendezvous;
 import domain.Request;
 
@@ -53,6 +54,7 @@ public class RequestService {
 	}
 
 	public Request save(final Request request) {
+		Assert.isTrue(LoginService.isPrincipalUser());
 		Assert.notNull(request);
 		return this.requestRepository.save(request);
 	}

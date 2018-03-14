@@ -14,15 +14,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
-import repositories.RendezvousRepository;
-import security.LoginService;
-import security.UserAccount;
 import domain.Announcement;
 import domain.Comment;
 import domain.Question;
 import domain.Rendezvous;
 import domain.User;
 import forms.LinkForm;
+import repositories.RendezvousRepository;
+import security.LoginService;
+import security.UserAccount;
 
 @Service
 @Transactional
@@ -39,9 +39,9 @@ public class RendezvousService {
 	@Autowired
 	private UserService				userService;
 
-
 	//	@Autowired
 	//	private Validator				validator;
+
 
 	// Constructors -----------------------------------------------------------
 	public RendezvousService() {
@@ -252,6 +252,7 @@ public class RendezvousService {
 	}
 
 	public Rendezvous link(final LinkForm l) {
+		Assert.isTrue(LoginService.isPrincipalUser());
 		final Rendezvous r = this.findOne(l.getId());
 		final List<Rendezvous> rs = r.getLinkedTo();
 		rs.add(this.findOne(l.getR().getId()));

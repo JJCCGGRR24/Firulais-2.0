@@ -1,5 +1,5 @@
 
-package usecases;
+package usecases.Test_2;
 
 import javax.transaction.Transactional;
 
@@ -18,7 +18,7 @@ import utilities.AbstractTest;
 })
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
-public class UseCase06part2Test extends AbstractTest {
+public class UseCase06_2Test extends AbstractTest {
 
 	//SUT
 	@Autowired

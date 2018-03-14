@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import repositories.QuestionRepository;
+import security.LoginService;
 import domain.Question;
 import domain.Rendezvous;
 
@@ -34,6 +35,7 @@ public class QuestionService {
 	// Simple CRUD methods ----------------------------------------------------
 	public Question create(final Rendezvous rendezvous) {
 		final Question r = new Question();
+		Assert.isTrue(LoginService.isPrincipalUser());
 		r.setRendezvous(rendezvous);
 		return r;
 	}

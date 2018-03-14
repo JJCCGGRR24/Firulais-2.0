@@ -14,12 +14,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import security.LoginService;
-import services.CategoryService;
-import services.ServicceService;
 import controllers.AbstractController;
 import domain.Manager;
 import domain.Servicce;
+import security.LoginService;
+import services.CategoryService;
+import services.ServicceService;
 
 @Controller
 @RequestMapping("/servicce/manager")
@@ -69,7 +69,6 @@ public class ServicceManagerController extends AbstractController {
 		final ModelAndView result;
 		Servicce e;
 		e = this.servicceService.create();
-		e.setManager((Manager) this.loginService.getPrincipalActor());
 		result = this.createEditModelAndView(e);
 		return result;
 	}
