@@ -1,8 +1,7 @@
 
-package usecases.Test_1;
+package usecases.tests_v2;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 import javax.transaction.Transactional;
 
@@ -12,8 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import domain.Rendezvous;
+import domain.Servicce;
+import services.CategoryService;
 import services.RendezvousService;
+import services.ServicceService;
 import utilities.AbstractTest;
 
 @ContextConfiguration(locations = {
@@ -21,21 +22,28 @@ import utilities.AbstractTest;
 })
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
-public class UseCase17_2Test extends AbstractTest {
+public class UseCase11_2Test extends AbstractTest {
 
-	//	17. An actor who is authenticated as an administrator must be able to:
-	//		2. Display a dashboard with the following information:
-	//			The average and the standard deviation of announcements per rendezvous.
-	//			The rendezvouses that whose number of announcements is above 75% the average number of announcements per rendezvous.
-	//			The rendezvouses that are linked to a number of rendezvouses that is great-er than the average plus 10%.
+	//	11. An actor who is authenticated as an administrator must be able to:
+	//		1. Display a dashboard with the following information:
+	//	 		The average number of categories per rendezvous.
+	//			The average ratio of services in each category.
+	//			The average, the minimum, the maximum, and the standard deviation of services requested per rendezvous.
+	//			The top-selling services.
 
 	// System under test ------------------------------------------------------
 
 	@Autowired
-	private RendezvousService rendezvousService;
+	private RendezvousService	rendezvousService;
 
+	@Autowired
+	private ServicceService		servicceService;
+
+	@Autowired
+	private CategoryService		categoryService;
 
 	// Tests ------------------------------------------------------------------
+
 
 	@Test
 	public void driver() {
@@ -69,20 +77,21 @@ public class UseCase17_2Test extends AbstractTest {
 
 			//Muestro todos las Queries del sistema
 			System.out.println("-----------------------------");
-			final Double[] query1 = this.rendezvousService.queryB1();
-			System.out.println("Query1: ");
-			for (final Double double1 : query1)
+			final Double query1 = this.rendezvousService.queryNewB1();
+			System.out.println("Query1: " + query1);
+			System.out.println("-----------------------------");
+			final Double query2 = this.categoryService.queryNewB2();
+			System.out.println("Query 2: " + query2);
+			System.out.println("-----------------------------");
+			final Double[] query3 = this.categoryService.queryNewB3();
+			System.out.println("Query 3: ");
+			for (final Double double1 : query3)
 				System.out.println(double1);
 			System.out.println("-----------------------------");
-			final Collection<Rendezvous> query2 = this.rendezvousService.queryB2();
-			System.out.println("Query 2: ");
-			for (final Rendezvous rendezvous : query2)
-				System.out.println(rendezvous.getName());
-			System.out.println("-----------------------------");
-			final ArrayList<Rendezvous> query3 = new ArrayList<>(this.rendezvousService.queryB3());
-			System.out.println("Query 3: ");
-			for (final Rendezvous rendezvous : query3)
-				System.out.println(rendezvous.getName());
+			final ArrayList<Servicce> list = new ArrayList<>(this.servicceService.queryNewC1B4());
+			System.out.println("Query 4: ");
+			for (final Servicce servicce : list)
+				System.out.println(servicce.getName());
 			System.out.println("-----------------------------");
 
 			//Nos desautenticamos
@@ -92,7 +101,6 @@ public class UseCase17_2Test extends AbstractTest {
 		} catch (final Throwable oops) {
 			caught = oops.getClass();
 			System.out.println(caught);
-			System.out.println("-----------------------------");
 		}
 
 		this.checkExceptions(expected, caught);

@@ -135,10 +135,12 @@ public class UserService {
 	}
 
 	public Double[] queryC1() {
+		Assert.isTrue(LoginService.isPrincipalAdmin());
 		final Double[] d = this.userRepository.queryC1();
 		return d;
 	}
 	public Double queryC2() {
+		Assert.isTrue(LoginService.isPrincipalAdmin());
 		Double res = 0.;
 		if (!(this.userRepository.queryC2denominador() == 0))
 			res = this.userRepository.queryC2();
@@ -146,6 +148,7 @@ public class UserService {
 	}
 
 	public Double[] queryC4() {
+		Assert.isTrue(LoginService.isPrincipalAdmin());
 		return this.userRepository.queryC4();
 	}
 

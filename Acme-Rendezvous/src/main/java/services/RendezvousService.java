@@ -89,7 +89,8 @@ public class RendezvousService {
 	}
 	public Rendezvous update(final Rendezvous rendezvous) {
 		Assert.notNull(rendezvous);
-		this.checkIsPrincipal(rendezvous);
+		Assert.isTrue(rendezvous.getUser().getUserAccount().getUsername().equals(LoginService.getPrincipal().getUsername()));
+
 		Rendezvous saved;
 		saved = this.rendezvousRepository.save(rendezvous);
 
@@ -156,10 +157,12 @@ public class RendezvousService {
 	}
 
 	public Double[] queryC3() {
+		Assert.isTrue(LoginService.isPrincipalAdmin());
 		return this.rendezvousRepository.queryC3();
 	}
 
 	public Collection<Rendezvous> queryC5() {
+		Assert.isTrue(LoginService.isPrincipalAdmin());
 		Collection<Rendezvous> result;
 		Page<Rendezvous> resPage;
 		Pageable pageable;

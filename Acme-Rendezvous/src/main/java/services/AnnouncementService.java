@@ -10,11 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
+import repositories.AnnouncementRepository;
+import security.LoginService;
 import domain.Announcement;
 import domain.Rendezvous;
 import domain.User;
-import repositories.AnnouncementRepository;
-import security.LoginService;
 
 ;
 
@@ -30,9 +30,9 @@ public class AnnouncementService {
 	@Autowired
 	private LoginService			loginService;
 
+
 	//	@Autowired
 	//	private Validator				validator;
-
 
 	// Constructors -----------------------------------------------------------
 	public AnnouncementService() {
@@ -60,6 +60,7 @@ public class AnnouncementService {
 
 	public Announcement save(final Announcement announcement) {
 		Assert.notNull(announcement);
+		Assert.isTrue(((User) this.loginService.getPrincipalActor()).equals(announcement.getRendezvous().getUser()));
 		announcement.setMoment(new Date(System.currentTimeMillis() - 1000));
 		return this.announcementRepository.save(announcement);
 	}

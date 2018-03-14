@@ -1,7 +1,7 @@
 
-package usecases.Test_1;
+package usecases.tests_v2;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import javax.transaction.Transactional;
 
@@ -11,39 +11,36 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import services.RendezvousService;
-import services.UserService;
+import domain.Servicce;
+import services.ServicceService;
 import utilities.AbstractTest;
-import domain.Rendezvous;
 
 @ContextConfiguration(locations = {
 	"classpath:spring/junit.xml"
 })
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
-public class UseCase04_3Test extends AbstractTest {
+public class UseCase05_1Test extends AbstractTest {
 
-	//	4. An actor who is not authenticated must be able to:
-	//		 3. List the rendezvouses in the system and navigate to the profiles of the corresponding creators and attendants.
+	//	5. An actor who is registered as a manager must be able to:
+	//		1. List the services that are available in the system.
 
 	// System under test ------------------------------------------------------
 	@Autowired
-	private UserService			userService;
-	@Autowired
-	private RendezvousService	rendezvousService;
-
+	private ServicceService servicceService;
 
 	// Tests ------------------------------------------------------------------
+
 
 	@Test
 	public void driver() {
 
 		final Object testingData[][] = {
 			{
-				// Siendo un actor no autenticado, accedo a la lista de rendezvous y al perfil del creador de un rendezvous y los asistentes.
-				null, null
+				"manager1", null
+			}, {
+				"manager11", IllegalArgumentException.class //Un manager que no existe
 			}
-
 		};
 		for (int i = 0; i < testingData.length; i++)
 			this.template((String) testingData[i][0], (Class<?>) testingData[i][1]);
@@ -53,26 +50,30 @@ public class UseCase04_3Test extends AbstractTest {
 
 	protected void template(final String username, final Class<?> expected) {
 		Class<?> caught;
-
 		caught = null;
+
 		try {
 
+			//Nos autenticamos como MANAGER
 			this.authenticate(username);
 
-			//accedo a la lista de rendezvous
-			final List<Rendezvous> lista = (List<Rendezvous>) this.rendezvousService.findAll();
-			//Accedo a la lista de rendezvous a los que ha asistido o asistira un user
-			lista.get(0).getUser();
-			lista.get(0).getUsers();
+			//Muestro todos los Servicces del sistema
+			final ArrayList<Servicce> list = new ArrayList<>(this.servicceService.findAll());
+			for (final Servicce servicce : list)
+				System.out.println(servicce.getName());
 
+			//Nos desautenticamos
 			this.unauthenticate();
 
-			this.rendezvousService.flush();
-
+			System.out.println("Mostrados correctamente.");
 		} catch (final Throwable oops) {
 			caught = oops.getClass();
+			System.out.println(caught);
 		}
+
 		this.checkExceptions(expected, caught);
+
+		System.out.println("-----------------------------");
 	}
 
 }

@@ -1,5 +1,5 @@
 
-package usecases.Test_2;
+package usecases.tests_v2;
 
 import java.util.ArrayList;
 

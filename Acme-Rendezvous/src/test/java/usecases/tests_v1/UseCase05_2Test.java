@@ -1,5 +1,5 @@
 
-package usecases.Test_1;
+package usecases.tests_v1;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -12,8 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import services.ManagerService;
 import services.RendezvousService;
-import services.ServicceService;
 import utilities.AbstractTest;
 import domain.Rendezvous;
 
@@ -26,10 +26,10 @@ public class UseCase05_2Test extends AbstractTest {
 
 	//SUT
 	@Autowired
-	private RendezvousService	rendezvousService;
+	private ManagerService		managerService;
 
 	@Autowired
-	private ServicceService		servicceService;
+	private RendezvousService	rendezvousService;
 
 
 	//Create a rendezvous, which he’s implicitly assumed to attend. 
@@ -71,7 +71,7 @@ public class UseCase05_2Test extends AbstractTest {
 			this.templateEdit((String) testingData[i][0], super.getEntityId((String) testingData[i][1]), (String) testingData[i][2], (String) testingData[i][3], (String) testingData[i][4], (String) testingData[i][5], (Class<?>) testingData[i][6]);
 
 		//		for (int i = 4; i < testingData.length; i++)
-		//			this.templateDelete((String) testingData[i][0], (String) testingData[i][1], (String) testingData[i][2], super.getEntityId((String) testingData[i][4]), super.getEntityId((String) testingData[i][4]), (Class<?>) testingData[i][5]);
+		//			this.templateDelete((String) testingData[i][0], (String) testingData[i][1], (String) testingData[i][2], super.getEntityId
 
 	}
 	protected void templateCreate(final String username, final String name, final String description, final String moment, final String picture, final Class<?> expected) {
@@ -85,14 +85,12 @@ public class UseCase05_2Test extends AbstractTest {
 
 			//creo rendezvous
 			final Rendezvous r = this.rendezvousService.create();
-
 			//introduzco datos al rendezvous
 			r.setName(name);
 			r.setDescription(description);
 			final Date organizationMoment = (new SimpleDateFormat("dd/MM/yyyy HH:mm")).parse(moment);
 			r.setMoment(organizationMoment);
 			r.setPicture(picture);
-
 			this.rendezvousService.flush();
 		} catch (final Throwable oops) {
 			caught = oops.getClass();
@@ -126,9 +124,9 @@ public class UseCase05_2Test extends AbstractTest {
 		} catch (final Throwable oops) {
 			caught = oops.getClass();
 		}
-
 		super.checkExceptions(expected, caught);
 		super.unauthenticate();
+
 	}
 
 }

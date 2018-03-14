@@ -1,7 +1,5 @@
 
-package usecases.Test_2;
-
-import java.util.ArrayList;
+package usecases.tests_v2;
 
 import javax.transaction.Transactional;
 
@@ -11,39 +9,44 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import domain.Servicce;
-import services.ServicceService;
+import services.CategoryService;
 import utilities.AbstractTest;
+import domain.Category;
+import domain.Servicce;
 
 @ContextConfiguration(locations = {
 	"classpath:spring/junit.xml"
 })
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
-public class UseCase05_1Test extends AbstractTest {
+public class UseCase10Test extends AbstractTest {
 
-	//	5. An actor who is registered as a manager must be able to:
-	//		1. List the services that are available in the system.
+	//	10. An actor who is not authenticated must be able to:
+	//		1. List the rendezvouses in the system grouped by category
 
 	// System under test ------------------------------------------------------
 	@Autowired
-	private ServicceService servicceService;
+	private CategoryService	categoryService;
+
 
 	// Tests ------------------------------------------------------------------
-
 
 	@Test
 	public void driver() {
 
 		final Object testingData[][] = {
 			{
-				"manager1", null
+				null, null
 			}, {
-				"manager11", IllegalArgumentException.class //Un manager que no existe
+				"manager11", IllegalArgumentException.class
 			}
 		};
-		for (int i = 0; i < testingData.length; i++)
+		System.out.println("Test Caso de Uso 10");
+		System.out.println("");
+		for (int i = 0; i < testingData.length; i++) {
+			System.out.println("Test " + (i + 1) + ":");
 			this.template((String) testingData[i][0], (Class<?>) testingData[i][1]);
+		}
 	}
 
 	// Ancillary methods ------------------------------------------------------
@@ -54,18 +57,19 @@ public class UseCase05_1Test extends AbstractTest {
 
 		try {
 
-			//Nos autenticamos como MANAGER
+			//Nos autenticamos
 			this.authenticate(username);
 
-			//Muestro todos los Servicces del sistema
-			final ArrayList<Servicce> list = new ArrayList<>(this.servicceService.findAll());
-			for (final Servicce servicce : list)
-				System.out.println(servicce.getName());
+			//Modifico el nombre del sistema
+			final Category c = this.categoryService.findOne(this.getEntityId("Dalqi"));
+			System.out.println("Nombre de los servicios de la cateogría " + c.getName() + ":");
+			for (final Servicce s : c.getServicces())
+				System.out.println("- " + s.getName());
 
 			//Nos desautenticamos
 			this.unauthenticate();
 
-			System.out.println("Mostrados correctamente.");
+			System.out.println("Mostrado correctamente.");
 		} catch (final Throwable oops) {
 			caught = oops.getClass();
 			System.out.println(caught);
@@ -73,7 +77,6 @@ public class UseCase05_1Test extends AbstractTest {
 
 		this.checkExceptions(expected, caught);
 
-		System.out.println("-----------------------------");
+		System.out.println("");
 	}
-
 }
