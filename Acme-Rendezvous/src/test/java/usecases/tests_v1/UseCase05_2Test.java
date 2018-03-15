@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import services.ManagerService;
 import services.RendezvousService;
 import utilities.AbstractTest;
 import domain.Rendezvous;
@@ -25,8 +24,6 @@ import domain.Rendezvous;
 public class UseCase05_2Test extends AbstractTest {
 
 	//SUT
-	@Autowired
-	private ManagerService		managerService;
 
 	@Autowired
 	private RendezvousService	rendezvousService;
@@ -48,30 +45,12 @@ public class UseCase05_2Test extends AbstractTest {
 				//creamos un rendezvous con la descripción nula, lo cual no podría ser posible ya que solo crean 
 				"manager1", "name1", "", "11/12/2018 20:00", "https://forum.linkinpark.com/t/new-linkin-park-logo-what-do-you-think/31363", NullPointerException.class
 
-			}, {
-				//editamos un rendezvous nuestro, lo cual no deberia haber problema
-				"user1", "rendezvous1", "name1", "description1", "11/12/2018 20:00", "https://forum.linkinpark.com/t/new-linkin-park-logo-what-do-you-think/31363", null
-			}, {
-				//editamos un rendezvous que no es nuestro, lo cual no deberia dejarnos
-				"user1", "rendezvous2", "name1", "description1", "11/12/2018 20:00", "https://forum.linkinpark.com/t/new-linkin-park-logo-what-do-you-think/31363", IllegalArgumentException.class
 			}
-		//								, {
-		//				//borramos un rendezvous que es nuestro, lo cual no deberia haber problema
-		//				"user1", "rendezvous1", null
-		//			}, {
-		//				"user1", "rendezvous5", IllegalArgumentException.class
-		//			}
 
 		};
 
-		for (int i = 0; i < 2; i++)
+		for (int i = 0; i < testingData.length; i++)
 			this.templateCreate((String) testingData[i][0], (String) testingData[i][1], (String) testingData[i][2], (String) testingData[i][3], (String) testingData[i][4], (Class<?>) testingData[i][5]);
-
-		for (int i = 2; i < 4; i++)
-			this.templateEdit((String) testingData[i][0], super.getEntityId((String) testingData[i][1]), (String) testingData[i][2], (String) testingData[i][3], (String) testingData[i][4], (String) testingData[i][5], (Class<?>) testingData[i][6]);
-
-		//		for (int i = 4; i < testingData.length; i++)
-		//			this.templateDelete((String) testingData[i][0], (String) testingData[i][1], (String) testingData[i][2], super.getEntityId
 
 	}
 	protected void templateCreate(final String username, final String name, final String description, final String moment, final String picture, final Class<?> expected) {
@@ -98,35 +77,6 @@ public class UseCase05_2Test extends AbstractTest {
 
 		super.checkExceptions(expected, caught);
 		super.unauthenticate();
-	}
-
-	protected void templateEdit(final String username, final int rendezvousId, final String name, final String description, final String moment, final String picture, final Class<?> expected) {
-
-		Class<?> caught;
-
-		caught = null;
-		try {
-			//me autentico 
-			super.authenticate(username);
-
-			//busco el rendezvous
-			final Rendezvous r = this.rendezvousService.findOne(rendezvousId);
-
-			//modifico el rendezvous
-			r.setName(name);
-			r.setDescription(description);
-			final Date organizationMoment = (new SimpleDateFormat("dd/MM/yyyy HH:mm")).parse(moment);
-			r.setMoment(organizationMoment);
-			r.setPicture(picture);
-			this.rendezvousService.update(r);
-			this.rendezvousService.flush();
-
-		} catch (final Throwable oops) {
-			caught = oops.getClass();
-		}
-		super.checkExceptions(expected, caught);
-		super.unauthenticate();
-
 	}
 
 }

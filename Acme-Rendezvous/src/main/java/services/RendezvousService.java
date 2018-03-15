@@ -89,6 +89,11 @@ public class RendezvousService {
 	}
 	public Rendezvous update(final Rendezvous rendezvous) {
 		Assert.notNull(rendezvous);
+		if (LoginService.isPrincipalUser()) {
+			final Rendezvous rbd = this.findOne(rendezvous.getId());
+			Assert.isTrue(!rbd.getDeleted());
+
+		}
 		Assert.isTrue(rendezvous.getUser().getUserAccount().getUsername().equals(LoginService.getPrincipal().getUsername()));
 
 		Rendezvous saved;
@@ -99,6 +104,11 @@ public class RendezvousService {
 
 	public Rendezvous save(final Rendezvous rendezvous) {
 		Assert.notNull(rendezvous);
+
+		if (LoginService.isPrincipalUser()) {
+			final Rendezvous rbd = this.findOne(rendezvous.getId());
+			Assert.isTrue(!rbd.getDeleted());
+		}
 		final User user = rendezvous.getUser();
 		Rendezvous saved;
 
