@@ -35,40 +35,45 @@ public class UseCase06_2Test extends AbstractTest {
 	//		The managers who have got more services cancelled.
 
 	@Test
-	public void testDisplayDashboardByAdmin() {
+	public void driver() {
+		final Object testingData[][] = {
+			{
+				//Se intenta acceder a las queries del dashboard pertenecientes al caso de uso 6.2
+				//como el autenticado es admin se le permite el acceso a dichas queries
+				"admin", null
 
-		super.authenticate("admin");
+			}, {
+				//Se intenta acceder a las queries del dashboard pertenecientes al caso de uso 6.2
+				//como el autenticado es user1 no se le permite el acceso a dichas queries
+				"user1", IllegalArgumentException.class
 
-		//Se intenta acceder a las queries del dashboard pertenecientes al caso de uso 6.2
-		//como el autenticado es admin se le permite el acceso a dichas queries
-		this.servicceService.queryNewC1B4();
-		this.managerService.queryNewC2();
-		this.managerService.queryNewC3();
-		super.unauthenticate();
+			}
+
+		};
+
+		for (int i = 0; i < testingData.length; i++)
+			this.template((String) testingData[i][0], (Class<?>) testingData[i][1]);
+
 	}
 
-	@Test(expected = IllegalArgumentException.class)
-	public void testDisplayDashboardByUser() {
+	protected void template(final String username, final Class<?> expected) {
 
-		//Se intenta acceder a las queries del dashboard pertenecientes al caso de uso 6.2
-		//como el autenticado es user1 no se le permite el acceso a dichas queries
-		super.authenticate("user1");
-		this.servicceService.queryNewC1B4();
-		this.managerService.queryNewC2();
-		this.managerService.queryNewC3();
-		super.unauthenticate();
+		Class<?> caught;
+
+		caught = null;
+		try {
+			//Se intenta acceder a las queries del dashboard pertenecientes al caso de uso 6.2
+			//como el autenticado es manager1 no se le permite el acceso a dichas queries
+			super.authenticate(username);
+			this.servicceService.queryNewC1B4();
+			this.managerService.queryNewC2();
+			this.managerService.queryNewC3();
+			super.unauthenticate();
+
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+		}
+
+		super.checkExceptions(expected, caught);
 	}
-
-	@Test(expected = IllegalArgumentException.class)
-	public void testDisplayDashboardByManager() {
-
-		//Se intenta acceder a las queries del dashboard pertenecientes al caso de uso 6.2
-		//como el autenticado es manager1 no se le permite el acceso a dichas queries
-		super.authenticate("manager1");
-		this.servicceService.queryNewC1B4();
-		this.managerService.queryNewC2();
-		this.managerService.queryNewC3();
-		super.unauthenticate();
-	}
-
 }
