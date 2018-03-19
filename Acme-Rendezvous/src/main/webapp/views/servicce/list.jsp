@@ -18,6 +18,14 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
+
+<security:authorize access="hasRole('MANAGER')">
+	<a href="servicce/manager/create.do"><spring:message
+			code="rendezvous.create" /></a>
+</security:authorize>
+
+<br>
+
 <display:table name="servicces" id="row" requestURI="${requestURI}"
 	pagesize="5" class="displaytag">
 
@@ -62,15 +70,17 @@
 
 	<security:authorize access="hasRole('ADMIN')">
 
-		<jstl:if test="${row.cancelled eq false}">
+		
 			<display:column>
 				<spring:url value="/servicce/administrator/cancell.do" var="editURL">
 					<spring:param name="servicceId" value="${row.id}" />
 				</spring:url>
+				<jstl:if test="${row.cancelled eq false}">
 				<a href="${editURL}"><spring:message
 						code="servicce.admin.cancell" /></a>
+				</jstl:if>
 			</display:column>
-		</jstl:if>
+		
 
 	</security:authorize>
 

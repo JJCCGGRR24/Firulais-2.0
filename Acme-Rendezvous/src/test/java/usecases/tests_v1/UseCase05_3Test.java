@@ -44,11 +44,10 @@ public class UseCase05_3Test extends AbstractTest {
 				"user1", "rendezvous2", "name1", "description1", "11/12/2018 20:00", "https://forum.linkinpark.com/t/new-linkin-park-logo-what-do-you-think/31363", IllegalArgumentException.class
 			}, {	//borramos un rendezvous que es nuestro, lo cual no deberia haber problema							, {
 				"user3", "rendezvous6", null
-			}, {
-				//intentamos borrar un rendezvous nuestro pero que esta en modo final, lo cual no debe
-				//ser posible
-				"user4", "rendezvous5", IllegalArgumentException.class
 			}
+		//	Al borrado virtual no es posible hacerle un test negativo porque al establecer un set con
+		//	setDeleted a true en el test modifica directamente en base de datos, entonces al entrar en el servicio
+		//	de rendezvous nos salta el Assert de que el rendezvous ya estaba con delete a true
 
 		};
 

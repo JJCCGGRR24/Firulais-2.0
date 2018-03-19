@@ -32,7 +32,7 @@ public class ServicceAdministratorController extends AbstractController {
 	//Editing------------------------------------------------------------------------
 	@RequestMapping("/list")
 	public ModelAndView list() {
-		final ModelAndView res = new ModelAndView("service/list");
+		final ModelAndView res = new ModelAndView("servicce/list");
 		final Collection<Servicce> servicces = this.servicceService.findAll();
 		res.addObject("servicces", servicces);
 		res.addObject("requestURI", "servicce/administrator/list.do");
@@ -71,7 +71,7 @@ public class ServicceAdministratorController extends AbstractController {
 	protected ModelAndView createEditModelAndView(final Servicce servicce, final String message) {
 		ModelAndView result;
 
-		result = new ModelAndView("service/list");
+		result = new ModelAndView("servicce/list");
 		final Collection<Servicce> servicces = this.servicceService.findAll();
 		result.addObject("servicces", servicces);
 		result.addObject("message", message);
