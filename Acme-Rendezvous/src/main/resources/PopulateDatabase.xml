@@ -1041,7 +1041,7 @@ Thank you for all the great music that you and AC/DC created﻿" />
 		<property name="name" value="James" />
 		<property name="surname" value="P. Perlman" />
 		<property name="email" value="b1250587@nwytg.com" />
-		<property name="phone" value="903-594-5511" />
+		<property name="phone" value="9035945511" />
 		<property name="postalAddress" value="4373 Gore Street" />
 		<property name="userAccount" ref="managerAccount1" />
 		<property name="birthdate">
@@ -1059,7 +1059,7 @@ Thank you for all the great music that you and AC/DC created﻿" />
 		<property name="name" value="Lorraine" />
 		<property name="surname" value="M. Lesure" />
 		<property name="email" value="jgr73973@zamge.com" />
-		<property name="phone" value="989-771-3061" />
+		<property name="phone" value="9897713061" />
 		<property name="postalAddress" value="1180 Ripple Street" />
 		<property name="userAccount" ref="managerAccount2" />
 		<property name="birthdate">
@@ -1077,7 +1077,7 @@ Thank you for all the great music that you and AC/DC created﻿" />
 		<property name="name" value="Ella" />
 		<property name="surname" value="C. Davis" />
 		<property name="email" value="uyy53375@pdold.com" />
-		<property name="phone" value="314-224-4415" />
+		<property name="phone" value="3142244415" />
 		<property name="postalAddress" value="3408 State Street" />
 		<property name="userAccount" ref="managerAccount3" />
 		<property name="birthdate">
@@ -1095,7 +1095,7 @@ Thank you for all the great music that you and AC/DC created﻿" />
 		<property name="name" value="Guillermon" />
 		<property name="surname" value="Guillermon" />
 		<property name="email" value="guillermon@pdold.com" />
-		<property name="phone" value="314-224-4415" />
+		<property name="phone" value="3142244415" />
 		<property name="postalAddress" value="6660 Digi world" />
 		<property name="userAccount" ref="managerAccount4" />
 		<property name="birthdate">

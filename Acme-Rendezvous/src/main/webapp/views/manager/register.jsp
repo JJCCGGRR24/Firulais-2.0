@@ -36,7 +36,7 @@
 		<acme:textbox code="user.surname" path="surname" />
 		<acme:textbox code="user.phone" path="phone" />
 		<acme:textbox code="user.email" path="email" />
-		<acme:date code="user.birthdate" path="birthdate" placeholder="dd/MM/yyyy" />
+		<acme:textbox code="user.birthdate" path="birthdate" placeholder="dd/MM/yyyy" title="dd/MM/yyyy"/>
 		<acme:textbox code="user.postalAddress" path="postalAddress" />
 		<acme:textbox code="manager.vat" path="vat" />
 	</fieldset>

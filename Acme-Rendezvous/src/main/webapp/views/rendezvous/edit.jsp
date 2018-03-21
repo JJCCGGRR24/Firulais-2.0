@@ -40,8 +40,7 @@
 	<acme:textarea code="rendezvous.description" path="description" />
 	<br />
 	<br />
-	<acme:textbox code="rendezvous.moment" path="moment" />
-	(dd/MM/yyyy HH:mm)
+	<acme:textbox code="rendezvous.moment" path="moment" placeholder="dd/MM/yyyy HH:mm" title="dd/MM/yyyy HH:mm"/>
 	<br />
 	<br />
 	<acme:textbox code="rendezvous.picture" path="picture" />

@@ -18,6 +18,19 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
+<script >
+function preguntar(id){
+   eliminar=confirm('<spring:message code="announcement.confirmDelete"/>');
+   if (eliminar)
+   //Redireccionamos si das a aceptar
+     window.location.href = "servicce/administrator/cancell.do?servicceId=" + id; //página web a la que te redirecciona si confirmas la eliminación
+	else
+  //Y aquí pon cualquier cosa que quieras que salga si le diste al boton de cancelar
+    alert('<spring:message code="announcement.negativeDelete"/>');
+}
+</script>
+
+
 
 <security:authorize access="hasRole('MANAGER')">
 	<a href="servicce/manager/create.do"><spring:message
@@ -72,11 +85,8 @@
 
 		
 			<display:column>
-				<spring:url value="/servicce/administrator/cancell.do" var="editURL">
-					<spring:param name="servicceId" value="${row.id}" />
-				</spring:url>
 				<jstl:if test="${row.cancelled eq false}">
-				<a href="${editURL}"><spring:message
+				<a href="javascript:preguntar(${row.id})"><spring:message
 						code="servicce.admin.cancell" /></a>
 				</jstl:if>
 			</display:column>
