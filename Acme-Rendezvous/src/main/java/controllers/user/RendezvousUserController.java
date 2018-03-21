@@ -225,15 +225,16 @@ public class RendezvousUserController extends AbstractController {
 		} else {
 			final List<Answer> las = answersForm.getLas();
 			final List<Question> lqs = r.getQuestions();
-			for (int i = 0; i < answersForm.getLas().size(); i++) {
-				final Answer a = las.get(i);
-				if (a.getText() != null && a.getText() != "") {
-					final Question q = lqs.get(i);
-					a.setQuestion(q);
-					a.setUser((User) this.loginService.getPrincipalActor());
-					this.answerService.save(a);
+			if (lqs.size() != 0)
+				for (int i = 0; i < answersForm.getLas().size(); i++) {
+					final Answer a = las.get(i);
+					if (a.getText() != null && a.getText() != "") {
+						final Question q = lqs.get(i);
+						a.setQuestion(q);
+						a.setUser((User) this.loginService.getPrincipalActor());
+						this.answerService.save(a);
+					}
 				}
-			}
 			r.getUsers().add(u);
 			this.rendezvousService.save(r);
 		}
