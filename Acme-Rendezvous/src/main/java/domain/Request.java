@@ -5,6 +5,8 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
@@ -12,9 +14,9 @@ import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
 
 @Entity
-//@Table(uniqueConstraints = @UniqueConstraint(columnNames = {
-//	"rendezvous", "servicce"
-//}))
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = {
+	"rendezvous_id", "servicce_id"
+}))
 @Access(AccessType.PROPERTY)
 public class Request extends DomainEntity {
 

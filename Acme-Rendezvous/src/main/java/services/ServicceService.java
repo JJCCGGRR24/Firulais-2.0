@@ -11,12 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
-import repositories.ServicceRepository;
-import security.LoginService;
-import security.UserAccount;
 import domain.Manager;
 import domain.Request;
 import domain.Servicce;
+import repositories.ServicceRepository;
+import security.LoginService;
+import security.UserAccount;
 
 @Service
 @Transactional
@@ -29,8 +29,8 @@ public class ServicceService {
 	@Autowired
 	private LoginService		loginService;
 
-
 	// Supporting services ----------------------------------------------------
+
 
 	// Constructors -----------------------------------------------------------
 	public ServicceService() {
@@ -62,8 +62,8 @@ public class ServicceService {
 
 	public Servicce save(final Servicce service) {
 		Assert.notNull(service);
-		Assert.isTrue(service.getRequests().size() == 0, "Cannot modifie service");
 		this.checkIsPrincipal(service);
+		Assert.isTrue(service.getRequests().size() == 0, "Cannot modifie service");
 		return this.servicceRepository.save(service);
 	}
 

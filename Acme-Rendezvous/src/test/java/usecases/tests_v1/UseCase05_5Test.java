@@ -42,17 +42,20 @@ public class UseCase05_5Test extends AbstractTest {
 		final Object testingData[][] = {
 			{
 				//comprobaremos que los rsvp del user1 son 2, los que hay en el populate
-				"user1", null
+				"user1", 2, null
+			}, {
+				//comprobamos que no se muestran los rsvp de otro user
+				"user1", 3, IllegalArgumentException.class
 			}
 
 		};
 
 		for (int i = 0; i < testingData.length; i++)
-			this.template((String) testingData[i][0], (Class<?>) testingData[i][1]);
+			this.template((String) testingData[i][0], (int) testingData[i][1], (Class<?>) testingData[i][2]);
 
 	}
 
-	protected void template(final String username, final Class<?> expected) {
+	protected void template(final String username, final int tamaño, final Class<?> expected) {
 		Class<?> caught;
 
 		caught = null;
@@ -60,7 +63,7 @@ public class UseCase05_5Test extends AbstractTest {
 			super.authenticate(username);
 			final User principal = (User) this.loginService.getPrincipalActor();
 			final List<Rendezvous> rsvp = principal.getRSVPd();
-			Assert.isTrue(rsvp.size() == 2);
+			Assert.isTrue(rsvp.size() == tamaño);
 
 		} catch (final Throwable oops) {
 			caught = oops.getClass();

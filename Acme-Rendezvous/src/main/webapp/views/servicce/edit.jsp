@@ -24,15 +24,32 @@
 	<acme:textarea code="servicce.description" path="description" />
 	<acme:textbox code="servicce.picture" path="picture" />
 	
+<%-- 	<form:label path="category"> --%>
+<%-- 		<spring:message code="servicce.category" />: --%>
+<%-- 	</form:label> --%>
+<%-- 	<form:select path="category"> --%>
+<%-- 		<form:option value="0" label="-"/> --%>
+<%-- 		<form:options items="${categories}" itemLabel="name" itemValue="id"/> --%>
+<%-- 	</form:select> --%>
+<%-- 	<form:errors cssClass="error" path="category" /> --%>
+	<br/>
+	
 	<form:label path="category">
 		<spring:message code="servicce.category" />:
 	</form:label>
 	<form:select path="category">
 		<form:option value="0" label="-"/>
-		<form:options items="${categories}" itemLabel="name" itemValue="id"/>
+		<jstl:forEach items="${categories}" var="cat">
+			<jstl:if test="${not empty cat.categoryFather}">
+				<form:option value="${cat.id}" label="${cat.name} (${cat.categoryFather.name})"/>
+			</jstl:if>
+			<jstl:if test="${empty cat.categoryFather}">
+				<form:option value="${cat.id}" label="${cat.name}"/>
+			</jstl:if>
+		</jstl:forEach>
+		<%-- <form:options items="${categories}" itemLabel="categoryFather" itemValue="id"/> --%>
 	</form:select>
 	<form:errors cssClass="error" path="category" />
-	<br/><br/>
 	
 	<input type="submit" name="save" onclick="javascript:relativeRedir('servicce/manager/myservicces.do');" value="<spring:message code="save"/>" />
 	

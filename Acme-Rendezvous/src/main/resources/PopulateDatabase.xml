@@ -118,7 +118,7 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<bean id="managerAccount1" class="security.UserAccount">
 		<property name="username" value="manager1" />
 		<property name="password" value="c240642ddef994358c96da82c0361a58" />
@@ -130,7 +130,7 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<bean id="managerAccount2" class="security.UserAccount">
 		<property name="username" value="manager2" />
 		<property name="password" value="8df5127cd164b5bc2d2b78410a7eea0c" />
@@ -142,7 +142,7 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<bean id="managerAccount3" class="security.UserAccount">
 		<property name="username" value="manager3" />
 		<property name="password" value="2d3a5db4a2a9717b43698520a8de57d0" />
@@ -154,8 +154,8 @@
 			</list>
 		</property>
 	</bean>
-	
-		<bean id="managerAccount4" class="security.UserAccount">
+
+	<bean id="managerAccount4" class="security.UserAccount">
 		<property name="username" value="manager4" />
 		<property name="password" value="e1ec6fc941af3ba79a4ac5242dd39735" />
 		<property name="authorities">
@@ -411,8 +411,12 @@ It is officially celebrated for ten days, but decorations often stay around for 
 		<property name="coordinates" ref="coordinates1" />
 		<property name="finalMode" value="true" />
 		<property name="deleted" value="false" />
-		<property name="linkedTo"><list></list></property>
-		<property name="linkedIn"><list></list></property>
+		<property name="linkedTo">
+			<list></list>
+		</property>
+		<property name="linkedIn">
+			<list></list>
+		</property>
 		<property name="adultsOnly" value="false" />
 		<property name="user" ref="user1" />
 		<property name="users">
@@ -421,11 +425,19 @@ It is officially celebrated for ten days, but decorations often stay around for 
 				<ref bean="user2" />
 			</list>
 		</property>
-		<property name="comments"><list></list></property>
-		<property name="announcements"><list></list></property>
-		<property name="questions"><list></list></property>
-		<property name="requests"><list></list></property>
-		
+		<property name="comments">
+			<list></list>
+		</property>
+		<property name="announcements">
+			<list></list>
+		</property>
+		<property name="questions">
+			<list></list>
+		</property>
+		<property name="requests">
+			<list></list>
+		</property>
+
 	</bean>
 
 	<bean id="rendezvous2" class="domain.Rendezvous">
@@ -447,7 +459,9 @@ It is officially celebrated for ten days, but decorations often stay around for 
 				<ref bean="rendezvous5" />
 			</list>
 		</property>
-		<property name="linkedIn"><list></list></property>
+		<property name="linkedIn">
+			<list></list>
+		</property>
 		<property name="adultsOnly" value="false" />
 		<property name="user" ref="user2" />
 		<property name="users">
@@ -456,10 +470,18 @@ It is officially celebrated for ten days, but decorations often stay around for 
 				<ref bean="user2" />
 			</list>
 		</property>
-		<property name="comments"><list></list></property>
-		<property name="announcements"><list></list></property>
-		<property name="questions"><list></list></property>
-		<property name="requests"><list></list></property>
+		<property name="comments">
+			<list></list>
+		</property>
+		<property name="announcements">
+			<list></list>
+		</property>
+		<property name="questions">
+			<list></list>
+		</property>
+		<property name="requests">
+			<list></list>
+		</property>
 	</bean>
 
 	<bean id="rendezvous3" class="domain.Rendezvous">
@@ -491,10 +513,18 @@ It is officially celebrated for ten days, but decorations often stay around for 
 				<ref bean="user3" />
 			</list>
 		</property>
-		<property name="comments"><list></list></property>
-		<property name="announcements"><list></list></property>
-		<property name="questions"><list></list></property>
-		<property name="requests"><list></list></property>
+		<property name="comments">
+			<list></list>
+		</property>
+		<property name="announcements">
+			<list></list>
+		</property>
+		<property name="questions">
+			<list></list>
+		</property>
+		<property name="requests">
+			<list></list>
+		</property>
 	</bean>
 
 	<bean id="rendezvous4" class="domain.Rendezvous">
@@ -524,10 +554,18 @@ It is officially celebrated for ten days, but decorations often stay around for 
 				<ref bean="user4" />
 			</list>
 		</property>
-		<property name="comments"><list></list></property>
-		<property name="announcements"><list></list></property>
-		<property name="questions"><list></list></property>
-		<property name="requests"><list></list></property>
+		<property name="comments">
+			<list></list>
+		</property>
+		<property name="announcements">
+			<list></list>
+		</property>
+		<property name="questions">
+			<list></list>
+		</property>
+		<property name="requests">
+			<list></list>
+		</property>
 	</bean>
 
 	<bean id="rendezvous5" class="domain.Rendezvous">
@@ -560,10 +598,18 @@ It is officially celebrated for ten days, but decorations often stay around for 
 				<ref bean="user4" />
 			</list>
 		</property>
-		<property name="comments"><list></list></property>
-		<property name="announcements"><list></list></property>
-		<property name="questions"><list></list></property>
-		<property name="requests"><list></list></property>
+		<property name="comments">
+			<list></list>
+		</property>
+		<property name="announcements">
+			<list></list>
+		</property>
+		<property name="questions">
+			<list></list>
+		</property>
+		<property name="requests">
+			<list></list>
+		</property>
 	</bean>
 
 	<bean id="rendezvous6" class="domain.Rendezvous">
@@ -593,10 +639,18 @@ It is officially celebrated for ten days, but decorations often stay around for 
 				<ref bean="user3" />
 			</list>
 		</property>
-		<property name="comments"><list></list></property>
-		<property name="announcements"><list></list></property>
-		<property name="questions"><list></list></property>
-		<property name="requests"><list></list></property>
+		<property name="comments">
+			<list></list>
+		</property>
+		<property name="announcements">
+			<list></list>
+		</property>
+		<property name="questions">
+			<list></list>
+		</property>
+		<property name="requests">
+			<list></list>
+		</property>
 	</bean>
 
 	<bean id="rendezvous7" class="domain.Rendezvous">
@@ -626,10 +680,18 @@ It is officially celebrated for ten days, but decorations often stay around for 
 				<ref bean="user2" />
 			</list>
 		</property>
-		<property name="comments"><list></list></property>
-		<property name="announcements"><list></list></property>
-		<property name="questions"><list></list></property>
-		<property name="requests"><list></list></property>
+		<property name="comments">
+			<list></list>
+		</property>
+		<property name="announcements">
+			<list></list>
+		</property>
+		<property name="questions">
+			<list></list>
+		</property>
+		<property name="requests">
+			<list></list>
+		</property>
 	</bean>
 
 	<!-- #Announcement -->
@@ -988,7 +1050,7 @@ Thank you for all the great music that you and AC/DC created﻿" />
 		<property name="comment" ref="comment5" />
 		<property name="user" ref="user3" />
 	</bean>
-		
+
 	<!-- #CreditCard -->
 	<bean id="creditCard1" class="domain.CreditCard">
 		<property name="holderName" value="Alejandra Ramirez" />
@@ -1034,7 +1096,7 @@ Thank you for all the great music that you and AC/DC created﻿" />
 		<property name="expirationMonth" value="10" />
 		<property name="CVV" value="669" />
 	</bean>
-	
+
 	<!-- #Manager -->
 	<bean id="manager1" class="domain.Manager">
 		<property name="vat" value="BE0897226046" />
@@ -1053,7 +1115,7 @@ Thank you for all the great music that you and AC/DC created﻿" />
 			<list></list>
 		</property>
 	</bean>
-		
+
 	<bean id="manager2" class="domain.Manager">
 		<property name="vat" value="DE146624530" />
 		<property name="name" value="Lorraine" />
@@ -1071,7 +1133,7 @@ Thank you for all the great music that you and AC/DC created﻿" />
 			<list></list>
 		</property>
 	</bean>
-		
+
 	<bean id="manager3" class="domain.Manager">
 		<property name="vat" value="EL059644936" />
 		<property name="name" value="Ella" />
@@ -1089,7 +1151,7 @@ Thank you for all the great music that you and AC/DC created﻿" />
 			<list></list>
 		</property>
 	</bean>
-	
+
 	<bean id="manager4" class="domain.Manager">
 		<property name="vat" value="EL069644930" />
 		<property name="name" value="Guillermon" />
@@ -1107,11 +1169,12 @@ Thank you for all the great music that you and AC/DC created﻿" />
 			<list></list>
 		</property>
 	</bean>
-	
+
 	<!-- #Category -->
 	<bean id="Qeusqoo" class="domain.Category">
 		<property name="name" value="Qeusqoo" />
-		<property name="description" value="In the province of Dawhax it is tradition to carry the thinly covered body of a deceased person to their final resting place. It's supposed to help the living with their mourning process." />
+		<property name="description"
+			value="In the province of Dawhax it is tradition to carry the thinly covered body of a deceased person to their final resting place. It's supposed to help the living with their mourning process." />
 		<property name="servicces">
 			<list></list>
 		</property>
@@ -1123,9 +1186,11 @@ Thank you for all the great music that you and AC/DC created﻿" />
 	<bean id="Dalqi" class="domain.Category">
 		<property name="name" value="Dalqi" />
 		<property name="categoryFather" ref="Qeusqoo" />
-		<property name="description" value="In the nation of Zatristan it is tradition for women to try and hide from their significant other for a period of time on the summer solstice. It's supposed to be a symbol of confidence and decisiveness and it's usually part of a larger life ceremony that can last for a week." />
+		<property name="description"
+			value="In the nation of Zatristan it is tradition for women to try and hide from their significant other for a period of time on the summer solstice. It's supposed to be a symbol of confidence and decisiveness and it's usually part of a larger life ceremony that can last for a week." />
 		<property name="servicces">
-			<list>			</list>
+			<list>
+			</list>
 		</property>
 		<property name="categoriesChildren">
 			<list></list>
@@ -1135,7 +1200,8 @@ Thank you for all the great music that you and AC/DC created﻿" />
 	<bean id="Xceeqo" class="domain.Category">
 		<property name="name" value="Xceeqo" />
 		<property name="categoryFather" ref="Dalqi" />
-		<property name="description" value="In the village of Woshya it is tradition for women to catch a small animal once they become adults. It's supposed to be a symbol of trust and generosity and it's usually part of a coming of age ritual or festivity that can last for half a week." />
+		<property name="description"
+			value="In the village of Woshya it is tradition for women to catch a small animal once they become adults. It's supposed to be a symbol of trust and generosity and it's usually part of a coming of age ritual or festivity that can last for half a week." />
 		<property name="servicces">
 			<list></list>
 		</property>
@@ -1147,7 +1213,8 @@ Thank you for all the great music that you and AC/DC created﻿" />
 	<bean id="Rkousk_Xceeqo" class="domain.Category">
 		<property name="name" value="Rkousk" />
 		<property name="categoryFather" ref="Xceeqo" />
-		<property name="description" value="In the nation of Meswar it is tradition to mark a new born baby's forehead with a painted symbol. It's supposed to bless the lives of all those around the baby." />
+		<property name="description"
+			value="In the nation of Meswar it is tradition to mark a new born baby's forehead with a painted symbol. It's supposed to bless the lives of all those around the baby." />
 		<property name="servicces">
 			<list></list>
 		</property>
@@ -1159,7 +1226,8 @@ Thank you for all the great music that you and AC/DC created﻿" />
 	<bean id="Tdeazoi_Xceeqo" class="domain.Category">
 		<property name="name" value="Tdeazoi" />
 		<property name="categoryFather" ref="Xceeqo" />
-		<property name="description" value="In the nation of Meswar it is tradition to mark a new born baby's forehead with a painted symbol. It's supposed to bless the lives of all those around the baby." />
+		<property name="description"
+			value="In the nation of Meswar it is tradition to mark a new born baby's forehead with a painted symbol. It's supposed to bless the lives of all those around the baby." />
 		<property name="servicces">
 			<list></list>
 		</property>
@@ -1171,7 +1239,8 @@ Thank you for all the great music that you and AC/DC created﻿" />
 	<bean id="Dzoree" class="domain.Category">
 		<property name="name" value="Dzoree" />
 		<property name="categoryFather" ref="Dalqi" />
-		<property name="description" value="In the village of Doswa it is tradition for people to burn a homemade doll once they become adults. It's supposed to be a symbol of grace and creativity and it's usually part of a religious ritual or festivity that can last for over a week." />
+		<property name="description"
+			value="In the village of Doswa it is tradition for people to burn a homemade doll once they become adults. It's supposed to be a symbol of grace and creativity and it's usually part of a religious ritual or festivity that can last for over a week." />
 		<property name="servicces">
 			<list></list>
 		</property>
@@ -1183,7 +1252,8 @@ Thank you for all the great music that you and AC/DC created﻿" />
 	<bean id="Meascue_Dzoree" class="domain.Category">
 		<property name="name" value="Meascue" />
 		<property name="categoryFather" ref="Dzoree" />
-		<property name="description" value="In the city of Beslus it is tradition to cover the eyes, ears and mouths of the deceased. It's supposed to help both the spirit of the deceased and the mourning process of the living." />
+		<property name="description"
+			value="In the city of Beslus it is tradition to cover the eyes, ears and mouths of the deceased. It's supposed to help both the spirit of the deceased and the mourning process of the living." />
 		<property name="servicces">
 			<list></list>
 		</property>
@@ -1195,7 +1265,8 @@ Thank you for all the great music that you and AC/DC created﻿" />
 	<bean id="Zxaoxsi_Dzoree" class="domain.Category">
 		<property name="name" value="Zxaoxsi" />
 		<property name="categoryFather" ref="Dzoree" />
-		<property name="description" value="In the state of Xeglua it is tradition for women to hide small gifts around their homes on the first full moon of the year. It's supposed to be a symbol of attractiveness and intelligence and it's usually part of a rite of passage that can last for days." />
+		<property name="description"
+			value="In the state of Xeglua it is tradition for women to hide small gifts around their homes on the first full moon of the year. It's supposed to be a symbol of attractiveness and intelligence and it's usually part of a rite of passage that can last for days." />
 		<property name="servicces">
 			<list></list>
 		</property>
@@ -1207,7 +1278,8 @@ Thank you for all the great music that you and AC/DC created﻿" />
 	<bean id="Skocou" class="domain.Category">
 		<property name="name" value="Skocou" />
 		<property name="categoryFather" ref="Dalqi" />
-		<property name="description" value="In the district of Fesmil it is tradition to gift a newly wed couple sweets and desserts. It's supposed to bring fortune to the married couple." />
+		<property name="description"
+			value="In the district of Fesmil it is tradition to gift a newly wed couple sweets and desserts. It's supposed to bring fortune to the married couple." />
 		<property name="servicces">
 			<list></list>
 		</property>
@@ -1219,7 +1291,8 @@ Thank you for all the great music that you and AC/DC created﻿" />
 	<bean id="Meascue_Skocou" class="domain.Category">
 		<property name="name" value="Meascue" />
 		<property name="categoryFather" ref="Skocou" />
-		<property name="description" value="In the province of Muswyae it is tradition to take a picture of a recently deceased person and immediately burn it. It's supposed to help the living with their mourning process." />
+		<property name="description"
+			value="In the province of Muswyae it is tradition to take a picture of a recently deceased person and immediately burn it. It's supposed to help the living with their mourning process." />
 		<property name="servicces">
 			<list></list>
 		</property>
@@ -1231,7 +1304,8 @@ Thank you for all the great music that you and AC/DC created﻿" />
 	<bean id="Tdeazoi_Skocou" class="domain.Category">
 		<property name="name" value="Tdeazoi" />
 		<property name="categoryFather" ref="Skocou" />
-		<property name="description" value="In the city of Weswil it is tradition for women to take care of all the children in the family for a period of time on a specific date of the year. It's supposed to be a symbol of attractiveness and humbleness and it's usually part of a larger life ceremony that can last for almost a week." />
+		<property name="description"
+			value="In the city of Weswil it is tradition for women to take care of all the children in the family for a period of time on a specific date of the year. It's supposed to be a symbol of attractiveness and humbleness and it's usually part of a larger life ceremony that can last for almost a week." />
 		<property name="servicces">
 			<list></list>
 		</property>
@@ -1239,84 +1313,99 @@ Thank you for all the great music that you and AC/DC created﻿" />
 			<list></list>
 		</property>
 	</bean>
-	
-<!-- 	<bean id="category1" class="domain.Category"> -->
-<!-- 		<property name="name" value="Dangerous" /> -->
-<!-- 		<property name="description" value="Very very dangerous" /> -->
-<!-- 		<property name="servicces"><list></list></property> -->
-<!-- 	</bean> -->
-	
-<!-- 	<bean id="category2" class="domain.Category"> -->
-<!-- 		<property name="name" value="Fiction" /> -->
-<!-- 		<property name="description" value="Sciencie fiction" /> -->
-<!-- 		<property name="servicces"><list></list></property> -->
-<!-- 	</bean> -->
-	
-<!-- 	<bean id="category3" class="domain.Category"> -->
-<!-- 		<property name="name" value="Soon" /> -->
-<!-- 		<property name="description" value="When I need that my rendezvous will be soon" /> -->
-<!-- 		<property name="servicces"><list></list></property> -->
-<!-- 	</bean> -->
-	
+
+	<!-- <bean id="category1" class="domain.Category"> -->
+	<!-- <property name="name" value="Dangerous" /> -->
+	<!-- <property name="description" value="Very very dangerous" /> -->
+	<!-- <property name="servicces"><list></list></property> -->
+	<!-- </bean> -->
+
+	<!-- <bean id="category2" class="domain.Category"> -->
+	<!-- <property name="name" value="Fiction" /> -->
+	<!-- <property name="description" value="Sciencie fiction" /> -->
+	<!-- <property name="servicces"><list></list></property> -->
+	<!-- </bean> -->
+
+	<!-- <bean id="category3" class="domain.Category"> -->
+	<!-- <property name="name" value="Soon" /> -->
+	<!-- <property name="description" value="When I need that my rendezvous 
+		will be soon" /> -->
+	<!-- <property name="servicces"><list></list></property> -->
+	<!-- </bean> -->
+
 	<!-- #Servicce -->
 	<bean id="servicce1" class="domain.Servicce">
-		<property name="picture" value="http://asd.com" />
+		<property name="picture" value="https://cdn.pixabay.com/photo/2017/12/01/01/01/meerkat-2989902_960_720.jpg" />
 		<property name="name" value="name1" />
 		<property name="description" value="description2" />
-		<property name="cancelled" value="false"/>
-	<property name="category" ref="Dzoree" /> 
+		<property name="cancelled" value="false" />
+		<property name="category" ref="Dzoree" />
 		<property name="manager" ref="manager1" />
-		<property name="requests"><list></list></property>
+		<property name="requests">
+			<list>
+				<ref bean="request1" />
+			</list>
+		</property>
 	</bean>
-	
-		<bean id="servicce2" class="domain.Servicce">
-		<property name="picture" value="http://asd.com" />
+
+	<bean id="servicce2" class="domain.Servicce">
+		<property name="picture" value="https://i.pinimg.com/originals/28/7b/cc/287bcc87d403ca2afff0ca77972233ae.jpg" />
 		<property name="name" value="name2" />
 		<property name="description" value="description2" />
-		<property name="cancelled" value="false"/>
-	<property name="category" ref="Dalqi" /> 
+		<property name="cancelled" value="false" />
+		<property name="category" ref="Dalqi" />
 		<property name="manager" ref="manager1" />
-		<property name="requests"><list></list></property>
+		<property name="requests">
+			<list></list>
+		</property>
 	</bean>
-	
-		<bean id="servicce3" class="domain.Servicce">
-		<property name="picture" value="http://asd.com" />
+
+	<bean id="servicce3" class="domain.Servicce">
+		<property name="picture" value="https://i.ytimg.com/vi/o_8cTrFKmrw/hqdefault.jpg" />
 		<property name="name" value="name3" />
 		<property name="description" value="description3" />
-		<property name="cancelled" value="false"/>
-		<property name="category" ref="Dalqi" /> 
+		<property name="cancelled" value="false" />
+		<property name="category" ref="Dalqi" />
 		<property name="manager" ref="manager3" />
-		<property name="requests"><list></list></property>
+		<property name="requests">
+			<list></list>
+		</property>
 	</bean>
-	
-		<bean id="servicce4" class="domain.Servicce">
-		<property name="picture" value="http://asd.com" />
+
+	<bean id="servicce4" class="domain.Servicce">
+		<property name="picture" value="http://i.imgur.com/eu0YPXP.jpg" />
 		<property name="name" value="name4" />
 		<property name="description" value="description4" />
-		<property name="cancelled" value="true"/>
-		<property name="category" ref="Skocou" /> 
+		<property name="cancelled" value="true" />
+		<property name="category" ref="Skocou" />
 		<property name="manager" ref="manager2" />
-		<property name="requests"><list></list></property>
+		<property name="requests">
+			<list></list>
+		</property>
 	</bean>
-	
+
 	<bean id="servicce5" class="domain.Servicce">
-		<property name="picture" value="http://asd.com" />
+		<property name="picture" value="https://i.pinimg.com/originals/43/db/e2/43dbe2d413213145bc0244b5b9eca729.jpg" />
 		<property name="name" value="name5" />
 		<property name="description" value="description5" />
-		<property name="cancelled" value="false"/>
+		<property name="cancelled" value="false" />
 		<property name="manager" ref="manager4" />
-		<property name="requests"><list></list></property>
+		<property name="requests">
+			<list></list>
+		</property>
 	</bean>
-	
+
 	<bean id="servicce6" class="domain.Servicce">
-		<property name="picture" value="http://asd.com" />
+		<property name="picture" value="https://static.vix.com/es/sites/default/files/styles/large/public/btg/curiosidades.batanga.com/files/137525427.jpg?itok=cfIkGKzT" />
 		<property name="name" value="name6" />
 		<property name="description" value="description6" />
-		<property name="cancelled" value="true"/>
+		<property name="cancelled" value="true" />
 		<property name="manager" ref="manager4" />
-		<property name="requests"><list></list></property>
+		<property name="requests">
+			<list></list>
+		</property>
 	</bean>
-	
+
 	<!-- #Request -->
 	<bean id="request1" class="domain.Request">
 		<property name="comment" value="a" />
@@ -1324,14 +1413,15 @@ Thank you for all the great music that you and AC/DC created﻿" />
 		<property name="rendezvous" ref="rendezvous1" />
 		<property name="servicce" ref="servicce1" />
 	</bean>
-	
-	
+
+
 	<!-- #Request -->
 	<bean id="configuration" class="domain.Configuration">
 		<property name="nameBusiness" value="Adventure meetups" />
 		<property name="banner" value="https://tinyurl.com/adventure-meetup" />
 		<property name="messageES" value="Tu sitio para organizar quedadas de aventura" />
-		<property name="messageEN" value="Your place to organise your adventure meetups!" />
+		<property name="messageEN"
+			value="Your place to organise your adventure meetups!" />
 	</bean>
-	
+
 </beans>

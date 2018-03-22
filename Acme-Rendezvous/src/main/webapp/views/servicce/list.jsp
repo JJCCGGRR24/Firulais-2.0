@@ -44,14 +44,16 @@ function preguntar(id){
 
 	<security:authorize access="isAuthenticated()">
 		<security:authentication property="principal.username" var="prin" />
-		<jstl:if
-			test="${row.manager.userAccount.username eq prin && not row.cancelled}">
+		
 			<display:column>
+			<jstl:if
+			test="${row.manager.userAccount.username eq prin && not row.cancelled}">
 				<input type="button" name="edit"
 					value="<spring:message code="template.edit" />"
 					onclick="document.location.href='servicce/manager/edit.do?servicceId='+ ${row.id};" />
+			</jstl:if>
 			</display:column>
-		</jstl:if>
+		
 	</security:authorize>
 	<spring:message code="servicce.name" var="name"></spring:message>
 	<display:column property="name" title="${name}" />

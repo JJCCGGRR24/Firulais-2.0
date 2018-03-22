@@ -30,11 +30,18 @@
 	</form:label>
 	<form:select path="categoryFather">
 		<form:option value="0" label="-"/>
-		<form:options items="${categories}" itemLabel="name" itemValue="id"/>
+		<jstl:forEach items="${categories}" var="cat">
+			<jstl:if test="${not empty cat.categoryFather}">
+				<form:option value="${cat.id}" label="${cat.name} (${cat.categoryFather.name})"/>
+			</jstl:if>
+			<jstl:if test="${empty cat.categoryFather}">
+				<form:option value="${cat.id}" label="${cat.name}"/>
+			</jstl:if>
+		</jstl:forEach>
+		<%-- <form:options items="${categories}" itemLabel="categoryFather" itemValue="id"/> --%>
 	</form:select>
 	<form:errors cssClass="error" path="categoryFather" />
-	<br />
-	<br />
+	<br><br>
 	
 	<input type="submit" name="save" value='<spring:message code="template.save"/>'>
 	

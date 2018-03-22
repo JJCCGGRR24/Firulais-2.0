@@ -85,7 +85,9 @@ public class UseCase05_2Test extends AbstractTest {
 		System.out.println("*************** UPDATE TEST ******************");
 		final Object testingData[][] = {
 			{
-				"manager1", "servicce1", "Description prueba 1", null
+				"manager1", "servicce2", "Description prueba 1", null
+			}, {
+				"manager1", "servicce1", "Description prueba 1", IllegalArgumentException.class  // Un service que no se puede modificar
 			}, {
 				"user1", "servicce1", "Description prueba 1", IllegalArgumentException.class // Nos Autenticamos como un User
 			}, {
@@ -104,11 +106,13 @@ public class UseCase05_2Test extends AbstractTest {
 		System.out.println("*************** DELETE TEST ******************");
 		final Object testingData[][] = {
 			{
-				"manager1", "servicce1", null
+				"manager1", "servicce2", null
 			}, {
-				"user1", "servicce1", NullPointerException.class // Nos Autenticamos como un User
+				"manager1", "servicce1", IllegalArgumentException.class //Un service que no se puede borrar
 			}, {
-				"manager2", "servicce1", NullPointerException.class // Actualizar un servicce que no le pertenece
+				"user1", "servicce2", NullPointerException.class // Nos Autenticamos como un User
+			}, {
+				"manager2", "servicce2", NullPointerException.class // Actualizar un servicce que no le pertenece
 			}
 
 		};

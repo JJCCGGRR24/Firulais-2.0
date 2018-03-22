@@ -11,14 +11,17 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 	
+
+<security:authentication var="conec" property="principal.username" />
+	
 <script>
 	function doSomething() {
-		setCookie('creditCard.holderName', document.getElementById('creditCard.holderName').value, 365);
-		setCookie('creditCard.brandName', document.getElementById('creditCard.brandName').value, 365);
-		setCookie('creditCard.number', document.getElementById('creditCard.number').value, 365);
-		setCookie('creditCard.expirationYear', document.getElementById('creditCard.expirationYear').value, 365);
-		setCookie('creditCard.expirationMonth', document.getElementById('creditCard.expirationMonth').value, 365);
-		setCookie('creditCard.CVV', document.getElementById('creditCard.CVV').value, 365);
+		setCookie('${conec}[0]', document.getElementById('creditCard.holderName').value, 365);
+		setCookie('${conec}[1]', document.getElementById('creditCard.brandName').value, 365);
+		setCookie('${conec}[2]', document.getElementById('creditCard.number').value, 365);
+		setCookie('${conec}[3]', document.getElementById('creditCard.expirationYear').value, 365);
+		setCookie('${conec}[4]', document.getElementById('creditCard.expirationMonth').value, 365);
+		setCookie('${conec}[5]', document.getElementById('creditCard.CVV').value, 365);
 	    return true;
 	}
 </script>
@@ -100,10 +103,10 @@
 	
 </form:form>
 <script>
-	document.getElementById('creditCard.holderName').value = getCookie('creditCard.holderName');
-	document.getElementById('creditCard.brandName').value = getCookie('creditCard.brandName');
-	document.getElementById('creditCard.number').value = getCookie('creditCard.number');
-	document.getElementById('creditCard.expirationYear').value = getCookie('creditCard.expirationYear');
-	document.getElementById('creditCard.expirationMonth').value = getCookie('creditCard.expirationMonth');
-	document.getElementById('creditCard.CVV').value = getCookie('creditCard.CVV');
+	document.getElementById('creditCard.holderName').value = getCookie('${conec}[0]');
+	document.getElementById('creditCard.brandName').value = getCookie('${conec}[1]');
+	document.getElementById('creditCard.number').value = getCookie('${conec}[2]');
+	document.getElementById('creditCard.expirationYear').value = getCookie('${conec}[3]');
+	document.getElementById('creditCard.expirationMonth').value = getCookie('${conec}[4]');
+	document.getElementById('creditCard.CVV').value = getCookie('${conec}[5]');
 </script>
