@@ -21,7 +21,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Access(AccessType.PROPERTY)
-public class Follow_up extends DomainEntity {
+public class FollowUp extends DomainEntity {
 
 	//Attributes
 	private String				title;

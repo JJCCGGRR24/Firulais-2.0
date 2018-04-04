@@ -102,7 +102,7 @@ public class Article extends DomainEntity {
 	//Relationships
 
 	private Newspaper				newspaper;
-	private Collection<Follow_up>	follow_up;
+	private Collection<FollowUp>	followUp;
 
 
 	@ManyToOne(optional = false)
@@ -117,12 +117,12 @@ public class Article extends DomainEntity {
 
 	@ElementCollection
 	@OneToMany(mappedBy = "article")
-	public Collection<Follow_up> getFollow_up() {
-		return this.follow_up;
+	public Collection<FollowUp> getFollowUp() {
+		return this.followUp;
 	}
 
-	public void setFollow_up(final Collection<Follow_up> follow_up) {
-		this.follow_up = follow_up;
+	public void setFollowUp(final Collection<FollowUp> followUp) {
+		this.followUp = followUp;
 	}
 
 }

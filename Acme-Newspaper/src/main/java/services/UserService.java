@@ -1,0 +1,109 @@
+
+package services;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
+
+import repositories.UserRepository;
+import security.Authority;
+import security.LoginService;
+import security.UserAccount;
+import domain.Chirp;
+import domain.Newspaper;
+import domain.User;
+import forms.RegisterForm;
+
+;
+
+@Service
+@Transactional
+public class UserService {
+
+	// Managed repository -----------------------------------------------------
+	@Autowired
+	private UserRepository	userRepository;
+
+
+	// Supporting services ----------------------------------------------------
+
+	// Constructors -----------------------------------------------------------
+	public UserService() {
+		super();
+	}
+
+	// Simple CRUD methods ----------------------------------------------------
+	public User create() {
+
+		final User r = new User();
+
+		final UserAccount uA = new UserAccount();
+		final Authority au = new Authority();
+		au.setAuthority("USER");
+		final List<Authority> authorities = new ArrayList<Authority>();
+		uA.setAuthorities(authorities);
+
+		final Collection<Newspaper> newspaper = new ArrayList<Newspaper>();
+		r.setNewspaper(newspaper);
+
+		final Collection<User> follows = new ArrayList<User>();
+		r.setFollows(follows);
+
+		final Collection<User> followers = new ArrayList<User>();
+		r.setFollowers(followers);
+
+		final Collection<Chirp> chirps = new ArrayList<Chirp>();
+		r.setChirps(chirps);
+
+		return r;
+	}
+
+	public Collection<User> findAll() {
+		final Collection<User> res = this.userRepository.findAll();
+		Assert.notNull(res);
+		return res;
+	}
+
+	public User findOne(final int userId) {
+		return this.userRepository.findOne(userId);
+	}
+
+	public User save(final User user) {
+		Assert.notNull(user);
+		return this.userRepository.save(user);
+	}
+
+	public void delete(final User user) {
+		this.userRepository.delete(user);
+	}
+
+	public void flush() {
+		this.userRepository.flush();
+	}
+
+	// Other business methods -------------------------------------------------
+
+	public User reconstruct(final RegisterForm registerForm) {
+		final User user = this.create();
+
+		final String pass = registerForm.getPassword();
+		final String confirmPass = registerForm.getConfirmPassword();
+
+		Assert.isTrue(pass.equals(confirmPass), "commit.password.error");
+		LoginService.getPrincipal().setUsername(registerForm.getUsername());
+		LoginService.getPrincipal().setPassword(registerForm.getPassword());
+
+		user.setName(registerForm.getName());
+		user.setPhone(registerForm.getPhone());
+		user.setPostalAddress(registerForm.getPostalAddress());
+		user.setSurname(registerForm.getUsername());
+
+		return user;
+	}
+}

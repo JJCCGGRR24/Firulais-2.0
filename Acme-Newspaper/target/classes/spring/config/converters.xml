@@ -22,6 +22,26 @@
 			Add your own converters using entries of the following form: 
 			<bean class="converters.Class1ToClass2" /> 
 		-->
+		
 	</util:list>
-	
+	<bean class="converters.ActorToStringConverter" /> 
+	<bean class="converters.AdministratorToStringConverter" /> 
+	<bean class="converters.ArticleToStringConverter" /> 
+	<bean class="converters.ChirpToStringConverter" /> 
+	<bean class="converters.CreditCardToStringConverter" /> 
+	<bean class="converters.CustomerToStringConverter" /> 
+	<bean class="converters.FollowUpToStringConverter" /> 
+	<bean class="converters.NewspaperToStringConverter" /> 
+	<bean class="converters.StringToActorConverter" /> 
+	<bean class="converters.StringToAdministratorConverter" /> 
+	<bean class="converters.StringToArticleConverter" /> 
+	<bean class="converters.StringToChirpConverter" /> 
+	<bean class="converters.StringToCreditCardConverter" /> 
+	<bean class="converters.StringToCustomerConverter" /> 
+	<bean class="converters.StringToFollowUpConverter" /> 
+	<bean class="converters.StringToNewspaperConverter" /> 
+	<bean class="converters.StringToSubscribeConverter" /> 
+	<bean class="converters.StringToUserConverter" /> 
+	<bean class="converters.SubscribeToStringConverter" /> 
+	<bean class="converters.UserToStringConverter" /> 
 </beans>
