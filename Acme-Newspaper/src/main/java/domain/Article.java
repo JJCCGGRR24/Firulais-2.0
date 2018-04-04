@@ -103,6 +103,7 @@ public class Article extends DomainEntity {
 
 	private Newspaper				newspaper;
 	private Collection<FollowUp>	followUp;
+	private User					user;
 
 
 	@ManyToOne(optional = false)
@@ -123,6 +124,16 @@ public class Article extends DomainEntity {
 
 	public void setFollowUp(final Collection<FollowUp> followUp) {
 		this.followUp = followUp;
+	}
+
+	@ManyToOne(optional = true)
+	@Valid
+	public User getUser() {
+		return this.user;
+	}
+
+	public void setUser(final User user) {
+		this.user = user;
 	}
 
 }

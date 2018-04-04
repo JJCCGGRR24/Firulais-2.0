@@ -8,6 +8,8 @@ import javax.persistence.AccessType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -18,7 +20,13 @@ public class User extends Actor {
 	private Collection<User>		followers;
 	private Collection<Newspaper>	newspaper;
 	private Collection<Chirp>		chirps;
+	private Collection<Article>		articles;
 
+
+	// Constructor
+	public User() {
+		super();
+	}
 
 	@OneToMany(mappedBy = "user")
 	@ElementCollection
@@ -57,6 +65,17 @@ public class User extends Actor {
 
 	public void setFollowers(final Collection<User> followers) {
 		this.followers = followers;
+	}
+
+	@OneToMany(mappedBy = "user")
+	@NotNull
+	@Valid
+	public Collection<Article> getArticles() {
+		return this.articles;
+	}
+
+	public void setArticles(final Collection<Article> articles) {
+		this.articles = articles;
 	}
 
 }

@@ -9,7 +9,7 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<form:form action="register/register.do" modelAttribute="registerForm">
+<form:form action="register/user.do" modelAttribute="registerForm">
 
 
 
@@ -20,7 +20,7 @@
 		</legend>
 		<acme:textbox code="register.username" path="username" />
 		<acme:password code="register.password" path="password" />
-		<acme:password code="register.password.confirm" path="passwordConfirm" />
+		<acme:password code="register.password.confirm" path="confirmPassword" />
 		<br />
 	</fieldset>
 
@@ -44,10 +44,12 @@
 	<form:label path="check">
 	</form:label>	
 	<form:checkbox path="check"/>
-	<spring:message code="register.check" />
-	<form:errors path="check" cssClass="error" />
+	<spring:message code="register.check" />	
+  	<form:errors path="check" cssClass="error" />
+  	</br></br>
+  	
 	
 	
-	<acme:submit name="save" code="general.save" />
+	<acme:submit name="save" code="register.save" />
 
 </form:form>

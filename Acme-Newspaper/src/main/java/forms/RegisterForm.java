@@ -11,6 +11,13 @@ public class RegisterForm {
 
 	private String	username, password, confirmPassword, name, surname, postalAddress, phone;
 
+	private boolean	check;
+
+
+	// Constructor
+	public RegisterForm() {
+		super();
+	}
 
 	@NotBlank
 	@SafeHtml(whitelistType = WhiteListType.NONE)
@@ -24,7 +31,7 @@ public class RegisterForm {
 	}
 	@NotBlank
 	@SafeHtml(whitelistType = WhiteListType.NONE)
-	@Size(min = 5)
+	@Size(min = 5, max = 100)
 	public String getPassword() {
 		return this.password;
 	}
@@ -34,7 +41,7 @@ public class RegisterForm {
 	}
 	@NotBlank
 	@SafeHtml(whitelistType = WhiteListType.NONE)
-	@Size(min = 5)
+	@Size(min = 5, max = 100)
 	public String getConfirmPassword() {
 		return this.confirmPassword;
 	}
@@ -42,6 +49,7 @@ public class RegisterForm {
 	public void setConfirmPassword(final String confirmPassword) {
 		this.confirmPassword = confirmPassword;
 	}
+
 	@NotBlank
 	@SafeHtml(whitelistType = WhiteListType.NONE)
 	public String getName() {
@@ -77,6 +85,14 @@ public class RegisterForm {
 
 	public void setPhone(final String phone) {
 		this.phone = phone;
+	}
+
+	public boolean isCheck() {
+		return this.check;
+	}
+
+	public void setCheck(final boolean check) {
+		this.check = check;
 	}
 
 }
