@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.NewspaperService;
-import services.UserService;
 import controllers.AbstractController;
 import domain.Newspaper;
 
@@ -21,9 +20,6 @@ public class NewspaperAdminController extends AbstractController {
 	@Autowired
 	private NewspaperService	newspaperService;
 
-	@Autowired
-	private UserService			userService;
-
 
 	//Constructor
 	public NewspaperAdminController() {
@@ -34,6 +30,7 @@ public class NewspaperAdminController extends AbstractController {
 
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
 	public ModelAndView delete(@RequestParam final int newspaperId) {
+
 		ModelAndView res = new ModelAndView();
 		final Newspaper newspaper = this.newspaperService.findOne(newspaperId);
 		try {
@@ -57,6 +54,7 @@ public class NewspaperAdminController extends AbstractController {
 		ModelAndView result;
 		result = new ModelAndView("newspaper/list");
 		result.addObject("message", message);
+		result.addObject("requestURI", "newspaper/admin/delete.do");
 		return result;
 	}
 }

@@ -29,6 +29,8 @@
 		
 		<value>/views/newspaper/messages</value>
 		<value>/views/user/messages</value>
+		<value>/views/article/messages</value>
+		
 		
 	</util:list>
 

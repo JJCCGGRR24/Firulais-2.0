@@ -20,12 +20,12 @@
 	 <a href="${editURL}">${row.name}</a>
 	 </display:column>
 	 	
-	 	
-	 <spring:message code="register.articles" var="articles"></spring:message>
-	<display:column title="${articles}" > 
+	 <spring:message code="register.view" var="view"></spring:message>
+	 <spring:message code="register.articles" var="articlesT"></spring:message>
+	<display:column title="${articlesT}" > 
 		<spring:url value="/article/list.do" var="editURL"><spring:param name="userId" value="${row.id}"/>
 	 </spring:url>
-	 <a href="${editURL}"><spring:message code="register.view" var="articles"/></a>
+	 <a href="${editURL}"><jstl:out value="${view}"></jstl:out></a>
 	 </display:column>
 
 

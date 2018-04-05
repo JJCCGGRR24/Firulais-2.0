@@ -28,6 +28,8 @@
 		<value>/views/profile/tiles.xml</value>
 		<value>/views/newspaper/tiles.xml</value>
 		<value>/views/user/tiles.xml</value>
+		<value>/views/article/tiles.xml</value>
+		
 		
 	</util:list>
 
