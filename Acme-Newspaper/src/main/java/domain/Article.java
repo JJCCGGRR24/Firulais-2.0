@@ -22,7 +22,7 @@ import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.format.annotation.DateTimeFormat;
 
-// import cz.jirutka.validator.collection.constraints.EachURL;
+import cz.jirutka.validator.collection.constraints.EachURL;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -77,7 +77,7 @@ public class Article extends DomainEntity {
 	}
 
 	@Value("#{'${list.of.strings}'.split(',')}")
-	//	@EachURL
+	@EachURL
 	@ElementCollection()
 	@Column(columnDefinition = "BLOB")
 	public Collection<String> getPictures() {
