@@ -19,11 +19,13 @@
 	 </spring:url>
 	 <a href="${editURL}">${row.name}</a>
 	 </display:column>
-	 
+	 	
+	 	
+	 <spring:message code="register.articles" var="articles"></spring:message>
 	<display:column title="${articles}" > 
 		<spring:url value="/article/list.do" var="editURL"><spring:param name="userId" value="${row.id}"/>
 	 </spring:url>
-	 <a href="${editURL}"><spring:message code="register.articles" var="articles"/></a>
+	 <a href="${editURL}"><spring:message code="register.view" var="articles"/></a>
 	 </display:column>
 
 
