@@ -71,6 +71,7 @@ public class NewspaperService {
 	}
 
 	public void delete(final Newspaper newspaper) {
+		Assert.notNull(newspaper);
 		this.newspaperRepository.delete(newspaper);
 	}
 

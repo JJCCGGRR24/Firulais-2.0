@@ -23,6 +23,19 @@
 
 	<display:column property="publicationDate" titleKey="newspaper.publicationDate" />
 	<display:column property="title" titleKey="general.title" />
+	
+	
+	
+	
+	
+	<security:authorize access="hasRole('ADMIN')">
+	<spring:url value="newspaper/admin/delete.do" var="editURL">
+		<spring:param name="newspaperId" value="row.id"/>
+		</spring:url>
+	<display:column>
+		<a href="${editURL}" ><spring:message code="newspaper.delete" /></a>
+	</display:column>
+	</security:authorize>
 
 	<input type="button"  value="<spring:message code="general.details"/>" 
 	onclick="javascript: relativeRedir('newspaper/details.do?newspaperId='+${row.id});"/>

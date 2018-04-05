@@ -6,6 +6,7 @@ import java.util.Date;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -20,6 +21,8 @@ import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.format.annotation.DateTimeFormat;
+
+// import cz.jirutka.validator.collection.constraints.EachURL;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -45,7 +48,7 @@ public class Article extends DomainEntity {
 		this.title = title;
 	}
 	@Temporal(TemporalType.TIMESTAMP)
-	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	public Date getMoment() {
 		return this.moment;
 	}
@@ -64,6 +67,7 @@ public class Article extends DomainEntity {
 	}
 	@NotBlank
 	@SafeHtml(whitelistType = WhiteListType.NONE)
+	@Column(columnDefinition = "BLOB")
 	public String getBody() {
 		return this.body;
 	}
@@ -74,7 +78,8 @@ public class Article extends DomainEntity {
 
 	@Value("#{'${list.of.strings}'.split(',')}")
 	//	@EachURL
-	@ElementCollection
+	@ElementCollection()
+	@Column(columnDefinition = "BLOB")
 	public Collection<String> getPictures() {
 		return this.pictures;
 	}
@@ -103,7 +108,7 @@ public class Article extends DomainEntity {
 	//Relationships
 
 	private Newspaper				newspaper;
-	private Collection<FollowUp>	followUp;
+	private Collection<FollowUp>	followUps;
 	private User					user;
 
 
@@ -121,12 +126,12 @@ public class Article extends DomainEntity {
 	@OneToMany(mappedBy = "article")
 	@Valid
 	@NotNull
-	public Collection<FollowUp> getFollowUp() {
-		return this.followUp;
+	public Collection<FollowUp> getFollowUps() {
+		return this.followUps;
 	}
 
-	public void setFollowUp(final Collection<FollowUp> followUp) {
-		this.followUp = followUp;
+	public void setFollowUps(final Collection<FollowUp> followUps) {
+		this.followUps = followUps;
 	}
 
 	@ManyToOne(optional = true)

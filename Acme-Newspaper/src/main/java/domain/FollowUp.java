@@ -6,6 +6,7 @@ import java.util.Date;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -18,6 +19,8 @@ import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.format.annotation.DateTimeFormat;
+
+// import cz.jirutka.validator.collection.constraints.EachURL;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -61,6 +64,7 @@ public class FollowUp extends DomainEntity {
 	}
 	@NotBlank
 	@SafeHtml(whitelistType = WhiteListType.NONE)
+	@Column(columnDefinition = "BLOB")
 	public String getText() {
 		return this.text;
 	}
@@ -72,6 +76,7 @@ public class FollowUp extends DomainEntity {
 	@Value("#{'${list.of.strings}'.split(',')}")
 	//	@EachURL
 	@ElementCollection
+	@Column(columnDefinition = "BLOB")
 	public Collection<String> getPictures() {
 		return this.pictures;
 	}
