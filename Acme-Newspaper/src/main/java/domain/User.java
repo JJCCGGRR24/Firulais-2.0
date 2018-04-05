@@ -7,6 +7,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -18,7 +19,7 @@ public class User extends Actor {
 	//Relationships
 	private Collection<User>		follows;
 	private Collection<User>		followers;
-	private Collection<Newspaper>	newspaper;
+	private Collection<Newspaper>	newspapers;
 	private Collection<Chirp>		chirps;
 	private Collection<Article>		articles;
 
@@ -29,15 +30,19 @@ public class User extends Actor {
 	}
 
 	@OneToMany(mappedBy = "user")
+	@Valid
+	@NotNull
 	@ElementCollection
-	public Collection<Newspaper> getNewspaper() {
-		return this.newspaper;
+	public Collection<Newspaper> getNewspapers() {
+		return this.newspapers;
 	}
 
-	public void setNewspaper(final Collection<Newspaper> newspaper) {
-		this.newspaper = newspaper;
+	public void setNewspapers(final Collection<Newspaper> newspapers) {
+		this.newspapers = newspapers;
 	}
 	@OneToMany(mappedBy = "user")
+	@Valid
+	@NotNull
 	@ElementCollection
 	public Collection<Chirp> getChirps() {
 		return this.chirps;
@@ -47,8 +52,9 @@ public class User extends Actor {
 		this.chirps = chirps;
 	}
 
-	@OneToMany()
-	@ElementCollection
+	@ManyToMany()
+	@Valid
+	@NotNull
 	public Collection<User> getFollows() {
 		return this.follows;
 	}
@@ -57,8 +63,9 @@ public class User extends Actor {
 		this.follows = follows;
 	}
 
-	@OneToMany(mappedBy = "follows")
-	@ElementCollection
+	@ManyToMany(mappedBy = "follows")
+	@Valid
+	@NotNull
 	public Collection<User> getFollowers() {
 		return this.followers;
 	}
@@ -70,6 +77,7 @@ public class User extends Actor {
 	@OneToMany(mappedBy = "user")
 	@NotNull
 	@Valid
+	@ElementCollection
 	public Collection<Article> getArticles() {
 		return this.articles;
 	}

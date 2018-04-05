@@ -3,13 +3,14 @@ package forms;
 
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
 
 public class RegisterForm {
 
-	private String	username, password, confirmPassword, name, surname, postalAddress, phone;
+	private String	username, password, confirmPassword, name, surname, postalAddress, phone, email;
 
 	private boolean	check;
 
@@ -95,4 +96,14 @@ public class RegisterForm {
 		this.check = check;
 	}
 
+	@Email
+	@NotBlank
+	@SafeHtml(whitelistType = WhiteListType.NONE)
+	public String getEmail() {
+		return this.email;
+	}
+
+	public void setEmail(final String email) {
+		this.email = email;
+	}
 }

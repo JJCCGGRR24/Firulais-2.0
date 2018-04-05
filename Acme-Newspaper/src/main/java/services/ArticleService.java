@@ -2,6 +2,7 @@
 package services;
 
 import java.util.Collection;
+import java.util.List;
 
 import javax.transaction.Transactional;
 
@@ -11,6 +12,7 @@ import org.springframework.util.Assert;
 
 import repositories.ArticleRepository;
 import domain.Article;
+import domain.User;
 
 ;
 
@@ -61,5 +63,9 @@ public class ArticleService {
 	}
 
 	// Other business methods -------------------------------------------------
+
+	public List<Article> findByUser(final User user) {
+		return this.articleRepository.findByUser(user);
+	}
 
 }

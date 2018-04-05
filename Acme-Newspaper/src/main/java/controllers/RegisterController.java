@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.CustomerService;
 import services.UserService;
+import domain.Customer;
 import domain.User;
 import forms.RegisterForm;
 
@@ -21,7 +23,10 @@ public class RegisterController extends AbstractController {
 
 	//Services
 	@Autowired
-	private UserService	userService;
+	private UserService		userService;
+
+	@Autowired
+	private CustomerService	customerService;
 
 
 	//Constructor---------------------------------------------------------------------
@@ -71,6 +76,53 @@ public class RegisterController extends AbstractController {
 	protected ModelAndView createEditModelAndView(final RegisterForm r, final String message) {
 		ModelAndView result;
 		result = new ModelAndView("user/register");
+		result.addObject("registerForm", r);
+		result.addObject("message", message);
+		return result;
+	}
+
+	@RequestMapping(value = "/customer", method = RequestMethod.GET)
+	public ModelAndView createCustomer() {
+		ModelAndView r = new ModelAndView();
+		final RegisterForm registerForm = new RegisterForm();
+		r = this.createEditModelAndViewCustomer(registerForm);
+		return r;
+	}
+
+	@RequestMapping(value = "/customer", method = RequestMethod.POST, params = "save")
+	public ModelAndView saveCustomer(@Valid final RegisterForm registerForm, final BindingResult bindingResult) {
+		ModelAndView res = new ModelAndView();
+		final Customer user = this.customerService.reconstruct(registerForm);
+
+		if (bindingResult.hasErrors())
+			res = this.createEditModelAndViewCustomer(registerForm, "commit.error");
+		else if (!(registerForm.getConfirmPassword().equals(registerForm.getPassword())))
+			res = this.createEditModelAndViewCustomer(registerForm, "commit.password.error");
+		else if (!(registerForm.isCheck()))
+			res = this.createEditModelAndViewCustomer(registerForm, "commit.check.error");
+		else
+			try {
+
+				this.customerService.save(user);
+				res = new ModelAndView("redirect: /welcome/index.do");
+
+			} catch (final DataIntegrityViolationException oops) {
+				res = this.createEditModelAndViewCustomer(registerForm, "error.username");
+			} catch (final Throwable oops) {
+				res = this.createEditModelAndViewCustomer(registerForm, "commit.error");
+			}
+		return res;
+	}
+
+	protected ModelAndView createEditModelAndViewCustomer(final RegisterForm r) {
+		ModelAndView result;
+		result = this.createEditModelAndViewCustomer(r, null);
+		return result;
+	}
+
+	protected ModelAndView createEditModelAndViewCustomer(final RegisterForm r, final String message) {
+		ModelAndView result;
+		result = new ModelAndView("customer/register");
 		result.addObject("registerForm", r);
 		result.addObject("message", message);
 		return result;

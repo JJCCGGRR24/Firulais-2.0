@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
@@ -101,6 +102,8 @@ public class Newspaper extends DomainEntity {
 
 	@OneToMany(mappedBy = "newspaper")
 	@ElementCollection
+	@Valid
+	@NotNull
 	public Collection<Subscribe> getSubscribes() {
 		return this.subscribes;
 	}
@@ -111,6 +114,8 @@ public class Newspaper extends DomainEntity {
 
 	@OneToMany(mappedBy = "newspaper", cascade = CascadeType.REMOVE)
 	@ElementCollection
+	@Valid
+	@NotNull
 	public Collection<Article> getArticles() {
 		return this.articles;
 	}

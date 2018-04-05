@@ -53,8 +53,8 @@ public class UserService {
 		uA.setAuthorities(authorities);
 		r.setUserAccount(uA);
 
-		final Collection<Newspaper> newspaper = new ArrayList<Newspaper>();
-		r.setNewspaper(newspaper);
+		final Collection<Newspaper> newspapers = new ArrayList<Newspaper>();
+		r.setNewspapers(newspapers);
 
 		final Collection<User> follows = new ArrayList<User>();
 		r.setFollows(follows);
@@ -62,11 +62,11 @@ public class UserService {
 		final Collection<User> followers = new ArrayList<User>();
 		r.setFollowers(followers);
 
-		final Collection<Article> articles = new ArrayList<Article>();
-		r.setArticles(articles);
-
 		final Collection<Chirp> chirps = new ArrayList<Chirp>();
 		r.setChirps(chirps);
+
+		final Collection<Article> articles = new ArrayList<Article>();
+		r.setArticles(articles);
 
 		return r;
 	}
@@ -95,7 +95,6 @@ public class UserService {
 	}
 
 	// Other business methods -------------------------------------------------
-
 	public User reconstruct(final RegisterForm registerForm) {
 
 		final User user = this.create();
@@ -112,6 +111,7 @@ public class UserService {
 		user.setPhone(registerForm.getPhone());
 		user.setPostalAddress(registerForm.getPostalAddress());
 		user.setSurname(registerForm.getUsername());
+		user.setEmail(registerForm.getEmail());
 
 		return user;
 	}
@@ -121,5 +121,4 @@ public class UserService {
 		Assert.isTrue(user.getUserAccount().equals(userAccount));
 		return user;
 	}
-
 }

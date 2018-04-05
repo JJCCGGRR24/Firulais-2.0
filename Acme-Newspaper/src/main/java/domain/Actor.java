@@ -9,6 +9,7 @@ import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
@@ -24,6 +25,7 @@ public abstract class Actor extends DomainEntity {
 	private String	surname;
 	private String	postalAddress;
 	private String	phone;
+	private String	email;
 
 
 	@NotBlank
@@ -62,6 +64,17 @@ public abstract class Actor extends DomainEntity {
 
 	public void setPhone(final String phone) {
 		this.phone = phone;
+	}
+
+	@Email
+	@NotBlank
+	@SafeHtml(whitelistType = WhiteListType.NONE)
+	public String getEmail() {
+		return this.email;
+	}
+
+	public void setEmail(final String email) {
+		this.email = email;
 	}
 
 

@@ -8,6 +8,8 @@ import javax.persistence.AccessType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -19,6 +21,8 @@ public class Customer extends Actor {
 
 	@OneToMany(mappedBy = "customer")
 	@ElementCollection
+	@Valid
+	@NotNull
 	public Collection<Subscribe> getSubscribes() {
 		return this.subscribes;
 	}
