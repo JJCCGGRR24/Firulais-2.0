@@ -12,49 +12,39 @@ import services.NewspaperService;
 import controllers.AbstractController;
 import domain.Newspaper;
 
-@Controller()
+@Controller
 @RequestMapping("/newspaper/admin")
-public class NewspaperAdminController extends AbstractController {
+public class NewspaperAdministratorController extends AbstractController {
 
-	//Services
+	//Services-----------------------------------------------------------------------
+
 	@Autowired
 	private NewspaperService	newspaperService;
 
 
-	//Constructor
-	public NewspaperAdminController() {
+	//Constructor--------------------------------------------------------------------
+
+	public NewspaperAdministratorController() {
 		super();
 	}
 
-	//List
+	//Listing------------------------------------------------------------------------
 
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
 	public ModelAndView delete(@RequestParam final int newspaperId) {
+		ModelAndView modelAndView;
 
-		ModelAndView res = new ModelAndView();
 		final Newspaper newspaper = this.newspaperService.findOne(newspaperId);
+
 		try {
-
 			this.newspaperService.delete(newspaper);
-			res = new ModelAndView("redirect: /newspaper/list.do");
-
-		} catch (final Throwable oops) {
-			res = this.createEditModelAndView(newspaper, "commit.error");
+			modelAndView = new ModelAndView("redirect:/newspaper/list.do");
+		} catch (final Throwable throwable) {
+			modelAndView = new ModelAndView("redirect:/newspaper/list.do");
+			modelAndView.addObject("message", "newspaper.commit.error");
 		}
-		return res;
+
+		return modelAndView;
 	}
 
-	protected ModelAndView createEditModelAndView(final Newspaper r) {
-		ModelAndView result;
-		result = this.createEditModelAndView(r, null);
-		return result;
-	}
-
-	protected ModelAndView createEditModelAndView(final Newspaper r, final String message) {
-		ModelAndView result;
-		result = new ModelAndView("newspaper/list");
-		result.addObject("message", message);
-		result.addObject("requestURI", "newspaper/admin/delete.do");
-		return result;
-	}
 }

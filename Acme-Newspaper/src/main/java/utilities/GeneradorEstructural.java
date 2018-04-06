@@ -42,14 +42,7 @@ public class GeneradorEstructural {
 
 	}
 	public void doIt() {
-		this.a.add("Administrator");
-		this.a.add("Article");
-		this.a.add("Chirp");
-		this.a.add("Customer");
-		this.a.add("FollowUp");
-		this.a.add("Newspaper");
-		this.a.add("Subscribe");
-		this.a.add("User");
+		this.a.add("Taboo");
 
 		final File f1 = new File(GeneradorEstructural.rutaEstructura);
 		final String lowKeyword = GeneradorEstructural.keyword.substring(0, 1).toLowerCase() + GeneradorEstructural.keyword.substring(1);

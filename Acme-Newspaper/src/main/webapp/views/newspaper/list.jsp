@@ -17,11 +17,11 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
 <script>
-	function preguntar(Id) {
+	function preguntar(id) {
 		eliminar = confirm('<spring:message code="newspaper.confirmDelete"/>');
 		if (eliminar)
 			//Redireccionamos si das a aceptar
-			window.location.href = "newspaper/admin/delete.do?newspaperId=" + Id; //página web a la que te redirecciona si confirmas la eliminación
+			window.location.href = "newspaper/admin/delete.do?newspaperId=" + id; //página web a la que te redirecciona si confirmas la eliminación
 		else
 			//Y aquí pon cualquier cosa que quieras que salga si le diste al boton de cancelar
 			alert('<spring:message code="newspaper.negativeDelete"/>');

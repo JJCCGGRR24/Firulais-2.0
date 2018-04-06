@@ -11,7 +11,17 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 
-
+<script>
+	function preguntar(rendezvousId) {
+		eliminar = confirm('<spring:message code="newspaper.confirmDelete"/>');
+		if (eliminar)
+			//Redireccionamos si das a aceptar
+			window.location.href = "article/admin/delete.do?articleId=" + rendezvousId; //página web a la que te redirecciona si confirmas la eliminación
+		else
+			//Y aquí pon cualquier cosa que quieras que salga si le diste al boton de cancelar
+			alert('<spring:message code="newspaper.negativeDelete"/>');
+	}
+</script>
 
 <display:table  name="articles" id="row"  pagesize="10" requestURI="${requestURI}" class="displaytag" > 
 
@@ -27,6 +37,12 @@
 	<spring:message code="article.moment" var="moment"></spring:message>
 	<display:column title="${moment}" property ="moment" />
 	
+		<security:authorize access="hasRole('ADMIN')">
+		<display:column>
+			<a href="javascript:preguntar(${row.id})"><spring:message
+					code="newspaper.delete" /></a>
+		</display:column>
+	</security:authorize>
 	
 
 </display:table>

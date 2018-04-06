@@ -37,13 +37,13 @@ public interface AdministratorRepository extends JpaRepository<Administrator, In
 
 	//LEVEL B
 
-	@Query("select avg(a.followUps.size) from Article a")
+	@Query("select avg(a.followUp.size) from Article a")
 	Double queryB1();
 
-	@Query("select avg(a.followUps.size) from Article a where week(a.moment) <= week(CURRENT_DATE)+1")
+	@Query("select avg(a.followUp.size) from Article a where week(a.moment) <= week(CURRENT_DATE)+1")
 	Double queryB2();
 
-	@Query("select avg(a.followUps.size) from Article a where week(a.moment) <= week(CURRENT_DATE)+2")
+	@Query("select avg(a.followUp.size) from Article a where week(a.moment) <= week(CURRENT_DATE)+2")
 	Double queryB3();
 
 	@Query("select avg(u.chirps.size), stddev(u.chirps.size) from User u")

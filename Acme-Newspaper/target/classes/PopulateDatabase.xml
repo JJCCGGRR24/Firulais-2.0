@@ -26,6 +26,23 @@
   	<bean id="date" class="java.text.SimpleDateFormat">
     	<constructor-arg value="dd/MM/yyyy" />
   	</bean>
+  	
+	<!-- Taboo -->
+	<bean id="sex" class="domain.Taboo">
+		<property name="word" value="sex"/>
+	</bean>
+	
+	<bean id="sexo" class="domain.Taboo">
+		<property name="word" value="sexo"/>
+	</bean>
+	
+	<bean id="cialis" class="domain.Taboo">
+		<property name="word" value="cialis"/>
+	</bean>
+	
+	<bean id="viagra" class="domain.Taboo">
+		<property name="word" value="viagra"/>
+	</bean>
 	
 	<!-- User accounts -->
 	<bean id="adminAccount" class="security.UserAccount">
@@ -238,9 +255,9 @@
 	</bean>
 	
 	<bean id="cc2" class="domain.CreditCard">
-		<property name="holderName" value="Randi Gordon" />
-		<property name="brandName" value="VISA" />
-		<property name="number" value="4000990618525905" />
+		<property name="holderName" value="Randy Gordon" />
+		<property name="brandName" value="MASTER CARD" />
+		<property name="number" value="5830174670847761" />
 		<property name="expirationYear" value="2021" />
 		<property name="expirationMonth" value="03" />
 		<property name="CVV" value="389" />
@@ -646,7 +663,7 @@
 		&#10;
 		Pepe agrega: «Algunos en misa te dan la paz y luego te piden al salir a la calle». Relata que hubo una temporada en la que unas jóvenes bien vestidas seguían a los mayores que iban en andador y con la excusa de preguntarles la hora, les robaban.
 		&#10;
-		Debajo del puente de la A-2, en la avenida de Camilo José Cela un grupo que se reúne para dormir. «Llegan a partir de las ocho, pueden ser unos 20 o 30, hacen fogatas para cocinar, apilan mantas, cartones y hacen sus necesidades junto a los pilares», indica María. No miente. El hedor es insoportable.
+		Debajo del puente de la A-2, en la avenida de Camilo José Cela un grupo que se reúne para dormir. «Llegan a partir de las ocho, pueden ser unos 20 o 30, hacen fogatas para cocinar, apilan mantas, cartones y hacen sus necesidades junto a los pilares, incluso llegando a practicar sexo», indica María. No miente. El hedor es insoportable.
 		&#10;
 		A media mañana no hay nadie. Solo bolsas colgadas en la pared y colchones que un operario del área de Medioambiente del Ayuntamiento de Madrid recoge para tirar. «Esto es a diario. Tiramos todo lo que dejan en el suelo. Ahí arriba, enfrente, tienen más trastos guardados», explica, mientras deposita una colchoneta en su camión.
 		&#10;
@@ -656,29 +673,216 @@
 			 <value>http://www.abc.es/media/espana/2018/04/03/mendigos11-kP3B--510x349@abc.jpg</value>
 		</list></property>
 		<property name="finalMode" value="true" />
-		<property name="tabooWord" value="false" />
+		<property name="tabooWord" value="true" />
 		<property name="user" ref="user3" />
 		<property name="newspaper" ref="newspaper2_3" />
 		<property name="followUps"><list></list></property>
 	</bean>
 	
 	<!--  #Chirps --> 
-	<bean id="chirp1" class="domain.Chirp">
+	<bean id="chirp1_1" class="domain.Chirp">
 		<property name="moment">
 			<bean factory-bean="dateAndTimeWS" factory-method="parse">
-		    	<constructor-arg value="04/04/2018 09:35:54" />
+		    	<constructor-arg value="04/04/2018 18:19:14" />
 		    </bean>
     	</property>
 		<property name="title" value="E3: LA PELÍCULA" />
+		<property name="tabooWord" value="false" />
 		<property name="description" value="Ya podéis ver E3: LA PELÍCULA en este enlace: https://www.youtube.com/watch?v=6_5cJRVv-N4 … Ya nos diréis qué os ha parecido! #E3lapelicula" />
 		<property name="user" ref="user1" />
 	</bean>
 	
+	<bean id="chirp1_2" class="domain.Chirp">
+		<property name="moment">
+			<bean factory-bean="dateAndTimeWS" factory-method="parse">
+		    	<constructor-arg value="03/03/2018 18:28:54" />
+		    </bean>
+    	</property>
+		<property name="title" value="Sexual scandal" />
+		<property name="tabooWord" value="true" />
+		<property name="description" value="NeoGAF offline after owner accused of sexual misconduct - http://www.eurogamer.net/articles/2017-10-23-neogaf-offline-after-owner-accused-of-sexual-misconduct" />
+		<property name="user" ref="user1" />
+	</bean>
+	
+	<bean id="chirp1_3" class="domain.Chirp">
+		<property name="moment">
+			<bean factory-bean="dateAndTimeWS" factory-method="parse">
+		    	<constructor-arg value="11/03/2018 20:13:44" />
+		    </bean>
+    	</property>
+		<property name="title" value="Novedades AC:Origins" />
+		<property name="tabooWord" value="false" />
+		<property name="description" value="Assassin's Creed Origins recibirá un menú para activar trucos en PC. Podremos modificar el juego con el 'panel de control del Animus'." />
+		<property name="user" ref="user1" />
+	</bean>
+	
+	<bean id="chirp1_4" class="domain.Chirp">
+		<property name="moment">
+			<bean factory-bean="dateAndTimeWS" factory-method="parse">
+		    	<constructor-arg value="13/03/2018 13:21:23" />
+		    </bean>
+    	</property>
+		<property name="title" value="Nuevo indie sobre ONGs" />
+		<property name="tabooWord" value="false" />
+		<property name="description" value="El creador de UnEpic lanza un Kickstarter para su proyecto Afraid, un juego sobre ONGs que te permitirá ayudar a organizaciones reales." />
+		<property name="user" ref="user1" />
+	</bean>
+	
+	<bean id="chirp1_5" class="domain.Chirp">
+		<property name="moment">
+			<bean factory-bean="dateAndTimeWS" factory-method="parse">
+		    	<constructor-arg value="30/03/2018 14:58:36" />
+		    </bean>
+    	</property>
+		<property name="title" value="Esos pequeñenines" />
+		<property name="tabooWord" value="false" />
+		<property name="description" value="Un juego chiquitín que no sólo es una delicia de jugar, sino que tiene el potencial para cambiar nuestra forma de entender los videojuegos. Análisis de Minit.&#10;https://www.eurogamer.es/articles/minit-analisis" />
+		<property name="user" ref="user1" />
+	</bean>
+	
+	<bean id="chirp1_6" class="domain.Chirp">
+		<property name="moment">
+			<bean factory-bean="dateAndTimeWS" factory-method="parse">
+		    	<constructor-arg value="31/03/2018 16:48:29" />
+		    </bean>
+    	</property>
+		<property name="title" value="Declaracion de Valve sobre su consola" />
+		<property name="tabooWord" value="false" />
+		<property name="description" value="Valve: 'Es cierto que las Steam Machines no están volando de las estanterías'. La compañía responde tras eliminarlas de la pestaña de hardware de Steam." />
+		<property name="user" ref="user1" />
+	</bean>
+	
+	<bean id="chirp2_1" class="domain.Chirp">
+		<property name="moment">
+			<bean factory-bean="dateAndTimeWS" factory-method="parse">
+		    	<constructor-arg value="13/06/2017 18:03:15" />
+		    </bean>
+    	</property>
+		<property name="title" value="Cuanto peor mejor para todos y cuanto peor para todos mejor, mejor para mí el suyo, beneficio político." />
+		<property name="tabooWord" value="false" />
+		<property name="description" value="Que Mariano Rajoy no es Wiston Churchill lo reconocería hasta un niño de diez años. Aun así, el presidente del Gobierno es conocido por ser un muy buen parlamentario. Que no orador." />
+		<property name="user" ref="user2" />
+	</bean>
+	
+	<bean id="chirp2_2" class="domain.Chirp">
+		<property name="moment">
+			<bean factory-bean="dateAndTimeWS" factory-method="parse">
+		    	<constructor-arg value="02/12/2015 18:21:51" />
+		    </bean>
+    	</property>
+		<property name="title" value="Es el vecino el que elige al alcalde y es el alcalde el que quiere que sean los vecinos el alcalde." />
+		<property name="tabooWord" value="false" />
+		<property name="description" value="El presidente del Gobierno vuelve a hacerse un lío con las palabras en un acto de su partido en Benavente (Zamora) y señala que 'es el vecino el que elige el alcalde y es el alcalde el que quiere que sean los vecinos el alcalde' tras señalar que el PP ganó las elecciones municipales en la localidad y no gobierna." />
+		<property name="user" ref="user2" />
+	</bean>
+	
+	<bean id="chirp2_3" class="domain.Chirp">
+		<property name="moment">
+			<bean factory-bean="dateAndTimeWS" factory-method="parse">
+		    	<constructor-arg value="25/02/2016 15:37:28" />
+		    </bean>
+    	</property>
+		<property name="title" value="Somos sentimientos y tenemos seres humanos" />
+		<property name="tabooWord" value="false" />
+		<property name="description" value="El presidente del Gobierno comete un traspiés lingüístico al referirse a su declaración de 'persona non grata' en Pontevedra durante una entrevista en Espejo Público." />
+		<property name="user" ref="user2" />
+	</bean>
+	
+	<bean id="chirp2_4" class="domain.Chirp">
+		<property name="moment">
+			<bean factory-bean="dateAndTimeWS" factory-method="parse">
+		    	<constructor-arg value="24/09/2015 16:34:02" />
+		    </bean>
+    	</property>
+		<property name="title" value="Realmente un vaso es un vaso y un plato es un plato" />
+		<property name="tabooWord" value="false" />
+		<property name="description" value="Después de dar mucho de qué hablar con su pregunta sobre la nacionalidad 'europea', el presidente del Gobierno, Mariano Rajoy, concedió ayer miércoles una entrevista a Televisió de Girona donde dejó otra 'perla' al referirse a lo que dicen los tratados europeos sobre la posibilidad de que Cataluña se mantenga en la UE." />
+		<property name="user" ref="user2" />
+	</bean>
+	
+	<bean id="chirp2_5" class="domain.Chirp">
+		<property name="moment">
+			<bean factory-bean="dateAndTimeWS" factory-method="parse">
+		    	<constructor-arg value="30/08/2015 17:59:21" />
+		    </bean>
+    	</property>
+		<property name="title" value="Esto no es como el agua que cae del cielo, sin que se sepa exactamente por qué" />
+		<property name="tabooWord" value="false" />
+		<property name="description" value="Aseguraba esta semana durante un mitin en Pontevedra el Presidente del Gobierno, Mariano Rajoy, refiriéndose a la recuperación económica. Por ese motivo, parece necesario desempolvar el libro de Conocimiento del Medio para recordar las bases del ciclo del agua, al menos en la parte correspondiente a la lluvia." />
+		<property name="user" ref="user2" />
+	</bean>
+	
+	<bean id="chirp3_1" class="domain.Chirp">
+		<property name="moment">
+			<bean factory-bean="dateAndTimeWS" factory-method="parse">
+		    	<constructor-arg value="23/03/2018 09:35:54" />
+		    </bean>
+    	</property>
+		<property name="title" value="Hacienda estrecha el cerco sobre las criptomonedas y otras noticias económicas del día" />
+		<property name="tabooWord" value="false" />
+		<property name="description" value="Hacienda estrecha el cerco sobre las criptomonedas y exige datos a más de 60 entidades. El Fisco envía requerimientos de información de cuentas y transferencias a 16 bancos, una docena de casas de cambio y a más de 40 empresas que permiten el pago con divisas como Bitcoin. El objetivo es conocer más datos sobre origen y destino de transferencias relacionadas con cuentas bancarias de estas casas." />
+		<property name="user" ref="user3" />
+	</bean>
+	
+	<bean id="chirp3_2" class="domain.Chirp">
+		<property name="moment">
+			<bean factory-bean="dateAndTimeWS" factory-method="parse">
+		    	<constructor-arg value="31/03/2018 09:45:42" />
+		    </bean>
+    	</property>
+		<property name="title" value="Javier Gutiérrez @javiergutialva: «Los actores somos demasiado quejicas» #campeoneseh" />
+		<property name="tabooWord" value="false" />
+		<property name="description" value="avier Gutiérrez llegó al plató de «El Hormiguero» para hablar de su nueva película: «Campeones», una comedia con grandes dosis de ternura dirigida por Javier Fesser y que llega a los cines el 6 de abril." />
+		<property name="user" ref="user3" />
+	</bean>
+	
+	<bean id="chirp3_3" class="domain.Chirp">
+		<property name="moment">
+			<bean factory-bean="dateAndTimeWS" factory-method="parse">
+		    	<constructor-arg value="03/04/2018 13:58:58" />
+		    </bean>
+    	</property>
+		<property name="title" value="Continúa sin éxito la búsqueda del turista saudí que cayó al mar desde un crucero" />
+		<property name="tabooWord" value="false" />
+		<property name="description" value="El dispostivo de búsqueda de un hombre de 34 años y nacionalidad saudí que cayó al mar este miércoles desde un crucero que tenía prevista su escala en el puerto de Alicante continúa sin éxito veinticuatro horas después. En las tareas particpan hasta ocho mediod marítimos y aéreos de Salvamento -que recibió la voz de alarma en la que se avisaba de un hombre caído al agua la madrugada del miércoles- y dos cruceros." />
+		<property name="user" ref="user3" />
+	</bean>
+	
 	<!--  #Subscribes -->
-	<bean id="subscribe1" class="domain.Subscribe">
+	<bean id="subscribe1_1" class="domain.Subscribe">
 		<property name="creditCard" ref="cc1" />
 		<property name="customer" ref="customer1" />
-		<property name="newspaper" ref="newspaper1" />
+		<property name="newspaper" ref="newspaper1_2" />
+	</bean>
+	
+	<bean id="subscribe1_2" class="domain.Subscribe">
+		<property name="creditCard" ref="cc1" />
+		<property name="customer" ref="customer1" />
+		<property name="newspaper" ref="newspaper1_3" />
+	</bean>
+	
+	<bean id="subscribe1_3" class="domain.Subscribe">
+		<property name="creditCard" ref="cc1" />
+		<property name="customer" ref="customer1" />
+		<property name="newspaper" ref="newspaper2_2" />
+	</bean>
+	
+	<bean id="subscribe1_4" class="domain.Subscribe">
+		<property name="creditCard" ref="cc1" />
+		<property name="customer" ref="customer1" />
+		<property name="newspaper" ref="newspaper2_3" />
+	</bean>
+	
+	<bean id="subscribe2_1" class="domain.Subscribe">
+		<property name="creditCard" ref="cc2" />
+		<property name="customer" ref="customer2" />
+		<property name="newspaper" ref="newspaper2_3" />
+	</bean>
+	
+	<bean id="subscribe2_2" class="domain.Subscribe">
+		<property name="creditCard" ref="cc2" />
+		<property name="customer" ref="customer2" />
+		<property name="newspaper" ref="newspaper1_3" />
 	</bean>
 	
 	<!--  #FollowUps -->
@@ -690,16 +894,91 @@
 		    </bean>
     	</property>
 		<property name="summary" value="Explico mi opinión sobre lo que dije en el artículo principal sobre los cambios temporales." />
-		<property name="text" value="No se cómo lo hacen, pero no han sido capaces 
-		de igualar la jugabilidad de los plataformas de esta época.
+		<property name="text" value="No se cómo lo hacen, pero no han sido capaces de igualar la jugabilidad de los plataformas de esta época.
 		&#10;
-		Y aquí pienso, yo que soy anti remasters, qué hago? Un juego que tiene 
-		20 años, es justo que se remasterice y lo disfrutemos todos? El remaster 
-		de crash lo compré por un precio que me parece más que justo, y seguro que 
-		lo haré con este. 
+		Y aquí pienso, yo que soy anti remasters, qué hago? Un juego que tiene 20 años, es justo que se remasterice y lo disfrutemos todos? El remaster de crash lo compré por un precio que me parece más que justo, y seguro que lo haré con este. 
 		&#10;
 		Es complicado explicar mi postura ante los remaster, pero resumiría en, si es de psx, que lo hagan. Remasters de la past gen, no." />
 		<property name="article" ref="article1" />
+		<property name="pictures">
+			<list></list>
+		</property>
+	</bean>
+	<bean id="followUp1_2" class="domain.FollowUp">
+		<property name="title" value="Media hora de gameplay de Dark Souls Remastered en PS4 Pro" />
+		<property name="publicationMoment">
+			<bean factory-bean="dateAndTimeWS" factory-method="parse">
+		    	<constructor-arg value="05/04/2018 09:45:54" />
+		    </bean>
+    	</property>
+		<property name="summary" value="Vuelta a los orígenes." />
+		<property name="text" value="Los avances de la remasterización de Dark Souls ya han empezado a aparecer, y nuestros compañeros de VG247 han publicado un vídeo del juego corriendo en una PS4 Pro.
+		&#10;
+		A pesar de ser uno de los remasters más esperados de esta primera mitad de 2018, el trabajo realizado no parece haber impresionado demasiado a los que lo han podido probar. 'Hasta que pude comparar el material con la versión original, no era una mejora notable. Está claro que las nuevas texturas 4K lucen genial, pero es un aseo, no una revisión total. Incluso corriendo en una PS4 Pro, no era algo impresionante', describe Andi Hamilton, redactor del medio.
+		&#10;
+		Junto a sus primeras impresiones han publicado un gameplay de treinta minutos del juego que podéis ver a continuación." />
+		<property name="article" ref="article1" />
+		<property name="pictures">
+			<list></list>
+		</property>
+	</bean>
+	
+	<bean id="followUp2" class="domain.FollowUp">
+		<property name="title" value="The Long Dark tendrá adaptación al cine a cargo del productor de las películas de Resident Evil" />
+		<property name="publicationMoment">
+			<bean factory-bean="dateAndTimeWS" factory-method="parse">
+		    	<constructor-arg value="05/04/2018 09:45:54" />
+		    </bean>
+    	</property>
+		<property name="summary" value="Ha vendido 1,3M de copias en Early Access." />
+		<property name="text" value="El sandbox de supervivencia The Long Dark llegará al cine de la mano de Jeremy Bolt, productor de la franquicia de películas Resident Evil y otras películas de Paul W.S. Anderson como Horizonte Final o su futura adaptación de Monster Hunter.
+		&#10;
+		Raphael van Lierop, fundador y director creativo de la desarrolladora del juego (Hinterland Studio), será el encargado del guion de la película. Asegura que su objetivo con el juego era lograr una propiedad intelectual que pudiese trasladarse a varios medios y aprovechar las peculiaridades de cada uno de ellos, así que este es el primer paso para lograr su visión del juego.
+		&#10;
+		El juego sale hoy de Early Access, donde ha estado desde septiembre de 2014; también ha estado disponible en el programa Xbox Game Preview desde junio de 2015. Antes de su salida oficial ha logrado vender 1,3 millones de copias, casi doblando las 750.000 copias que había vendido a fecha de abril de este año.
+		&#10;
+		El lanzamiento significará su llegada a Playstation 4. Con ella llegarán los dos primeros capítulos de Wintermute, el modo historia de The Long Dark dividido en cinco partes.
+		&#10;
+		The Long Dark cuenta con un trailer con actores reales para celebrar el lanzamiento, narrado por Christopher Plummer (Up, Begginers) y escrito por el propio van Lierop." />
+		<property name="article" ref="article3" />
+		<property name="pictures">
+			<list></list>
+		</property>
+	</bean>
+	
+	<bean id="followUp2_2" class="domain.FollowUp">
+		<property name="title" value="The Long Dark saldrá de Early Access el 1 de agosto" />
+		<property name="publicationMoment">
+			<bean factory-bean="dateAndTimeWS" factory-method="parse">
+		    	<constructor-arg value="05/04/2018 09:45:54" />
+		    </bean>
+    	</property>
+		<property name="summary" value="Llegará con campaña y versión de PS4." />
+		<property name="text" value="Hinterland Studio ha anunciado que la versión 1.0 de The Long Dark saldrá el 1 de agosto.
+		&#10;
+		Con esta versión llegarán los dos primeros capítulos (seis-diez horas de gameplay, según sus responsables) de una campaña episódica llamada Wintermute. Esta primera temporada se alargará hasta principios de 2018. El modo historia aprovechará el gélido y peligroso entorno nevado donde transcurre el sandbox de supervivencia para contar las historias de varios personajes.
+		&#10;
+		The Long Dark saldrá de Early Access tanto en PC como en Xbox One el 1 de agosto y aprovechando la ocasión se lanzará para Playstation 4." />
+		<property name="article" ref="article3" />
+		<property name="pictures">
+			<list></list>
+		</property>
+	</bean>
+	
+	<bean id="followUp3" class="domain.FollowUp">
+		<property name="title" value="Coripe «lincha» a una muñeca de la asesina confesa del pequeño Gabriel durante la «Quema de Judas»" />
+		<property name="publicationMoment">
+			<bean factory-bean="dateAndTimeWS" factory-method="parse">
+		    	<constructor-arg value="05/04/2018 09:45:54" />
+		    </bean>
+    	</property>
+		<property name="summary" value="Movimiento Contra la Intolerancia ha interpuesto una denuncia en la Fiscalía de Delitos de Odio de Sevilla por este acto celebrado el Domingo de Resurrección" />
+		<property name="text" value="El Movimiento Contra la Intolerancia ha interpuesto una denuncia en la Fiscalía de Delitos de Odio de Sevilla por el «linchamiento de una muñeca, hecha de tela y de paja, que representaba a una mujer negra, con peluca rizada, significando a Ana Julia (Quezada), la asesina confesa del niño Gabriel».
+		&#10;
+		Estos hechos se produjeron el pasado Domingo de Resurrección en Coripe, durante la celebración de la tradicional «Quema de Judas». En esta fiesta, los vecinos de Coripe disparan con balas de fogueo, apalean y, finalmente, queman a un muñeco de trapo, caracterizado como la peor persona del año. En 2017, la «víctima» fue Bárbara Rey.
+		&#10;
+		La denuncia pide la retirada de varios vídeos publicados en redes sociales y portales de internet, por los gritos racistas y de odio vertidos por los asistentes, entre los que se encontraban menores. «¡A tomar por c… la negra, con sus mu…! ¡No la matan en España, pues la matamos en Coripe!» o «¡Ni Puigdemont ni mier…, la negra!» son algunas de las frases que pueden escucharse en algunos de los vídeos que circulan por internet" />
+		<property name="article" ref="article8" />
 		<property name="pictures">
 			<list></list>
 		</property>
