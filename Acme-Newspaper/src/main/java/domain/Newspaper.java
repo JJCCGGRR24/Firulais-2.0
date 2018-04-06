@@ -100,7 +100,7 @@ public class Newspaper extends DomainEntity {
 	private Collection<Subscribe>	subscribes;
 
 
-	@OneToMany(mappedBy = "newspaper")
+	@OneToMany(mappedBy = "newspaper", cascade = CascadeType.REMOVE)
 	@ElementCollection
 	@Valid
 	@NotNull

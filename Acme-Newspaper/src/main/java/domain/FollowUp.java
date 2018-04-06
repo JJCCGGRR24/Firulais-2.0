@@ -64,7 +64,7 @@ public class FollowUp extends DomainEntity {
 	}
 	@NotBlank
 	@SafeHtml(whitelistType = WhiteListType.NONE)
-	@Column(columnDefinition = "BLOB")
+	@Column(columnDefinition = "TEXT")
 	public String getText() {
 		return this.text;
 	}
@@ -76,7 +76,7 @@ public class FollowUp extends DomainEntity {
 	@Value("#{'${list.of.strings}'.split(',')}")
 	@EachURL
 	@ElementCollection
-	@Column(columnDefinition = "BLOB")
+	@Column(columnDefinition = "TEXT")
 	public Collection<String> getPictures() {
 		return this.pictures;
 	}

@@ -21,13 +21,13 @@ import domain.Chirp;
 public class ChirpToStringConverter implements Converter<Chirp, String> {
 
 	@Override
-	public String convert(final Chirp Chirp) {
+	public String convert(final Chirp chirp) {
 		String result;
-
-		if (Chirp == null)
+		System.out.println("ChirpToStringConverter");
+		if (chirp == null)
 			result = null;
 		else
-			result = String.valueOf(Chirp.getId());
+			result = String.valueOf(chirp.getId());
 
 		return result;
 	}

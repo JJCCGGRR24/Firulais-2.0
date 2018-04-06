@@ -30,7 +30,7 @@ public class StringToUserConverter implements Converter<String, User> {
 	public User convert(final String text) {
 		User result;
 		int id;
-
+		System.out.println("StringToUserConverter");
 		try {
 			id = Integer.valueOf(text);
 			result = this.userRepository.findOne(id);

@@ -16,17 +16,15 @@
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<jstl:if test="${newspaper.picture not eq null }">
+<jstl:if test="${!(newspaper.picture eq null)}">
 	<div align="center">
 		<img src="${newspaper.picture }" alt="${picture.title }" ></img>
 	</div>
 </jstl:if>
-<b> <spring:message code="general.title"/>:</b> ${newspaper.title }
+<b> <spring:message code="general.title"/>:</b> ${newspaper.title} ${newspaper.publicationDate}
 <br>
 <b> <spring:message code="general.description"/>:</b> ${newspaper.description }
 <br>
-
-
 
 <display:table name="articles" id="row" requestURI="${requestURI}"
 	pagesize="10" class="displaytag">

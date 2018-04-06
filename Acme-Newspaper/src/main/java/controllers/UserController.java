@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import security.LoginService;
 import services.UserService;
 import domain.User;
 
@@ -18,7 +19,10 @@ public class UserController extends AbstractController {
 
 	//services
 	@Autowired
-	private UserService	userService;
+	private UserService		userService;
+
+	@Autowired
+	private LoginService	loginService;
 
 
 	//Construct
@@ -44,7 +48,15 @@ public class UserController extends AbstractController {
 		res.addObject("user", user);
 		res.addObject("requestURI", "user/details.do");
 		return res;
-
 	}
 
+	@RequestMapping("/myDetails")
+	public ModelAndView myDetails() {
+		final int userId = this.loginService.getPrincipalActor().getId();
+		final ModelAndView res = new ModelAndView("user/details");
+		final User user = this.userService.findOne(userId);
+		res.addObject("user", user);
+		res.addObject("requestURI", "user/myDetails.do");
+		return res;
+	}
 }

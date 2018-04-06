@@ -28,7 +28,7 @@ public class UserToStringConverter implements Converter<User, String> {
 			result = null;
 		else
 			result = String.valueOf(User.getId());
-
+		System.out.println("UserToStringConverter");
 		return result;
 	}
 

@@ -8,7 +8,7 @@
  * http://www.tdg-seville.info/License.html
  --%>
 
-<%@ tag language="java" body-content="empty" %>
+<%@ tag language="java" body-content="empty"  %>
 
 <%-- Taglibs --%>
 
@@ -34,8 +34,8 @@
 
 <div class="form-group">
 	<form:label path="${path}">
-		<spring:message code="${code}" />
-	</form:label>
-	<form:textarea path="${path}" readonly="${readonly}" />
+		<spring:message code="${code}"/>:
+	</form:label><br>
+	<form:textarea path="${path}" readonly="${readonly}" cols="100" rows="10"/><br>
 	<form:errors path="${path}" cssClass="error" />
 </div>

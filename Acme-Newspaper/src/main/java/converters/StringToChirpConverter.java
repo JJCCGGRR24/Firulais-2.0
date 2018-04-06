@@ -30,7 +30,7 @@ public class StringToChirpConverter implements Converter<String, Chirp> {
 	public Chirp convert(final String text) {
 		Chirp result;
 		int id;
-
+		System.out.println("StringToChirpConverter");
 		try {
 			id = Integer.valueOf(text);
 			result = this.chirpRepository.findOne(id);

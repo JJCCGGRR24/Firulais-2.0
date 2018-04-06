@@ -21,8 +21,8 @@ import controllers.AbstractController;
 import domain.Newspaper;
 
 @Controller
-@RequestMapping("/user")
-public class UserNewspaperController extends AbstractController {
+@RequestMapping("/newspaper/user")
+public class NewspaperUserController extends AbstractController {
 
 	// Managed repository -----------------------------------------------------
 	@Autowired
@@ -31,7 +31,7 @@ public class UserNewspaperController extends AbstractController {
 
 	// Constructors -----------------------------------------------------------
 
-	public UserNewspaperController() {
+	public NewspaperUserController() {
 		super();
 	}
 

@@ -41,6 +41,7 @@ public class Chirp extends DomainEntity {
 
 	@NotBlank
 	@SafeHtml(whitelistType = WhiteListType.NONE)
+	//	@Column(columnDefinition = "TEXT")
 	public String getTitle() {
 		return this.title;
 	}
@@ -50,7 +51,7 @@ public class Chirp extends DomainEntity {
 	}
 	@NotBlank
 	@SafeHtml(whitelistType = WhiteListType.NONE)
-	@Column(columnDefinition = "BLOB")
+	@Column(columnDefinition = "TEXT")
 	public String getDescription() {
 		return this.description;
 	}

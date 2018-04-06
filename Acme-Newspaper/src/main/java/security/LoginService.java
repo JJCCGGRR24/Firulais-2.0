@@ -21,6 +21,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
+import services.ActorService;
+import domain.Actor;
+
 @Service
 @Transactional
 public class LoginService implements UserDetailsService {
@@ -29,10 +32,11 @@ public class LoginService implements UserDetailsService {
 
 	@Autowired
 	UserAccountRepository	userRepository;
+	@Autowired
+	ActorService			actorService;
 
 
 	// Business methods -------------------------------------------------------
-
 	@Override
 	public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
 		Assert.notNull(username);
@@ -48,6 +52,10 @@ public class LoginService implements UserDetailsService {
 		return result;
 	}
 
+	public Actor getPrincipalActor() {
+		final UserAccount u = LoginService.getPrincipal();
+		return this.actorService.findByUserAccount(u);
+	}
 	public static UserAccount getPrincipal() {
 		UserAccount result;
 		SecurityContext context;
@@ -72,6 +80,38 @@ public class LoginService implements UserDetailsService {
 		Assert.isTrue(result.getId() != 0);
 
 		return result;
+	}
+
+	//Hechos x nosotros
+
+	public static boolean isPrincipalAdmin() {
+		boolean res = false;
+		final UserAccount u = LoginService.getPrincipal();
+		final Authority a = new Authority();
+		a.setAuthority("ADMIN");
+		if (u.getAuthorities().contains(a))
+			res = true;
+		return res;
+	}
+
+	public static boolean isPrincipalUser() {
+		boolean res = false;
+		final UserAccount u = LoginService.getPrincipal();
+		final Authority a = new Authority();
+		a.setAuthority("USER");
+		if (u.getAuthorities().contains(a))
+			res = true;
+		return res;
+	}
+
+	public static boolean isPrincipalCustomer() {
+		boolean res = false;
+		final UserAccount u = LoginService.getPrincipal();
+		final Authority a = new Authority();
+		a.setAuthority("CUSTOMER");
+		if (u.getAuthorities().contains(a))
+			res = true;
+		return res;
 	}
 
 }

@@ -30,14 +30,10 @@
 
 
 <display:table name="newspapers" id="row" requestURI="${requestURI}"
-	pagesize="10" class="displaytag">
+	pagesize="10" class="displaytag" sort="list" defaultsort="1" defaultorder="descending">
 
-	<display:column property="publicationDate" titleKey="newspaper.publicationDate" />
+	<display:column property="publicationDate" titleKey="newspaper.publicationDate" format="{0,date,dd/MM/yyyy}"/>
 	<display:column property="title" titleKey="general.title" />
-	
-	
-	
-	
 	
 	<security:authorize access="hasRole('ADMIN')">
 	<display:column>

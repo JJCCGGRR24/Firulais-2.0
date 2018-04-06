@@ -6,6 +6,7 @@ import java.util.Date;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -67,7 +68,7 @@ public class Article extends DomainEntity {
 	}
 	@NotBlank
 	@SafeHtml(whitelistType = WhiteListType.NONE)
-	@Column(columnDefinition = "BLOB")
+	@Column(columnDefinition = "TEXT")
 	public String getBody() {
 		return this.body;
 	}
@@ -79,7 +80,7 @@ public class Article extends DomainEntity {
 	@Value("#{'${list.of.strings}'.split(',')}")
 	@EachURL
 	@ElementCollection()
-	@Column(columnDefinition = "BLOB")
+	@Column(columnDefinition = "TEXT")
 	public Collection<String> getPictures() {
 		return this.pictures;
 	}
@@ -123,7 +124,7 @@ public class Article extends DomainEntity {
 	}
 
 	@ElementCollection
-	@OneToMany(mappedBy = "article")
+	@OneToMany(mappedBy = "article", cascade = CascadeType.REMOVE)
 	@Valid
 	@NotNull
 	public Collection<FollowUp> getFollowUps() {
