@@ -15,7 +15,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -51,25 +50,6 @@ public class NewspaperController extends AbstractController {
 
 		return result;
 	}
-
-	@RequestMapping(value = "/admin/delete", method = RequestMethod.GET)
-	public ModelAndView delete(@RequestParam final int newspaperId) {
-		ModelAndView modelAndView;
-
-		final Newspaper newspaper = this.newspaperService.findOne(newspaperId);
-
-		try {
-			this.newspaperService.delete(newspaper);
-			modelAndView = new ModelAndView("redirect:/newspaper/list.do");
-		} catch (final Throwable throwable) {
-			modelAndView = new ModelAndView("redirect:/newspaper/list.do");
-			modelAndView.addObject("message", "newspaper.commit.error");
-		}
-
-		return modelAndView;
-	}
-
-	// Details ---------------------------------------------------------------
 
 	@RequestMapping("/details")
 	public ModelAndView details(@RequestParam final int newspaperId) {
