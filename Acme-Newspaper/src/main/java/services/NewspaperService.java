@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import repositories.NewspaperRepository;
+import security.LoginService;
 import domain.Article;
 import domain.Newspaper;
 import domain.Subscribe;
@@ -98,6 +99,7 @@ public class NewspaperService {
 
 	public void publish(final Newspaper newspaper) {
 		Assert.notNull(newspaper);
+		Assert.isTrue(newspaper.getUser().getUserAccount().equals(LoginService.getPrincipal()));
 		Assert.isTrue(newspaper.getPublicationDate() == null);
 		Assert.isTrue(this.isAllArticlesPublished(newspaper));
 		newspaper.setPublicationDate(new Date());

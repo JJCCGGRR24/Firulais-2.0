@@ -39,7 +39,7 @@ public class UseCase06_1Test extends AbstractTest {
 				"user1", "titleExample", "descriptionExample", "https://www.youtube.com/watch?v=cwZ0NHyz9n8&list=RDMMLAMiX5EEbFU&index=19", null
 			}, {
 				//comprobaremos que un user al dejar el title en blanco no deja guardar el newspaper
-				"user1", "", "descriptionExample", "https://www.youtube.com/watch?v=cwZ0NHyz9n8&list=RDMMLAMiX5EEbFU&index=19", IllegalArgumentException.class
+				"user1", "", "descriptionExample", "https://www.youtube.com/watch?v=cwZ0NHyz9n8&list=RDMMLAMiX5EEbFU&index=19", javax.validation.ConstraintViolationException.class
 			}
 
 		};
@@ -58,6 +58,8 @@ public class UseCase06_1Test extends AbstractTest {
 			news.setTitle(title);
 			news.setDescription(description);
 			news.setPicture(picture);
+			this.newspaperService.save(news);
+			this.newspaperService.flush();
 
 		} catch (final Throwable oops) {
 			caught = oops.getClass();
