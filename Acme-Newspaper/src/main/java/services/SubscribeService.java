@@ -32,8 +32,6 @@ public class SubscribeService {
 	private LoginService		loginService;
 
 
-
-
 	// Supporting services ----------------------------------------------------
 
 	// Constructors -----------------------------------------------------------
@@ -61,6 +59,9 @@ public class SubscribeService {
 
 	public Subscribe save(final Subscribe subscribe) {
 		Assert.notNull(subscribe);
+		Assert.isTrue(subscribe.getNewspaper().isDeprived() == true, "newspaperNotPrivated");
+		Assert.isTrue(subscribe.getNewspaper().getPublicationDate() != null, "newspaperNotPublished");
+
 		subscribe.setCustomer((Customer) this.loginService.getPrincipalActor());
 		subscribe.getCustomer().getSubscribes().add(subscribe);
 		subscribe.getNewspaper().getSubscribes().add(subscribe);

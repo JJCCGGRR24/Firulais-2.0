@@ -123,4 +123,9 @@ public class NewspaperService {
 		return res;
 	}
 
+	public List<Newspaper> getNewspaperTabooWords() {
+		return this.newspaperRepository.getNewspaperTabooWords();
+
+	}
+
 }

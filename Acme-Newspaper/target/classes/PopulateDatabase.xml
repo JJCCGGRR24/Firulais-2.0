@@ -279,6 +279,11 @@
 	<!-- #Newspapers -->
 	<bean id="newspaper1" class="domain.Newspaper">
 		<property name="title" value="Eurogamer SPAIN" />
+		<property name="publicationDate">
+			<bean factory-bean="date" factory-method="parse">
+				<constructor-arg value="03/04/2018" />
+			</bean>
+		</property>
 		<property name="description"
 			value="Eurogamer es la página independiente sobre videojuegos más grande de Europa, con noticias, análisis, avances y mucho más." />
 		<property name="picture"
@@ -332,7 +337,7 @@
 			value="Eurogamer es la página independiente sobre videojuegos más grande de Europa, con noticias, análisis, avances y mucho más." />
 		<property name="picture"
 			value="https://cdn.gamer-network.net/2018/eg12/EG-Logo-es.png/EG11/resize/-1x92/format/png/logo.png?v20180405120811" />
-		<property name="deprived" value="false" />
+		<property name="deprived" value="true" />
 		<property name="tabooWord" value="false" />
 		<property name="user" ref="user1" />
 		<property name="articles">
@@ -377,7 +382,7 @@
 		<property name="description"
 			value="El gran periódico español. Diario de referencia y decano de la prensa nacional. Líder en dispositivos móviles. Credibilidad e información al instante." />
 		<property name="picture" value="http://www.abc.es/2015/img/abc.png" />
-		<property name="deprived" value="false" />
+		<property name="deprived" value="true" />
 		<property name="tabooWord" value="false" />
 		<property name="user" ref="user2" />
 		<property name="articles">
@@ -402,7 +407,7 @@
 		<property name="description"
 			value="El gran periódico español. Diario de referencia y decano de la prensa nacional. Líder en dispositivos móviles. Credibilidad e información al instante." />
 		<property name="picture" value="http://www.abc.es/2015/img/abc.png" />
-		<property name="deprived" value="false" />
+		<property name="deprived" value="true" />
 		<property name="tabooWord" value="false" />
 		<property name="user" ref="user2" />
 		<property name="articles">

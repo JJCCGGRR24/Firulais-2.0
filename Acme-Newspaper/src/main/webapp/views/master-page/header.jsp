@@ -30,6 +30,18 @@
 			
 			<li><a class="fNiv" href="security/login.do"><spring:message
 						code="master.page.login" /></a></li>
+						
+		<li><a class="fNiv" ><spring:message code="master.register" /></a>
+			<ul>
+				<li><a href="register/user.do"><spring:message code="master.register.user"/></a>
+				<a href="register/customer.do"><spring:message code="master.register.customer"/></a>
+				</li>
+			</ul>
+		</li>
+		
+		<li><a class="fNiv" href="user/list.do"><spring:message code="master.users" /></a>
+		
+										
 		</security:authorize>
 
 		<security:authorize access="hasRole('ADMIN')">

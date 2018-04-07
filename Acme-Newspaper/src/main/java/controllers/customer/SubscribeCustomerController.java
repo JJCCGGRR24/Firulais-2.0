@@ -60,7 +60,12 @@ public class SubscribeCustomerController extends AbstractController {
 				this.subscribeService.save(c);
 				modelAndView = new ModelAndView("redirect:/article/customer/list.do?newspaperId=" + c.getNewspaper().getId());
 			} catch (final Exception e) {
-				modelAndView = this.createEditModelAndView(c, "commit.error");
+				if (e.getMessage().equals("newspaperNotPrivated"))
+					modelAndView = this.createEditModelAndView(c, "commit.newspaper.notPrivate");
+				else if (e.getMessage().equals("newspaperNotPublished"))
+					modelAndView = this.createEditModelAndView(c, "commit.newspaper.notPublished");
+				else
+					modelAndView = this.createEditModelAndView(c, "commit.error");
 			}
 		return modelAndView;
 	}

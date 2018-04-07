@@ -97,6 +97,17 @@
 	</security:authorize>
 	
 	
+	<security:authorize access="hasRole('CUSTOMER')">
+	<display:column>
+		<jstl:if test="${row.deprived == true}">
+		<spring:url value="/subscribe/customer/subscribe.do" var="editURL">
+				<spring:param name="newspaperId" value="${row.id}"></spring:param>
+		</spring:url>
+		<a href="${editURL}"> <spring:message code="subscribe.toSubscribe" /></a>
+		</jstl:if>
+	</display:column>
+	</security:authorize>
+	
 	<security:authorize access="hasRole('ADMIN')">
 	<display:column>
 			<a href="javascript:preguntar(${row.id})"><spring:message

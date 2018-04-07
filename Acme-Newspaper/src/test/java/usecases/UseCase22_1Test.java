@@ -25,10 +25,10 @@ public class UseCase22_1Test extends AbstractTest {
 	//SUT
 
 	@Autowired
-	private NewspaperService	newspaperService;
+	private SubscribeService	subscribeService;
 
 	@Autowired
-	private SubscribeService	subscribeService;
+	private NewspaperService	newspaperService;
 
 
 	//	22. An actor who is authenticated as a customer can:
@@ -39,13 +39,11 @@ public class UseCase22_1Test extends AbstractTest {
 		final Object testingData[][] = {
 			{
 
-				//comprobaremos que un customer puede suscribirse a un newspaper si aporta una
-				//tarjeta de credito valida
-				"customer1", "Jose Carlos", "VISA", "4000990618528905", 2020, 02, 450, "newspaper1_3", null
+				//comprobaremos que un customer puede suscribirse a un newspaper si este es privado
+				"customer1", "Jose Carlos", "VISA", "4000970618528905", 2020, 02, 451, "newspaper1", null
 			}, {
-				//comprobaremos que un customer no puede suscribirse a un newspapaer si aporta una 
-				//tarjeta de credito inválida
-				"customer1", "Jose Carlos", "VISA", "4000990618528905", 1996, 02, 450, "newspaper1_3", null
+				//comprobaremos que un customer no puede suscribirse a un newspapaer si este es publico
+				"customer1", "Jose Carlos", "VISA", "4000970618528905", 2020, 02, 450, "newspaper2", IllegalArgumentException.class
 			}
 
 		};
@@ -71,9 +69,6 @@ public class UseCase22_1Test extends AbstractTest {
 
 			final Subscribe suscribe = this.subscribeService.create(newspaperId);
 			suscribe.setCreditCard(creditCard);
-
-			//			final Newspaper news = this.newspaperService.findOne(newspaperId);
-			//			suscribe.setNewspaper(news);
 
 			this.subscribeService.save(suscribe);
 

@@ -9,6 +9,7 @@
 // import org.springframework.test.context.ContextConfiguration;
 // import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 //
+// import services.ArticleService;
 // import services.NewspaperService;
 // import utilities.AbstractTest;
 // import domain.Newspaper;
@@ -24,6 +25,9 @@
 //
 // @Autowired
 // private NewspaperService newspaperService;
+//
+// @Autowired
+// private ArticleService articleService;
 //
 //
 // // 6. An actor who is authenticated as a user must be able to:
@@ -57,7 +61,10 @@
 // caught = null;
 // try {
 // super.authenticate(username);
+//
+// Article article = this.articleService.create();
 // final Newspaper news = this.newspaperService.findOne(newspaperId);
+//
 //
 // this.newspaperService.flush();
 //
