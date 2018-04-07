@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.ChirpService;
 import services.TabooService;
 import controllers.AbstractController;
+import domain.Chirp;
 import domain.Taboo;
 
 @Controller
@@ -26,6 +28,9 @@ public class TabooAdministratorController extends AbstractController {
 
 	@Autowired
 	private TabooService	tabooService;
+
+	@Autowired
+	private ChirpService	chirpService;
 
 
 	//Constructor--------------------------------------------------------------------
@@ -42,6 +47,15 @@ public class TabooAdministratorController extends AbstractController {
 		final List<Taboo> tw = (List<Taboo>) this.tabooService.findAll();
 		result.addObject("requestURI", "taboo/admin/list.do");
 		result.addObject("taboos", tw);
+		return result;
+	}
+
+	@RequestMapping(value = "/listChirpTabooWord", method = RequestMethod.GET)
+	public ModelAndView listChirpTabooWord() {
+		final ModelAndView result = new ModelAndView("chirp/list");
+		final List<Chirp> tw = this.chirpService.getChirpsTabooWords();
+		result.addObject("requestURI", "taboo/admin/listChirpTabooWord.do");
+		result.addObject("chirps", tw);
 		return result;
 	}
 

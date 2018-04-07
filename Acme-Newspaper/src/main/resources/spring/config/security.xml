@@ -65,6 +65,9 @@
 			
 		<security:intercept-url pattern="/taboo/admin/create.do"
 			access="hasRole('ADMIN')" />
+			
+		<security:intercept-url pattern="/taboo/admin/listChirpTabooWord.do"
+			access="hasRole('ADMIN')" />
 
 		<!-- User -->
 		<security:intercept-url pattern="/newspaper/user/create.do"

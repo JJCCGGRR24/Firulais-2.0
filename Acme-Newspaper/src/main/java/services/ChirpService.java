@@ -92,4 +92,9 @@ public class ChirpService {
 
 	// Other business methods -------------------------------------------------
 
+	public List<Chirp> getChirpsTabooWords() {
+		return this.chirpRepository.getChirpsTabooWords();
+
+	}
+
 }
