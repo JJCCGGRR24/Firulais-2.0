@@ -44,4 +44,14 @@ public class ArticleController extends AbstractController {
 
 	}
 
+	@RequestMapping("/publicList")
+	public ModelAndView publicList() {
+		ModelAndView result;
+		final List<Article> articles = this.articleService.publicArticles();
+		result = new ModelAndView("article/list");
+		result.addObject("articles", articles);
+		result.addObject("requestURI", "article/user/publicList.do");
+		return result;
+	}
+
 }

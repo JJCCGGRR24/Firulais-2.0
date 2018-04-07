@@ -68,4 +68,13 @@ public class ArticleService {
 		return this.articleRepository.findByUser(user);
 	}
 
+	public List<Article> publicArticles() {
+		return this.articleRepository.publicArticles();
+	}
+
+	public Collection<Article> search(final String search) {
+		return this.articleRepository.search(search);
+
+	}
+
 }

@@ -5,7 +5,6 @@ import java.util.Collection;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.validation.Valid;
@@ -20,7 +19,6 @@ public class Customer extends Actor {
 
 
 	@OneToMany(mappedBy = "customer")
-	@ElementCollection
 	@Valid
 	@NotNull
 	public Collection<Subscribe> getSubscribes() {

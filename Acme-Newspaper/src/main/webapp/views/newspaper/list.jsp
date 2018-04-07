@@ -28,21 +28,80 @@
 	}
 </script>
 
+<input type="text" id="textSearch" value="">
+<input type="button" id="buttonSearch"
+	value="<spring:message code="newspaper.search"/>" />
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#buttonSearch").click(function() {
+			if ($("#textSearch").val()!="")
+				window.location.replace('newspaper/all/list.do?search='+ $("#textSearch").val());
+		});
+		$("#textSearch").on('keyup',function(e) {
+			if (e.keyCode === 13 && $("#textSearch").val()!="")
+				window.location.replace('newspaper/all/list.do?search='+ $("#textSearch").val());
+			e.preventDefault();
+		});
+	});
+</script>
+
+<br><br>
+<security:authorize access="hasRole('USER')" >	
+<input type="button"  value="<spring:message code="template.create"/>" 
+				onclick="javascript: relativeRedir('newspaper/user/create.do');"/>
+</security:authorize>
+
 
 <display:table name="newspapers" id="row" requestURI="${requestURI}"
 	pagesize="10" class="displaytag" sort="list" defaultsort="1" defaultorder="descending">
 
 	<display:column property="publicationDate" titleKey="newspaper.publicationDate" format="{0,date,dd/MM/yyyy}"/>
 	<display:column property="title" titleKey="general.title" />
+	<display:column>
+			<input type="button"  value="<spring:message code="general.details"/>" 
+				onclick="javascript: relativeRedir('newspaper/details.do?newspaperId='+${row.id});"/>
+	</display:column>
+	
+	<security:authorize access="hasRole('USER')" >	
+		<security:authentication property="principal.username" var="username"/>
+			<display:column >
+			<jstl:if test ="${empty row.publicationDate}">
+			<jstl:if test="${row.user.userAccount.username eq username}">
+			<spring:url
+					value="/newspaper/user/edit.do"
+					var="editURL">
+					<spring:param name="newspaperId" value="${row.id}"></spring:param>
+				</spring:url>
+				<a href="${editURL}"> <spring:message code="template.edit" /></a>
+			</jstl:if>
+			</jstl:if>
+		</display:column> 
+	</security:authorize>
+	
+	
+	<security:authorize access="hasRole('USER')" >	
+		<security:authentication property="principal.username" var="username"/>
+			<display:column >
+			<jstl:if test ="${empty row.publicationDate}">
+			<jstl:if test="${row.user.userAccount.username eq username}">
+			<spring:url
+					value="/newspaper/user/publish.do"
+					var="editURL">
+					<spring:param name="newspaperId" value="${row.id}"></spring:param>
+				</spring:url>
+				<a href="${editURL}"> <spring:message code="template.publish" /></a>
+			</jstl:if>
+			</jstl:if>
+		</display:column> 
+	</security:authorize>
+	
 	
 	<security:authorize access="hasRole('ADMIN')">
 	<display:column>
 			<a href="javascript:preguntar(${row.id})"><spring:message
 					code="newspaper.delete" /></a>
-		</display:column>
+	</display:column>
 	</security:authorize>
 
-	<input type="button"  value="<spring:message code="general.details"/>" 
-	onclick="javascript: relativeRedir('newspaper/details.do?newspaperId='+${row.id});"/>
-	
 </display:table>

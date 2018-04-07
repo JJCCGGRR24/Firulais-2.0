@@ -23,6 +23,11 @@
 	<ul id="jMenu">
 		<!-- Do not forget the "fNiv" class for the first level links !! -->
 		<security:authorize access="isAnonymous()">
+		
+			<li><a class="fNiv" href="newspaper/list.do"><spring:message
+						code="master.page.newspaper.published" /></a></li>
+			
+			
 			<li><a class="fNiv" href="security/login.do"><spring:message
 						code="master.page.login" /></a></li>
 		</security:authorize>
@@ -30,6 +35,10 @@
 		<security:authorize access="hasRole('ADMIN')">
 			<li><a class="fNiv" href="admin/dashboard.do"><spring:message
 						code="master.page.administrator.dashboard" /></a></li>
+						
+			<li><a class="fNiv" href="taboo/admin/list.do"><spring:message
+						code="master.page.administrator.taboowords" /></a></li>
+						
 			<li><a class="fNiv"><spring:message
 						code="master.page.administrator" /></a>
 				<ul>
@@ -46,7 +55,8 @@
 		</security:authorize>
 
 		<security:authorize access="hasRole('USER')">
-			<li><a class="fNiv"><spring:message code="master.page.chirp" /></a>
+			<li><a href="newspaper/user/myList.do"><spring:message code="master.page.myNewspapers" /></a>
+			<li><a class="fNiv"><spring:message code="master.page.chirps" /></a>
 				<ul>
 					<li class="arrow"></li>
 					<li><a href="user/myDetails.do"><spring:message
@@ -57,6 +67,19 @@
 								code="master.page.fromFollows" /></a></li>
 				</ul></li>
 		</security:authorize>
+
+		<li><a class="fNiv"><spring:message code="master.page.articles" /></a>
+			<ul>
+				<li class="arrow"></li>
+				<li><a href="article/publicList.do"><spring:message
+							code="template.all" /></a></li>
+				<security:authorize access="hasRole('USER')">
+					<li><a href="article/user/create.do"><spring:message
+								code="template.new" /></a></li>
+					<li><a href="article/user/myArticles.do"><spring:message
+								code="master.page.myArticles" /></a></li>
+				</security:authorize>
+			</ul></li>
 
 		<security:authorize access="isAuthenticated()">
 			<li><a class="fNiv"> <spring:message

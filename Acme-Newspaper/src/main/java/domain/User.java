@@ -5,7 +5,6 @@ import java.util.Collection;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
@@ -32,7 +31,6 @@ public class User extends Actor {
 	@OneToMany(mappedBy = "user")
 	@Valid
 	@NotNull
-	@ElementCollection
 	public Collection<Newspaper> getNewspapers() {
 		return this.newspapers;
 	}
@@ -43,7 +41,6 @@ public class User extends Actor {
 	@OneToMany(mappedBy = "user")
 	@Valid
 	@NotNull
-	@ElementCollection
 	public Collection<Chirp> getChirps() {
 		return this.chirps;
 	}
@@ -77,7 +74,6 @@ public class User extends Actor {
 	@OneToMany(mappedBy = "user")
 	@NotNull
 	@Valid
-	@ElementCollection
 	public Collection<Article> getArticles() {
 		return this.articles;
 	}

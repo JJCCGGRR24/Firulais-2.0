@@ -21,7 +21,7 @@
 		<img src="${newspaper.picture }" alt="${picture.title }" ></img>
 	</div>
 </jstl:if>
-<b> <spring:message code="general.title"/>:</b> ${newspaper.title} ${newspaper.publicationDate}
+<b> <spring:message code="general.title"/>:</b> ${newspaper.title} - (${newspaper.publicationDate})
 <br>
 <b> <spring:message code="general.description"/>:</b> ${newspaper.description }
 <br>

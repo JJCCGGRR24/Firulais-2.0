@@ -123,7 +123,6 @@ public class Article extends DomainEntity {
 		this.newspaper = newspaper;
 	}
 
-	@ElementCollection
 	@OneToMany(mappedBy = "article", cascade = CascadeType.REMOVE)
 	@Valid
 	@NotNull

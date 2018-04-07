@@ -19,8 +19,6 @@ import domain.Newspaper;
 import domain.Subscribe;
 import domain.User;
 
-;
-
 @Service
 @Transactional
 public class NewspaperService {
@@ -68,11 +66,13 @@ public class NewspaperService {
 	public Newspaper save(final Newspaper newspaper) {
 		Assert.notNull(newspaper);
 		Assert.isTrue(newspaper.getPublicationDate() == null);
+		Assert.isTrue(this.checkPrincipal(newspaper));
 		return this.newspaperRepository.save(newspaper);
 	}
 
 	public void delete(final Newspaper newspaper) {
 		Assert.notNull(newspaper);
+		Assert.isTrue(this.checkPrincipal(newspaper));
 		this.newspaperRepository.delete(newspaper);
 	}
 
@@ -88,7 +88,7 @@ public class NewspaperService {
 
 	public boolean isAllArticlesPublished(final Newspaper n) {
 		boolean res = false;
-		if (this.getArticlesNoPublished(n).size() == 0)
+		if (this.getArticlesNoPublished(n).isEmpty())
 			res = true;
 		return res;
 	}
@@ -97,17 +97,30 @@ public class NewspaperService {
 		return this.newspaperRepository.getArticlesNoPublished(n);
 	}
 
-	public void publish(final Newspaper newspaper) {
+	public boolean publish(final Newspaper newspaper) {
 		Assert.notNull(newspaper);
 		Assert.isTrue(newspaper.getUser().getUserAccount().equals(LoginService.getPrincipal()));
 		Assert.isTrue(newspaper.getPublicationDate() == null);
-		Assert.isTrue(this.isAllArticlesPublished(newspaper));
 		newspaper.setPublicationDate(new Date());
 		this.actualizaFechasArticles(newspaper);
 		this.newspaperRepository.save(newspaper);
+		return this.isAllArticlesPublished(newspaper);
 	}
 	private void actualizaFechasArticles(final Newspaper n) {
 		for (final Article a : n.getArticles())
 			a.setMoment(n.getPublicationDate());
 	}
+
+	public Collection<Newspaper> search(final String search) {
+		return this.newspaperRepository.search(search);
+
+	}
+
+	public boolean checkPrincipal(final Newspaper obj) {
+		boolean res = false;
+		if (LoginService.getPrincipal().equals(obj.getUser().getUserAccount()))
+			res = true;
+		return res;
+	}
+
 }

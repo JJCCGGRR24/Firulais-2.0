@@ -23,6 +23,24 @@
 	}
 </script>
 
+<input type="text" id="textSearch" value="">
+<input type="button" id="buttonSearch"
+	value="<spring:message code="newspaper.search"/>" />
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#buttonSearch").click(function() {
+			if ($("#textSearch").val()!="")
+				window.location.replace('article/all/list.do?search='+ $("#textSearch").val());
+		});
+		$("#textSearch").on('keyup',function(e) {
+			if (e.keyCode === 13 && $("#textSearch").val()!="")
+				window.location.replace('article/all/list.do?search='+ $("#textSearch").val());
+			e.preventDefault();
+		});
+	});
+</script>
+
 <display:table  name="articles" id="row"  pagesize="10" requestURI="${requestURI}" class="displaytag" > 
 
 	<spring:message code="article.title" var="title"></spring:message>

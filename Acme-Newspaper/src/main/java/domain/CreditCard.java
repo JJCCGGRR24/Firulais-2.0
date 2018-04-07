@@ -5,6 +5,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.CreditCardNumber;
 import org.hibernate.validator.constraints.NotBlank;
@@ -36,7 +37,9 @@ public class CreditCard {
 	public void setHolderName(final String holderName) {
 		this.holderName = holderName;
 	}
+
 	@NotBlank
+	@Pattern(regexp = "^(VISA)||(MASTERCARD)||(DISCOVER)||(DINNERS)||(AMEX)$")
 	public String getBrandName() {
 		return this.brandName;
 	}

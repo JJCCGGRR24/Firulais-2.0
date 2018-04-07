@@ -114,4 +114,8 @@ public class LoginService implements UserDetailsService {
 		return res;
 	}
 
+	public Actor actorPrincipal(final UserAccount userAccount) {
+		return this.actorPrincipal(userAccount);
+	}
+
 }

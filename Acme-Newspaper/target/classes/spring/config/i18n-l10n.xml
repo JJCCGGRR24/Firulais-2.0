@@ -31,6 +31,8 @@
 		<value>/views/user/messages</value>
 		<value>/views/article/messages</value>
 		<value>/views/chirp/messages</value>
+		<value>/views/subscribe/messages</value>
+		<value>/views/taboo/messages</value>
 		
 		
 	</util:list>
