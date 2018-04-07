@@ -8,18 +8,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import services.ArticleService;
 import controllers.AbstractController;
 import domain.Article;
+import services.ArticleService;
 
 @Controller
-@RequestMapping("/newspaper/admin")
+@RequestMapping("/article/admin")
 public class ArticleAdministratorController extends AbstractController {
 
 	//Services-----------------------------------------------------------------------
 
 	@Autowired
-	private ArticleService	articleService;
+	private ArticleService articleService;
 
 
 	//Constructor--------------------------------------------------------------------

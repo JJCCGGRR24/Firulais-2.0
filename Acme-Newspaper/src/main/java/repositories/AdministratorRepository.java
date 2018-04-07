@@ -1,11 +1,14 @@
 
 package repositories;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import domain.Administrator;
+import domain.Newspaper;
 
 @Repository
 public interface AdministratorRepository extends JpaRepository<Administrator, Integer> {
@@ -23,11 +26,11 @@ public interface AdministratorRepository extends JpaRepository<Administrator, In
 	@Query("select avg(n.articles.size), stddev(n.articles.size) from Newspaper n")
 	Double[] queryC3();
 
-	@Query("select n.title from Newspaper n where (n.articles.size*0.1)>=(avg(n))")
-	Object[] queryC4();
+	@Query("select n.title from Newspaper n where (n.articles.size*0.1)>=(select avg(nn) from Newspaper nn)")
+	List<Newspaper> queryC4();
 
-	@Query("select n.title from Newspaper n where (n.articles.size*0.1)<=(avg(n))")
-	Object[] queryC5();
+	@Query("select n.title from Newspaper n where (n.articles.size*0.1)<=(select avg(nn) from Newspaper nn)")
+	List<Newspaper> queryC5();
 
 	@Query("select (count(u)*1.0)/(select count(uu) from User uu) from User u where u.newspapers.size < 0")
 	Double queryC6();
@@ -49,12 +52,12 @@ public interface AdministratorRepository extends JpaRepository<Administrator, In
 	@Query("select avg(u.chirps.size), stddev(u.chirps.size) from User u")
 	Double[] queryB4();
 
-	@Query("select (count(u)*1.0)/(select count(uu) from User uu) from User u where (u.chirps.size *0.75) > avg(u.chirps.size)")
+	@Query("select (count(u)*1.0)/(select count(uu) from User uu) from User u where (u.chirps.size *0.75) > (select avg(us.chirps.size) from User us)")
 	Double queryB5();
 
 	//LEVEL A
 
-	@Query("select (count(u)*1.0)/(select count(nn) from Newspaper nn where nn.deprived = 1) from Newspaper n where n.deprived = 0")
+	@Query("select (count(n)*1.0)/(select count(nn) from Newspaper nn where nn.deprived = 1) from Newspaper n where n.deprived = 0")
 	Double queryA1();
 
 	@Query("select avg(n.articles.size) from Newspaper n where n.deprived = 1")
