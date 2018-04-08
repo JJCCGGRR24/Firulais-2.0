@@ -24,4 +24,7 @@ public interface NewspaperRepository extends JpaRepository<Newspaper, Integer> {
 
 	@Query("select n from Newspaper n where n.tabooWord is true")
 	List<Newspaper> getNewspaperTabooWords();
+
+	@Query("select n from Newspaper n where n.publicationDate = null")
+	public List<Newspaper> getNotPublishedNewspapers();
 }

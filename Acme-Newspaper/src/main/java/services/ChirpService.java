@@ -67,17 +67,6 @@ public class ChirpService {
 		return this.chirpRepository.save(chirp);
 	}
 
-	public boolean isTaboo(final Chirp c) {
-		boolean b = false;
-		for (final Taboo t : this.tabooService.findAll()) {
-			final String s = t.getWord().toLowerCase();
-			if (c.getTitle().toLowerCase().contains(s) || c.getDescription().toLowerCase().contains(s)) {
-				b = true;
-				break;
-			}
-		}
-		return b;
-	}
 	public void delete(final Chirp chirp) {
 		Assert.isTrue(LoginService.isPrincipalAdmin());
 		this.chirpRepository.delete(chirp);
@@ -94,7 +83,17 @@ public class ChirpService {
 
 	public List<Chirp> getChirpsTabooWords() {
 		return this.chirpRepository.getChirpsTabooWords();
-
 	}
 
+	public boolean isTaboo(final Chirp c) {
+		boolean b = false;
+		for (final Taboo t : this.tabooService.findAll()) {
+			final String s = t.getWord().toLowerCase();
+			if (c.getTitle().toLowerCase().contains(s) || c.getDescription().toLowerCase().contains(s)) {
+				b = true;
+				break;
+			}
+		}
+		return b;
+	}
 }

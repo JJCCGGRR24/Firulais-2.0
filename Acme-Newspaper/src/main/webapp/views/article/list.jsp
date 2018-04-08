@@ -21,6 +21,8 @@
 			//Y aquí pon cualquier cosa que quieras que salga si le diste al boton de cancelar
 			alert('<spring:message code="newspaper.negativeDelete"/>');
 	}
+	
+	
 </script>
 
 <input type="text" id="textSearch" value="">
@@ -44,18 +46,47 @@
 <display:table  name="articles" id="row"  pagesize="10" requestURI="${requestURI}" class="displaytag" > 
 
 	<spring:message code="article.title" var="title"></spring:message>
-	<display:column title="${title}" property ="title" />
+	<display:column titleKey="article.title">
+		<a href="article/details.do?articleId=${row.id}">${row.title}</a>
+	</display:column>
 	
-	<spring:message code="article.summary" var="summary"></spring:message>
-	<display:column title="${summary}" property ="summary" />
+	<display:column titleKey="article.summary">
+		<jstl:if test="${fn:length(row.summary) > 100}">
+			<span class="teaser">${fn:substring(row.summary, 0, 100)}</span>
+			<span class="complete">${row.summary}</span>
+			<span class="more">${template.more}...</span>
+		</jstl:if>
+		<jstl:if test="${!(fn:length(row.summary) > 100)}">
+			${row.summary}
+		</jstl:if>
+	</display:column>
 	
-	<spring:message code="article.body" var="body"></spring:message>
-	<display:column title="${body}" property ="body" />
+	<display:column titleKey="article.body">
+		<jstl:if test="${fn:length(row.body) > 100}">
+			<span class="teaser">${fn:substring(row.body, 0, 100)}</span>
+			<span class="complete">${row.body}</span>
+			<span class="more">${template.more}...</span>
+		</jstl:if>
+		<jstl:if test="${!(fn:length(row.body) > 100)}">
+			${row.body}
+		</jstl:if>
+	</display:column>
 	
-	<spring:message code="article.moment" var="moment"></spring:message>
-	<display:column title="${moment}" property ="moment" />
+	<display:column titleKey="article.moment" property ="moment" format="{0,date,dd/MM/yy HH:mm}"/>
 	
-		<security:authorize access="hasRole('ADMIN')">
+	<jstl:if test="${requestURI eq 'article/user/myList.do'}">
+		<display:column titleKey="template.edit">
+			<jstl:if test="${row.finalMode eq false and row.moment eq null and row.newspaper.publicationDate eq null}">
+				<input type="button" name="edit" value="<spring:message code="template.edit"/>" 
+				onclick="javascript: relativeRedir('article/user/edit.do?articleId=${row.id}');"/>
+			</jstl:if>
+			<jstl:if test="${!(row.finalMode eq false and row.moment eq null and row.newspaper.publicationDate eq null)}">
+				<spring:message code="article.finalMode"/>
+			</jstl:if>
+		</display:column>
+	</jstl:if>
+	
+	<security:authorize access="hasRole('ADMIN')">
 		<display:column>
 			<a href="javascript:preguntar(${row.id})"><spring:message
 					code="newspaper.delete" /></a>
@@ -64,3 +95,13 @@
 	
 
 </display:table>
+
+<script>
+	$(".more").toggle(function(){
+	    $(this).text("<spring:message code="template.less"/>...").siblings(".teaser").hide();  
+	    $(this).text("<spring:message code="template.less"/>...").siblings(".complete").show();    
+	}, function(){
+		$(this).text("<spring:message code="template.more"/>...").siblings(".teaser").show();
+		$(this).text("<spring:message code="template.more"/>...").siblings(".complete").hide();    
+	});
+</script>

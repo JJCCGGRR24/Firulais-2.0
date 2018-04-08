@@ -14,10 +14,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.ArticleService;
 import services.ChirpService;
+import services.NewspaperService;
 import services.TabooService;
 import controllers.AbstractController;
+import domain.Article;
 import domain.Chirp;
+import domain.Newspaper;
 import domain.Taboo;
 
 @Controller
@@ -27,10 +31,16 @@ public class TabooAdministratorController extends AbstractController {
 	//Services-----------------------------------------------------------------------
 
 	@Autowired
-	private TabooService	tabooService;
+	private TabooService		tabooService;
 
 	@Autowired
-	private ChirpService	chirpService;
+	private ChirpService		chirpService;
+
+	@Autowired
+	private NewspaperService	newspaperService;
+
+	@Autowired
+	private ArticleService		articleService;
 
 
 	//Constructor--------------------------------------------------------------------
@@ -56,6 +66,24 @@ public class TabooAdministratorController extends AbstractController {
 		final List<Chirp> tw = this.chirpService.getChirpsTabooWords();
 		result.addObject("requestURI", "taboo/admin/listChirpTabooWord.do");
 		result.addObject("chirps", tw);
+		return result;
+	}
+
+	@RequestMapping(value = "/listNewspaperTabooWord", method = RequestMethod.GET)
+	public ModelAndView listNewspaperTabooWord() {
+		final ModelAndView result = new ModelAndView("newspaper/list");
+		final List<Newspaper> tw = this.newspaperService.getNewspaperTabooWords();
+		result.addObject("requestURI", "taboo/admin/listNewspaperTabooWord.do");
+		result.addObject("newspapers", tw);
+		return result;
+	}
+
+	@RequestMapping(value = "/listArticleTabooWord", method = RequestMethod.GET)
+	public ModelAndView listArticlesTabooWord() {
+		final ModelAndView result = new ModelAndView("article/list");
+		final List<Article> tw = this.articleService.getArticlesTabooWords();
+		result.addObject("requestURI", "taboo/admin/listArticleTabooWord.do");
+		result.addObject("articles", tw);
 		return result;
 	}
 

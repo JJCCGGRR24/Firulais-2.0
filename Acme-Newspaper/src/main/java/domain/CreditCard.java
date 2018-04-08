@@ -6,6 +6,7 @@ import javax.persistence.AccessType;
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.CreditCardNumber;
 import org.hibernate.validator.constraints.NotBlank;
@@ -31,6 +32,7 @@ public class CreditCard {
 
 
 	@NotBlank
+	@Size(max = 255)
 	public String getHolderName() {
 		return this.holderName;
 	}
@@ -40,6 +42,7 @@ public class CreditCard {
 
 	@NotBlank
 	@Pattern(regexp = "^(VISA)||(MASTERCARD)||(DISCOVER)||(DINNERS)||(AMEX)$")
+	@Size(max = 255)
 	public String getBrandName() {
 		return this.brandName;
 	}
@@ -48,6 +51,7 @@ public class CreditCard {
 	}
 	@NotBlank
 	@CreditCardNumber
+	@Size(max = 255)
 	public String getNumber() {
 		return this.number;
 	}

@@ -15,12 +15,20 @@
        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
       
 <tiles-definitions>
-
-	
 	
 	 <definition name="article/list" extends="master.page">	
 		<put-attribute name="title" value="Lista de artículos" />
 		<put-attribute name="body" value="/views/article/list.jsp" />
+	</definition> 
+	
+	 <definition name="article/edit" extends="master.page">	
+		<put-attribute name="title" value="Write artículo" />
+		<put-attribute name="body" value="/views/article/edit.jsp" />
+	</definition> 
+	
+	<definition name="article/details" extends="master.page">	
+		<put-attribute name="title" value="Article" />
+		<put-attribute name="body" value="/views/article/details.jsp" />
 	</definition> 
 	
 </tiles-definitions>

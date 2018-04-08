@@ -4,6 +4,7 @@ package domain;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -16,6 +17,7 @@ public class Taboo extends DomainEntity {
 
 
 	@NotBlank
+	@Size(max = 255)
 	public String getWord() {
 		return this.word;
 	}

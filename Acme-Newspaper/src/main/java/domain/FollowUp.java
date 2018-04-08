@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
@@ -37,6 +38,7 @@ public class FollowUp extends DomainEntity {
 
 	@NotBlank
 	@SafeHtml(whitelistType = WhiteListType.NONE)
+	@Size(max = 255)
 	public String getTitle() {
 		return this.title;
 	}
@@ -55,6 +57,7 @@ public class FollowUp extends DomainEntity {
 	}
 	@NotBlank
 	@SafeHtml(whitelistType = WhiteListType.NONE)
+	@Size(max = 65000)
 	public String getSummary() {
 		return this.summary;
 	}
@@ -62,6 +65,8 @@ public class FollowUp extends DomainEntity {
 	public void setSummary(final String summary) {
 		this.summary = summary;
 	}
+
+	@Size(max = 65000)
 	@NotBlank
 	@SafeHtml(whitelistType = WhiteListType.NONE)
 	@Column(columnDefinition = "TEXT")
@@ -75,6 +80,7 @@ public class FollowUp extends DomainEntity {
 
 	@Value("#{'${list.of.strings}'.split(',')}")
 	@EachURL
+	@Size(max = 255)
 	@ElementCollection
 	@Column(columnDefinition = "TEXT")
 	public Collection<String> getPictures() {

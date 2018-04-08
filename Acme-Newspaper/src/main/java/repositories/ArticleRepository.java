@@ -22,4 +22,7 @@ public interface ArticleRepository extends JpaRepository<Article, Integer> {
 
 	@Query("select a from Article a where a.newspaper.publicationDate != null and (a.title like %?1% or a.summary like %?1% or a.body like %?1%)")
 	Collection<Article> search(String search);
+
+	@Query("select a from Article a where a.tabooWord is true")
+	List<Article> getArticlesTabooWords();
 }

@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
@@ -30,6 +31,7 @@ public abstract class Actor extends DomainEntity {
 
 	@NotBlank
 	@SafeHtml(whitelistType = WhiteListType.NONE)
+	@Size(max = 255)
 	public String getName() {
 		return this.name;
 	}
@@ -40,6 +42,7 @@ public abstract class Actor extends DomainEntity {
 
 	@NotBlank
 	@SafeHtml(whitelistType = WhiteListType.NONE)
+	@Size(max = 255)
 	public String getSurname() {
 		return this.surname;
 	}
@@ -49,6 +52,7 @@ public abstract class Actor extends DomainEntity {
 	}
 
 	@SafeHtml(whitelistType = WhiteListType.NONE)
+	@Size(max = 255)
 	public String getPostalAddress() {
 		return this.postalAddress;
 	}
@@ -58,6 +62,7 @@ public abstract class Actor extends DomainEntity {
 	}
 
 	@SafeHtml(whitelistType = WhiteListType.NONE)
+	@Size(max = 255)
 	public String getPhone() {
 		return this.phone;
 	}
@@ -69,6 +74,7 @@ public abstract class Actor extends DomainEntity {
 	@Email
 	@NotBlank
 	@SafeHtml(whitelistType = WhiteListType.NONE)
+	@Size(max = 255)
 	public String getEmail() {
 		return this.email;
 	}

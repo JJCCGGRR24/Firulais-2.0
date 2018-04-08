@@ -15,6 +15,7 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <jstl:if test="${!(newspaper.picture eq null)}">
 	<div align="center">
@@ -35,6 +36,28 @@
 	<display:column titleKey="article.writer" >
 		<a href="user/details.do?userId=${row.user.id}">${row.user.userAccount.username}</a>
 	</display:column>
-	<display:column property="summary" titleKey="article.summary" />
+	<display:column titleKey="article.summary">
+		<jstl:if test="${fn:length(row.summary) > 100}">
+			<span class="teaser">${fn:substring(row.summary, 0, 100)}</span>
+			<span class="complete">${row.summary}</span>
+			<span class="more">${template.more}...</span>
+		</jstl:if>
+		<jstl:if test="${!(fn:length(row.summary) > 100)}">
+			${row.summary}
+		</jstl:if>
+	</display:column>
 	
 </display:table>
+
+
+
+
+<script>
+	$(".more").toggle(function(){
+	    $(this).text("<spring:message code="template.less"/>...").siblings(".teaser").hide();  
+	    $(this).text("<spring:message code="template.less"/>...").siblings(".complete").show();    
+	}, function(){
+		$(this).text("<spring:message code="template.more"/>...").siblings(".teaser").show();
+		$(this).text("<spring:message code="template.more"/>...").siblings(".complete").hide();    
+	});
+</script>

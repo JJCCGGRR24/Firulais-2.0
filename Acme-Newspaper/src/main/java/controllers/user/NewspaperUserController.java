@@ -151,6 +151,8 @@ public class NewspaperUserController extends AbstractController {
 		result.addObject("newspaper", newspaper);
 		result.addObject("message", message);
 
+		result.addObject("requestURI", "newspaper/user/edit.do");
+
 		return result;
 	}
 

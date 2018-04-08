@@ -32,6 +32,9 @@ public class UserService {
 	@Autowired
 	private UserRepository	userRepository;
 
+	@Autowired
+	private LoginService	loginservice;
+
 
 	// Supporting services ----------------------------------------------------
 
@@ -120,5 +123,15 @@ public class UserService {
 		final User user = this.userRepository.findByPrincipal(userAccount.getId());
 		Assert.isTrue(user.getUserAccount().equals(userAccount));
 		return user;
+	}
+
+	public Collection<User> getMyFollows() {
+		final User logueado = (User) this.loginservice.getPrincipalActor();
+		return logueado.getFollows();
+	}
+
+	public Collection<User> getMyFollowers() {
+		final User logueado = (User) this.loginservice.getPrincipalActor();
+		return logueado.getFollowers();
 	}
 }

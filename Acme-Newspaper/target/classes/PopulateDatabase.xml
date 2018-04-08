@@ -420,6 +420,21 @@
 			<list></list>
 		</property>
 	</bean>
+	
+	<bean id="newspaper3" class="domain.Newspaper">
+		<property name="title" value="20 Minutos" />
+		<property name="picture" value="https://yt3.ggpht.com/a-/AJLlDp1BN3DCWrOPTMnRAIrAHtYChahB-kJvdqhGnA=s900-mo-c-c0xffffffff-rj-k-no" />
+		<property name="description" value="Diario de información general y local más leído de España, consulta las noticias de última hora de España, internacional, local, deportes en 20minutos. Cialis." />
+		<property name="deprived" value="false" />
+		<property name="tabooWord" value="true" />
+		<property name="user" ref="user3" />
+		<property name="articles">
+			<list></list>
+		</property>
+		<property name="subscribes">
+			<list></list>
+		</property>
+	</bean>
 
 	<!-- #Articles -->
 	<bean id="article1" class="domain.Article">

@@ -16,6 +16,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
@@ -41,6 +42,7 @@ public class Article extends DomainEntity {
 
 	@NotBlank
 	@SafeHtml(whitelistType = WhiteListType.NONE)
+	@Size(max = 255)
 	public String getTitle() {
 		return this.title;
 	}
@@ -59,6 +61,8 @@ public class Article extends DomainEntity {
 	}
 	@NotBlank
 	@SafeHtml(whitelistType = WhiteListType.NONE)
+	@Column(columnDefinition = "TEXT")
+	@Size(max = 65000)
 	public String getSummary() {
 		return this.summary;
 	}
@@ -69,6 +73,7 @@ public class Article extends DomainEntity {
 	@NotBlank
 	@SafeHtml(whitelistType = WhiteListType.NONE)
 	@Column(columnDefinition = "TEXT")
+	@Size(max = 65000)
 	public String getBody() {
 		return this.body;
 	}
@@ -81,6 +86,7 @@ public class Article extends DomainEntity {
 	@EachURL
 	@ElementCollection()
 	@Column(columnDefinition = "TEXT")
+	@Size(max = 65000)
 	public Collection<String> getPictures() {
 		return this.pictures;
 	}
@@ -115,6 +121,7 @@ public class Article extends DomainEntity {
 
 	@ManyToOne(optional = false)
 	@Valid
+	@NotNull
 	public Newspaper getNewspaper() {
 		return this.newspaper;
 	}
@@ -134,7 +141,8 @@ public class Article extends DomainEntity {
 		this.followUps = followUps;
 	}
 
-	@ManyToOne(optional = true)
+	@NotNull
+	@ManyToOne(optional = false)
 	@Valid
 	public User getUser() {
 		return this.user;

@@ -22,7 +22,6 @@
 		<form:hidden path="id" />
 		<form:hidden path="version" />
 		<form:hidden path="publicationDate" />
-		<form:hidden path="deprived" />
 		<form:hidden path="tabooWord" />
 		<form:hidden path="articles" />
 		<form:hidden path="user" />
@@ -31,6 +30,11 @@
 	<acme:textbox code="chirp.title" path="title" size="100"/><br>
 	<acme:textbox code="general.picture" path="picture" size="100"/><br>
 	<acme:textarea code="chirp.description" path="description"/>
+	<form:label path="deprived">
+	</form:label>	
+	<form:checkbox path="deprived"/>
+	<spring:message code="newspaper.deprived" />	
+  	<form:errors path="deprived" cssClass="error" />
 	<br>
 	<input type="submit" name="save" value="<spring:message code="template.save"/>" />
 	

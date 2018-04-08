@@ -22,6 +22,9 @@
 
 	<security:http auto-config="true" use-expressions="true">
 		<security:intercept-url pattern="/" access="permitAll" />
+		
+		<security:intercept-url pattern="/law/**"
+			access="permitAll" />
 
 		<security:intercept-url pattern="/favicon.ico"
 			access="permitAll" />
@@ -56,28 +59,35 @@
 			access="hasRole('ADMIN')" />
 		<security:intercept-url pattern="/admin/dashboard.do"
 			access="hasRole('ADMIN')" />
-			
+
 		<security:intercept-url pattern="/taboo/admin/list.do"
 			access="hasRole('ADMIN')" />
-			
+
 		<security:intercept-url pattern="/taboo/admin/edit.do"
 			access="hasRole('ADMIN')" />
-			
+
 		<security:intercept-url pattern="/taboo/admin/create.do"
 			access="hasRole('ADMIN')" />
-			
+
 		<security:intercept-url pattern="/taboo/admin/listChirpTabooWord.do"
 			access="hasRole('ADMIN')" />
-			
+
 		<security:intercept-url pattern="/taboo/admin/listNewspaperTabooWord.do"
 			access="hasRole('ADMIN')" />
+
+		<security:intercept-url pattern="/taboo/admin/listArticleTabooWord.do"
+			access="hasRole('ADMIN')" />
+
+		<security:intercept-url pattern="/chirp/admin/**"
+			access="hasRole('ADMIN')" />
+
 
 		<!-- User -->
 		<security:intercept-url pattern="/newspaper/user/create.do"
 			access="hasRole('USER')" />
-			<security:intercept-url pattern="/newspaper/user/edit.do"
+		<security:intercept-url pattern="/newspaper/user/edit.do"
 			access="hasRole('USER')" />
-			<security:intercept-url pattern="/newspaper/user/publish.do"
+		<security:intercept-url pattern="/newspaper/user/publish.do"
 			access="hasRole('USER')" />
 		<security:intercept-url pattern="/chirp/user/create.do"
 			access="hasRole('USER')" />
@@ -91,10 +101,19 @@
 			access="hasRole('USER')" />
 		<security:intercept-url pattern="/article/user/myList.do"
 			access="hasRole('USER')" />
+		<security:intercept-url pattern="/article/user/edit.do"
+			access="hasRole('USER')" />
+		<security:intercept-url pattern="/article/user/create.do"
+			access="hasRole('USER')" />
+		<security:intercept-url pattern="/follow/user/list.do"
+			access="hasRole('USER')" />
+		<security:intercept-url pattern="/follower/user/list.do"
+			access="hasRole('USER')" />
 
 		<!-- Customer -->
-		<security:intercept-url pattern="/subscribe/customer/subscribe.do" access="hasRole('CUSTOMER')" />
-		
+		<security:intercept-url pattern="/subscribe/customer/subscribe.do"
+			access="hasRole('CUSTOMER')" />
+
 		<!-- All -->
 		<security:intercept-url pattern="/register/user.do"
 			access="permitAll" />
@@ -108,13 +127,16 @@
 			access="permitAll" />
 		<security:intercept-url pattern="/article/publicList.do"
 			access="permitAll" />
-			
+
 		<security:intercept-url pattern="/newspaper/all/list.do"
 			access="permitAll" />
-		
+
 		<security:intercept-url pattern="/article/all/list.do"
 			access="permitAll" />
 		
+		<security:intercept-url pattern="/article/details.do"
+			access="permitAll" />
+
 
 
 

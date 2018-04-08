@@ -128,4 +128,8 @@ public class NewspaperService {
 
 	}
 
+	public List<Newspaper> getNotPublishedNewspapers() {
+		return this.newspaperRepository.getNotPublishedNewspapers();
+	}
+
 }
