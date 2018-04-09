@@ -22,7 +22,6 @@
 	
 	<spring:message code="sponsorship.creditCard.brandName"/>
 	<form:select path="creditCard.brandName" >
-		<form:option value="0" label="---------"/>
 		<form:option value="VISA" label="VISA"/>
 		<form:option value="MASTERCARD" label="MASTERCARD"/>
 		<form:option value="DISCOVER" label="DISCOVER"/>
@@ -63,6 +62,6 @@
 	<input type="submit" name="save" value="<spring:message code='subscribe.toSubscribe'/>" />
 
 	<input type="button" value="<spring:message code="template.cancel"/>" 
-	onclick="document.location.href='newspaper/customer/list.do'"/>
+	onclick="document.location.href='newspaper/list.do'"/>
 
 </form:form>

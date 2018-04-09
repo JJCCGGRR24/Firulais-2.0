@@ -47,7 +47,6 @@ public class RegisterController extends AbstractController {
 	public ModelAndView save(@Valid final RegisterForm registerForm, final BindingResult bindingResult) {
 		ModelAndView res = new ModelAndView();
 		final User user = this.userService.reconstruct(registerForm);
-
 		if (bindingResult.hasErrors())
 			res = this.createEditModelAndView(registerForm, "commit.error");
 		else if (!(registerForm.getConfirmPassword().equals(registerForm.getPassword())))
@@ -56,10 +55,8 @@ public class RegisterController extends AbstractController {
 			res = this.createEditModelAndView(registerForm, "commit.check.error");
 		else
 			try {
-
 				this.userService.save(user);
 				res = new ModelAndView("redirect: /welcome/index.do");
-
 			} catch (final DataIntegrityViolationException oops) {
 				res = this.createEditModelAndView(registerForm, "error.username");
 			} catch (final Throwable oops) {
@@ -67,6 +64,7 @@ public class RegisterController extends AbstractController {
 			}
 		return res;
 	}
+
 	protected ModelAndView createEditModelAndView(final RegisterForm r) {
 		ModelAndView result;
 		result = this.createEditModelAndView(r, null);

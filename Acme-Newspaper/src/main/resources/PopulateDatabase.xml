@@ -270,7 +270,7 @@
 
 	<bean id="cc2" class="domain.CreditCard">
 		<property name="holderName" value="Randy Gordon" />
-		<property name="brandName" value="MASTER CARD" />
+		<property name="brandName" value="MASTERCARD" />
 		<property name="number" value="5830174670847761" />
 		<property name="expirationYear" value="2021" />
 		<property name="expirationMonth" value="03" />
@@ -431,6 +431,40 @@
 		<property name="deprived" value="false" />
 		<property name="tabooWord" value="false" />
 		<property name="user" ref="user3" />
+		<property name="articles">
+			<list></list>
+		</property>
+		<property name="subscribes">
+			<list></list>
+		</property>
+	</bean>
+	
+	<bean id="newspaper4" class="domain.Newspaper">
+		<property name="title" value="Marca" />
+		<property name="picture"
+			value="https://elcorreodesalvadorcortes.files.wordpress.com/2012/11/marca_com.jpg" />
+		<property name="description"
+			value="Marca es un diario español de información deportiva, con sede en Madrid, con una tirada media de 413 252 ejemplares diarios y un promedio de difusión de 287 641 ejemplares (OJD).​"/>
+		<property name="deprived" value="false" />
+		<property name="tabooWord" value="false" />
+		<property name="user" ref="user1" />
+		<property name="articles">
+			<list></list>
+		</property>
+		<property name="subscribes">
+			<list></list>
+		</property>
+	</bean>
+	
+	<bean id="newspaper5" class="domain.Newspaper">
+		<property name="title" value="AS" />
+		<property name="picture"
+			value="https://upload.wikimedia.org/wikipedia/commons/5/51/Logo_diario_AS.svg" />
+		<property name="description"
+			value="El diario As es una publicación deportiva española de tirada diaria, de pago y con distribución matinal editado por el Grupo PRISA." />
+		<property name="deprived" value="false" />
+		<property name="tabooWord" value="false" />
+		<property name="user" ref="user1" />
 		<property name="articles">
 			<list></list>
 		</property>
@@ -717,6 +751,59 @@
 		</property>
 	</bean>
 
+<bean id="article12" class="domain.Article">
+		<property name="title"
+			value="Casemiro, solución de urgencia" />
+		<property name="moment">
+			<bean factory-bean="date" factory-method="parse">
+				<constructor-arg value="08/04/2018" />
+			</bean>
+		</property>
+		<property name="summary"
+			value="Zidane cuenta ante la Juve con las bajas de Nacho y Ramos y la duda de Vallejo. Si el aragonés no se recupera de sus molestias, piensa en el brasileño como central." />
+		<property name="body"
+			value="Mientras espera la evolución de las dolencias de Jesús Vallejo (en el primer entrenamiento de la semana se ejercitó aparte del grupo) que le impidieron estar disponible ante el Atlético de Madrid, Zidane medita cómo recomponer el sudoku en el que se ha convertido la defensa que alineará ante la Juventus (miércoles 11, 20:45h., beIN). Para este encuentro sólo cuenta con un central disponible, Varane. Sergio Ramos está sancionado y Nacho sigue recuperándose de su lesión en el músculo semitendinoso del muslo derecho. Mientras, el técnico francés baraja la posibilidad de alinear al central aragonés si se recupera o bien volver a situar a Casemiro en el eje de la zaga. Si opta por esta segunda opción, Kovacic jugaría en el centro del campo junto con Modric, Kroos e Isco o Asensio, sin olvidar a Lucas Vázquez. La decisión del francés de no alinear al brasileño en el derbi suscita las dudas de que Vallejo no llegue a estar disponible para el encuentro ante los juventinos." />
+		<property name="pictures">
+			<list>
+				<value>https://es.wikipedia.org/wiki/Casemiro#/media/File:Shahter-Reak_M_2015_(16).jpg
+				</value>
+			</list>
+		</property>
+		<property name="finalMode" value="false" />
+		<property name="tabooWord" value="true" />
+		<property name="user" ref="user1" />
+		<property name="newspaper" ref="newspaper5" />
+		<property name="followUps">
+			<list></list>
+		</property>
+	</bean>
+	
+	<bean id="article13" class="domain.Article">
+		<property name="title"
+			value="Un Cristiano inigualable" />
+		<property name="moment">
+			<bean factory-bean="date" factory-method="parse">
+				<constructor-arg value="08/04/2018" />
+			</bean>
+		</property>
+		<property name="summary"
+			value="El vértigo de un Madrid sin Cristiano." />
+		<property name="body"
+			value="A Cristiano Ronaldo se le ha roto el reloj. Con 33 años, el portugués se ha empeñado en negar las cifras que arroja su DNI y sigue mejorando al 'coche fantasma' que le marca el paso de los mejores números de su carrera. Este 2018 está reventando las estadísticas. Nunca ha marcado más a estas alturas... ni ha jugado menos.Con su tanto del derbi, el delantero blanco suma 24 goles en 15 encuentros en lo que va de año natural. A razón de 1.6 dianas por partido. Una bestialidad con la que supera a todos los anteriores 'Cristianos'. Los que eran más jóvenes que él, a los que les importaba menos su físico, las rotaciones o los descansos." />
+		<property name="pictures">
+			<list>
+				<value>https://es.wikipedia.org/wiki/Archivo:New_Zealand-Portugal_(20).jpg
+				</value>
+			</list>
+		</property>
+		<property name="finalMode" value="false" />
+		<property name="tabooWord" value="true" />
+		<property name="user" ref="user1" />
+		<property name="newspaper" ref="newspaper4" />
+		<property name="followUps">
+			<list></list>
+		</property>
+	</bean>
 	<!-- #Chirps -->
 	<bean id="chirp1_1" class="domain.Chirp">
 		<property name="moment">

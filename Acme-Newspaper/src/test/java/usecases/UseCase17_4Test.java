@@ -12,10 +12,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.Assert;
 
-import services.ArticleService;
 import services.ChirpService;
-import services.NewspaperService;
-import services.TabooService;
 import utilities.AbstractTest;
 import domain.Chirp;
 
@@ -28,17 +25,17 @@ public class UseCase17_4Test extends AbstractTest {
 
 	//SUT
 
-	@Autowired
-	private TabooService		tabooService;
+	//	@Autowired
+	//	private TabooService		tabooService;
+	//
+	//	@Autowired
+	//	private NewspaperService	newspaperService;
+	//
+	//	@Autowired
+	//	private ArticleService		articleService;
 
 	@Autowired
-	private NewspaperService	newspaperService;
-
-	@Autowired
-	private ArticleService		articleService;
-
-	@Autowired
-	private ChirpService		chirpService;
+	private ChirpService	chirpService;
 
 
 	//	17. An actor who is authenticated as an administrator must be able to:

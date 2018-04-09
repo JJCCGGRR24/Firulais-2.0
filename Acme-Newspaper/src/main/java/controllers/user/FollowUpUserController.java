@@ -24,7 +24,6 @@ import org.springframework.web.servlet.ModelAndView;
 import security.LoginService;
 import services.ArticleService;
 import services.FollowUpService;
-import services.UserService;
 import controllers.AbstractController;
 import domain.FollowUp;
 
@@ -36,8 +35,8 @@ public class FollowUpUserController extends AbstractController {
 	@Autowired
 	private FollowUpService	followUpService;
 
-	@Autowired
-	private UserService		userService;
+	//	@Autowired
+	//	private UserService		userService;
 
 	@Autowired
 	private ArticleService	articleService;

@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import services.NewspaperService;
 import services.TabooService;
 import utilities.AbstractTest;
 import domain.Taboo;
@@ -24,11 +23,11 @@ public class UseCase17_1Test extends AbstractTest {
 	//SUT
 
 	@Autowired
-	private TabooService		tabooService;
+	private TabooService	tabooService;
 
-	@Autowired
-	private NewspaperService	newspaperService;
 
+	//	@Autowired
+	//	private NewspaperService	newspaperService;
 
 	//	17. An actor who is authenticated as an administrator must be able to:
 	//		1. Manage a list of taboo words.

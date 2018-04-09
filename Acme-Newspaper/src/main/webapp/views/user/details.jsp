@@ -54,6 +54,6 @@
 </fieldset>
 <br>
 <spring:message code="register.back" var="back"/>
-<input type="button" name="back" value="${back}" onclick="javascript:relativeRedir('user/list.do')"/>
+<input type="button" name="back" value="${back}" onclick="javascript:relativeRedir('user/user//list.do')"/>
 
 

@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.ChirpService;
 import controllers.AbstractController;
 import domain.Chirp;
-import services.ChirpService;
 
 @Controller
 @RequestMapping("/chirp/admin")
@@ -21,7 +21,7 @@ public class ChirpAdministratorController extends AbstractController {
 	//Service--------------------------------------------------------
 
 	@Autowired
-	private ChirpService chirpService;
+	private ChirpService	chirpService;
 
 
 	//Constructor----------------------------------------------------
@@ -40,6 +40,7 @@ public class ChirpAdministratorController extends AbstractController {
 
 		modelAndView = new ModelAndView("chirp/list");
 		modelAndView.addObject("chirps", chirps);
+		modelAndView.addObject("requestURI", "chirp/admin/list.do");
 
 		return modelAndView;
 	}

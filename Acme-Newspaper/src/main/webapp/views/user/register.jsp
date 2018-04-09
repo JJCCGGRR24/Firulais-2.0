@@ -47,7 +47,7 @@
 	<form:checkbox path="check"/>
 	<spring:message code="register.check" />	
   	<form:errors path="check" cssClass="error" />
-  	</br></br>
+  	<br><br>
   	
 	
 	

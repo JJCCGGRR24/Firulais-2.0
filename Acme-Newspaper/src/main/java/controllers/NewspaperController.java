@@ -10,6 +10,7 @@
 
 package controllers;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,7 +56,11 @@ public class NewspaperController extends AbstractController {
 		final List<Newspaper> newspapers = this.newspaperService.getPublishedNewspapers();
 		result = new ModelAndView("newspaper/list");
 		result.addObject("newspapers", newspapers);
-
+		if (LoginService.isPrincipalCustomer()) {
+			final Customer c = (Customer) this.loginService.getPrincipalActor();
+			final Collection<Newspaper> newspapersSubs = this.newspaperService.getNewspaperSubscribes(c);
+			result.addObject("newspapersSubs", newspapersSubs);
+		}
 		result.addObject("requestURI", "newspaper/list.do");
 
 		return result;

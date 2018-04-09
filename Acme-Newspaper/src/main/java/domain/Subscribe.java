@@ -23,6 +23,7 @@ public class Subscribe extends DomainEntity {
 
 
 	@NotNull
+	@Valid
 	public CreditCard getCreditCard() {
 		return this.creditCard;
 	}

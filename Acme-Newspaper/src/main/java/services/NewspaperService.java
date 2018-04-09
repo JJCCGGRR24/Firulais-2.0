@@ -15,6 +15,7 @@ import org.springframework.util.Assert;
 import repositories.NewspaperRepository;
 import security.LoginService;
 import domain.Article;
+import domain.Customer;
 import domain.Newspaper;
 import domain.Subscribe;
 import domain.User;
@@ -124,11 +125,12 @@ public class NewspaperService {
 
 	public boolean checkPrincipal(final Newspaper obj) {
 		boolean res = false;
-		if (LoginService.getPrincipal().equals(obj.getUser().getUserAccount()))
+		if (LoginService.getPrincipal().equals(obj.getUser().getUserAccount()) && obj.getPublicationDate() == null)
+			res = true;
+		else if (LoginService.isPrincipalAdmin())
 			res = true;
 		return res;
 	}
-
 	public List<Newspaper> getNewspaperTabooWords() {
 		return this.newspaperRepository.getNewspaperTabooWords();
 
@@ -136,6 +138,11 @@ public class NewspaperService {
 
 	public List<Newspaper> getNotPublishedNewspapers() {
 		return this.newspaperRepository.getNotPublishedNewspapers();
+	}
+
+	public List<Newspaper> getNewspaperSubscribes(final Customer customer) {
+		return this.newspaperRepository.getNewspaperSubscribes(customer);
+
 	}
 
 }

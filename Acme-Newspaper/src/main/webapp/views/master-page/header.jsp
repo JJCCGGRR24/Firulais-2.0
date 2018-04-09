@@ -137,8 +137,7 @@
 							code="master.page.newspapers" /></a>
 					<ul>
 						<li class="arrow"></li>
-						<li><a href="newspaper/list.do"><spring:message
-									code="template.all" /></a></li>
+						
 						<li><a href="newspaper/user/create.do"><spring:message
 									code="template.new" /></a></li>
 						<li><a href="newspaper/user/myList.do"><spring:message

@@ -12,9 +12,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.Assert;
 
-import services.ArticleService;
 import services.NewspaperService;
-import services.TabooService;
 import utilities.AbstractTest;
 import domain.Newspaper;
 
@@ -27,15 +25,15 @@ public class UseCase17_3Test extends AbstractTest {
 
 	//SUT
 
-	@Autowired
-	private TabooService		tabooService;
+	//	@Autowired
+	//	private TabooService		tabooService;
 
 	@Autowired
 	private NewspaperService	newspaperService;
 
-	@Autowired
-	private ArticleService		articleService;
 
+	//	@Autowired
+	//	private ArticleService		articleService;
 
 	//	17. An actor who is authenticated as an administrator must be able to:
 	//		3.List the newspapers that contain taboo words.

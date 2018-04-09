@@ -15,6 +15,8 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
+<%@ taglib prefix = "c"  uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fn" uri = "http://java.sun.com/jsp/jstl/functions"  %>
 
 <script>
 	function preguntar(id) {
@@ -99,7 +101,7 @@
 	
 	<security:authorize access="hasRole('CUSTOMER')">
 	<display:column>
-		<jstl:if test="${row.deprived == true}">
+		<jstl:if test="${row.deprived == true and !newspapersSubs.contains(row)}">
 		<spring:url value="/subscribe/customer/subscribe.do" var="editURL">
 				<spring:param name="newspaperId" value="${row.id}"></spring:param>
 		</spring:url>

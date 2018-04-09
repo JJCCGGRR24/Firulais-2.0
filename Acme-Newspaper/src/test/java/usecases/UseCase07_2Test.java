@@ -9,45 +9,36 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import services.ChirpService;
+import services.NewspaperService;
 import utilities.AbstractTest;
-import domain.Chirp;
 
 @ContextConfiguration(locations = {
 	"classpath:spring/junit.xml"
 })
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
-public class UseCase17_5Test extends AbstractTest {
+public class UseCase07_2Test extends AbstractTest {
 
 	//SUT
 
-	//	@Autowired
-	//	private TabooService		tabooService;
-	//
-	//	@Autowired
-	//	private NewspaperService	newspaperService;
-	//
-	//	@Autowired
-	//	private ArticleService		articleService;
-
 	@Autowired
-	private ChirpService	chirpService;
+	private NewspaperService	newspaperService;
 
 
-	//	17. An actor who is authenticated as an administrator must be able to:
-	//		5.Remove a chirp that he or she thinks is inappropriate.
+	//	7. An actor who is authenticated as an administrator must be able to:
+	//		2. Remove a newspaper that he or she thinks is inappropriate. Removing a newspaper
+	//		implies removing all of the articles of which it is composed.
 
 	@Test
 	public void driver() {
 		final Object testingData[][] = {
 			{
 
-				//Intento borrar un chirp siendo administrador. Todo correcto.
+				//eliminamos como admin un periodico
 				"admin", null
 			}, {
-				//Intento borrar un chirp siendo usuario. IlegalArgumentException
-				"user1", IndexOutOfBoundsException.class
+				//eliminamos como user un periodico publicado
+				"user1", IllegalArgumentException.class
 			}
 
 		};
@@ -62,17 +53,15 @@ public class UseCase17_5Test extends AbstractTest {
 		caught = null;
 		try {
 			super.authenticate(username);
-			final Chirp chirp = this.chirpService.getChirpsTabooWords().get(0);
-			System.out.println(chirp);
-			this.chirpService.delete(chirp);
+			this.newspaperService.delete(this.newspaperService.findOne(this.getEntityId("newspaper1")));
+			super.authenticate(null);
 
-			super.unauthenticate();
-			this.chirpService.flush();
 		} catch (final Throwable oops) {
 			caught = oops.getClass();
 		}
 
 		super.checkExceptions(expected, caught);
+		super.unauthenticate();
 
 	}
 }
