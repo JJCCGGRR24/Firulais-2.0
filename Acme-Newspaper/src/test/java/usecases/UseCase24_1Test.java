@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import services.NewspaperService;
+import services.AdministratorService;
 import utilities.AbstractTest;
 
 @ContextConfiguration(locations = {
@@ -17,12 +17,12 @@ import utilities.AbstractTest;
 })
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
-public class PTEUseCase24_1Test extends AbstractTest {
+public class UseCase24_1Test extends AbstractTest {
 
 	//SUT
 
 	@Autowired
-	private NewspaperService	newspaperService;
+	private AdministratorService	administratorService;
 
 
 	//	24. An actor who is authenticated as an administrator must be able to:
@@ -39,19 +39,18 @@ public class PTEUseCase24_1Test extends AbstractTest {
 	public void driver() {
 		final Object testingData[][] = {
 			{
-
 				//Hacemos una llamada a una query como admin
 				"admin", null
 			}, {
 				//Hacemos una llamada a una query como user
-				"user1", null
+				"user1", IllegalArgumentException.class
 			}
-
 		};
 
-		for (int i = 0; i < testingData.length; i++)
-			this.template((String) testingData[i][0], (Class<?>) testingData[i][8]);
-
+		for (int i = 0; i < testingData.length; i++) {
+			this.template((String) testingData[i][0], (Class<?>) testingData[i][1]);
+			System.out.println("-------------------");
+		}
 	}
 	protected void template(final String username, final Class<?> expected) {
 		Class<?> caught;
@@ -59,9 +58,13 @@ public class PTEUseCase24_1Test extends AbstractTest {
 		caught = null;
 		try {
 			super.authenticate(username);
-
+			System.out.println("Llamada a la query de nivel A");
+			System.out.println(this.administratorService.queryA1());
+			System.out.println("Todo correcto");
+			super.authenticate(null);
 		} catch (final Throwable oops) {
 			caught = oops.getClass();
+			System.out.println("Excepcion controlada");
 		}
 
 		super.checkExceptions(expected, caught);

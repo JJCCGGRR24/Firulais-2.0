@@ -100,11 +100,13 @@
 			<li><a class="fNiv" href="chirp/admin/list.do"><spring:message
 						code="master.page.administrator.chirps" /></a></li>
 
-			<li><a class="fNiv" href="taboo/admin/list.do"><spring:message
+			<li><a class="fNiv"><spring:message
 						code="master.page.administrator.taboowords" /></a>
 
 				<ul>
 					<li class="arrow"></li>
+					<li><a href="taboo/admin/list.do"><spring:message
+								code="master.page.listTaboo" /></a></li>
 					<li><a href="taboo/admin/listChirpTabooWord.do"><spring:message
 								code="master.page.listChirpTabooWord" /></a></li>
 					<li><a href="taboo/admin/listNewspaperTabooWord.do"><spring:message

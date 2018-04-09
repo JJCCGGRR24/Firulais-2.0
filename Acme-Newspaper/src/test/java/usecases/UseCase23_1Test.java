@@ -1,8 +1,6 @@
 
 package usecases;
 
-import java.util.ArrayList;
-
 import javax.transaction.Transactional;
 
 import org.junit.Test;
@@ -11,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import domain.User;
-import services.UserService;
+import domain.Newspaper;
+import services.NewspaperService;
 import utilities.AbstractTest;
 
 @ContextConfiguration(locations = {
@@ -20,44 +18,41 @@ import utilities.AbstractTest;
 })
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
-public class UseCase16_3Test extends AbstractTest {
+public class UseCase23_1Test extends AbstractTest {
 
 	//SUT
 
 	@Autowired
-	private UserService userService;
-
-	//	16. An actor who is authenticated as a user must be able to:
-	//		3. List the users who he or she follows.
+	private NewspaperService newspaperService;
 
 
 	//DRIVERS-------------------------------------------------------------------------------
 
 	@Test
-	public void driverList() {
-		System.out.println("---LIST FOLLOWED BY USER---");
+	public void driver() {
+		System.out.println("---PRIVATE OR PUBLIC NEWSPAPER BY USER---");
 		final Object testingData[][] = {
 			{
 
-				"user1", null
+				"user3", "newspaper3", null
 			}, {
 
-				"admin", java.lang.ClassCastException.class
+				"user2", "newspaper1_3", java.lang.AssertionError.class
 			}, {
 
-				"user1000", java.lang.IllegalArgumentException.class
+				"user1", "newspaper1", java.lang.IllegalArgumentException.class
 			}
 
 		};
 
 		for (int i = 0; i < testingData.length; i++)
-			this.templateList((String) testingData[i][0], (Class<?>) testingData[i][1]);
+			this.template((String) testingData[i][0], (String) testingData[i][1], (Class<?>) testingData[i][2]);
 
 	}
 
 	//TEMPLATES------------------------------------------------------------------------------
 
-	protected void templateList(final String username, final Class<?> expected) {
+	protected void template(final String username, final String newspaper, final Class<?> expected) {
 		Class<?> caught;
 
 		caught = null;
@@ -65,10 +60,12 @@ public class UseCase16_3Test extends AbstractTest {
 		try {
 			super.authenticate(username);
 
-			final ArrayList<User> users = new ArrayList<>(this.userService.getMyFollows());
+			//Periodico Privado
+			final int newspaperId = this.getEntityId(newspaper);
+			final Newspaper newspaper2 = this.newspaperService.findOne(newspaperId);
 
-			for (final User user : users)
-				System.out.println(user.getName());
+			newspaper2.setDeprived(false);
+			this.newspaperService.save(newspaper2);
 
 			System.out.println("Operation successful!");
 

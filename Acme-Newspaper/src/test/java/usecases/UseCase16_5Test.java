@@ -11,8 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import domain.User;
-import services.UserService;
+import domain.Chirp;
+import services.ChirpService;
 import utilities.AbstractTest;
 
 @ContextConfiguration(locations = {
@@ -20,32 +20,32 @@ import utilities.AbstractTest;
 })
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
-public class UseCase16_3Test extends AbstractTest {
+public class UseCase16_5Test extends AbstractTest {
 
 	//SUT
 
 	@Autowired
-	private UserService userService;
+	private ChirpService chirpService;
 
 	//	16. An actor who is authenticated as a user must be able to:
-	//		3. List the users who he or she follows.
+	//		5. Display a stream with the chirps posted by all of the users that he or she follows.
 
 
 	//DRIVERS-------------------------------------------------------------------------------
 
 	@Test
 	public void driverList() {
-		System.out.println("---LIST FOLLOWED BY USER---");
+		System.out.println("---LIST CHIRPS OF FOLLOWED BY USER---");
 		final Object testingData[][] = {
 			{
 
 				"user1", null
 			}, {
 
-				"admin", java.lang.ClassCastException.class
+				"user1000", IllegalArgumentException.class
 			}, {
 
-				"user1000", java.lang.IllegalArgumentException.class
+				"admin", IllegalArgumentException.class
 			}
 
 		};
@@ -65,10 +65,10 @@ public class UseCase16_3Test extends AbstractTest {
 		try {
 			super.authenticate(username);
 
-			final ArrayList<User> users = new ArrayList<>(this.userService.getMyFollows());
+			final ArrayList<Chirp> chirps = new ArrayList<>(this.chirpService.getChirpsFromFolloweds());
 
-			for (final User user : users)
-				System.out.println(user.getName());
+			for (final Chirp chirp : chirps)
+				System.out.println(chirp.getTitle());
 
 			System.out.println("Operation successful!");
 

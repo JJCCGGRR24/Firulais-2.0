@@ -98,13 +98,19 @@ public class NewspaperService {
 	}
 
 	public boolean publish(final Newspaper newspaper) {
+		boolean res;
 		Assert.notNull(newspaper);
 		Assert.isTrue(newspaper.getUser().getUserAccount().equals(LoginService.getPrincipal()));
 		Assert.isTrue(newspaper.getPublicationDate() == null);
-		newspaper.setPublicationDate(new Date());
-		this.actualizaFechasArticles(newspaper);
-		this.newspaperRepository.save(newspaper);
-		return this.isAllArticlesPublished(newspaper);
+		res = this.isAllArticlesPublished(newspaper);
+
+		if (res) {
+			newspaper.setPublicationDate(new Date());
+			this.actualizaFechasArticles(newspaper);
+			this.newspaperRepository.save(newspaper);
+		}
+
+		return res;
 	}
 	private void actualizaFechasArticles(final Newspaper n) {
 		for (final Article a : n.getArticles())

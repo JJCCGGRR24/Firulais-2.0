@@ -10,9 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
+import repositories.AdministratorRepository;
+import security.LoginService;
 import domain.Administrator;
 import domain.Newspaper;
-import repositories.AdministratorRepository;
 
 ;
 
@@ -22,10 +23,10 @@ public class AdministratorService {
 
 	// Managed repository -----------------------------------------------------
 	@Autowired
-	private AdministratorRepository administratorRepository;
+	private AdministratorRepository	administratorRepository;
+
 
 	// Supporting services ----------------------------------------------------
-
 
 	// Constructors -----------------------------------------------------------
 	public AdministratorService() {
@@ -65,6 +66,7 @@ public class AdministratorService {
 	// Other business methods -------------------------------------------------
 
 	public Double[] queryC1() {
+		Assert.isTrue(LoginService.isPrincipalAdmin());
 		return this.administratorRepository.queryC1();
 	}
 
@@ -93,6 +95,7 @@ public class AdministratorService {
 	}
 
 	public Double queryB1() {
+		Assert.isTrue(LoginService.isPrincipalAdmin());
 		return this.administratorRepository.queryB1();
 	}
 
@@ -113,6 +116,7 @@ public class AdministratorService {
 	}
 
 	public Double queryA1() {
+		Assert.isTrue(LoginService.isPrincipalAdmin());
 		return this.administratorRepository.queryA1();
 	}
 

@@ -67,14 +67,21 @@ public class NewspaperController extends AbstractController {
 		result = new ModelAndView("newspaper/details");
 		final Newspaper newspaper = this.newspaperService.findOne(newspaperId);
 		try {
-			final Customer c = (Customer) this.loginService.getPrincipalActor();
-			if (this.subscribeService.estaSubscrito(c, newspaper))
-				result.addObject("customerEstaSubscrito", true);
+			//para comprobar que esta logueado.
+			//getPrincipal() devuelve IlegalArgumentException si no estas logueado
+			if (LoginService.getPrincipal() != null)
+				try {
+					final Customer c = (Customer) this.loginService.getPrincipalActor();
+					if (this.subscribeService.estaSubscrito(c, newspaper))
+						result.addObject("customerEstaSubscrito", true);
 
-		} catch (final Exception e) {
+				} catch (final Exception e) {
+				}
+		} catch (final IllegalArgumentException e) {
+			// TODO: handle exception
 		}
+
 		result.addObject("newspaper", newspaper);
-		result.addObject("articles", newspaper.getArticles());
 		return result;
 	}
 

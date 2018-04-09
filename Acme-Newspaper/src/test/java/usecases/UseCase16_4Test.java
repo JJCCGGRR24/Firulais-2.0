@@ -43,6 +43,9 @@ public class UseCase16_4Test extends AbstractTest {
 			}, {
 
 				"admin", java.lang.ClassCastException.class
+			}, {
+
+				"user1000", java.lang.IllegalArgumentException.class
 			}
 
 		};

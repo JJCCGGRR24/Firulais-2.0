@@ -476,7 +476,8 @@
 		<property name="body"
 			value="Firewatch, la aventura indie de Campo Santo que recibió elogios de la crítica en 2016, llegará a Nintendo Switch.&#10;&#13;El estudio ha anunciado hoy esta versión del juego, que estará optimizada para la consola de Nintendo. De momento, eso sí, no hay una fecha de lanzamiento concreta, solo un discreto pronto.&#10;&#13;Hemos estado trabajando duro desmontando gran parte de la tecnología de Firewatch y reconstruyéndolo para que el mundo se renderizara, hiciera stream y cargara más rápidamente, ha escrito el guionista y diseñador del juego, Jake Rodkin, en el blog de la desarrolladora.&#10;&#13;Casi todo el mundo en Campo Santo tiene una Nintendo Switch (y los demás quieren una). Sabemos cómo se siente un buen juego de Switch, y queremos asegurarnos de que Firewatch también se siente así.&#10;&#13;Las optimizaciones realizadas para dicha versión llegarán también a las demás plataformas.&#10;&#13;Firewatch first se puso a la venta en febrero de 2016 para PC y PlayStation 4 en febrero de 2016. Un año más tarde llegó a Xbox One.&#10;&#13;Evitando alardes o florituras innecesarias, el primer juego de Campo Santo se pone automáticamente a la par de los mejores indie actuales, dijimos en su análisis." />
 		<property name="pictures">
-			<value>https://cdn.gamer-network.net/2018/articles/2018-04-05-13-53/tumblr_p6m6zsvSEI1sikueao1_1280.png</value>
+			<value>https://cdn.gamer-network.net/2018/articles/2018-04-05-13-53/tumblr_p6m6zsvSEI1sikueao1_1280.png
+			</value>
 		</property>
 		<property name="finalMode" value="true" />
 		<property name="tabooWord" value="false" />
@@ -686,7 +687,7 @@
 			<list></list>
 		</property>
 	</bean>
-	
+
 	<bean id="article11" class="domain.Article">
 		<property name="title"
 			value="«Los rumanos se han adueñado del parque de las avenidas para ejercer la mendicidad" />
