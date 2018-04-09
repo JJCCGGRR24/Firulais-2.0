@@ -1,6 +1,7 @@
 
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import org.springframework.util.Assert;
 import repositories.ArticleRepository;
 import security.LoginService;
 import domain.Article;
+import domain.FollowUp;
 import domain.Taboo;
 import domain.User;
 
@@ -45,6 +47,8 @@ public class ArticleService {
 
 		final Article r = new Article();
 		r.setUser((User) this.loginService.getPrincipalActor());
+		final Collection<FollowUp> follow_ups = new ArrayList<FollowUp>();
+		r.setFollowUps(follow_ups);
 		return r;
 	}
 	public Collection<Article> findAll() {
@@ -62,6 +66,7 @@ public class ArticleService {
 		if (article.getId() != 0)
 			Assert.isTrue(!this.findOne(article.getId()).isFinalMode());
 		article.setUser((User) this.loginService.getPrincipalActor());
+		Assert.isTrue(article.getNewspaper().getPublicationDate() == null);
 		article.setTabooWord(this.isTaboo(article));
 		article.getNewspaper().getArticles().add(article);
 		article.getUser().getArticles().add(article);
@@ -116,6 +121,10 @@ public class ArticleService {
 	public List<Article> getArticlesTabooWords() {
 		return this.articleRepository.getArticlesTabooWords();
 
+	}
+
+	public List<FollowUp> getPublishedArticlesByUser(final int id) {
+		return this.articleRepository.getPublishedArticlesByUser(id);
 	}
 
 }

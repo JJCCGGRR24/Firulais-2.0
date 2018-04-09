@@ -17,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import security.LoginService;
 import services.UserService;
 import controllers.AbstractController;
 import domain.User;
@@ -28,7 +29,10 @@ public class FollowerUserController extends AbstractController {
 	// Managed repository -----------------------------------------------------
 
 	@Autowired
-	private UserService	userService;
+	private UserService		userService;
+
+	@Autowired
+	private LoginService	loginService;
 
 
 	// Constructors -----------------------------------------------------------
@@ -46,6 +50,7 @@ public class FollowerUserController extends AbstractController {
 		result = new ModelAndView("user/list");
 		result.addObject("users", u);
 		result.addObject("requestURI", "follower/user/list.do");
+		result.addObject("follows", ((User) this.loginService.getPrincipalActor()).getFollows());
 		return result;
 	}
 

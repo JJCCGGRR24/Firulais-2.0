@@ -101,13 +101,23 @@
 			access="hasRole('USER')" />
 		<security:intercept-url pattern="/article/user/myList.do"
 			access="hasRole('USER')" />
+		<security:intercept-url pattern="/followUp/user/myList.do"
+			access="hasRole('USER')" />
 		<security:intercept-url pattern="/article/user/edit.do"
 			access="hasRole('USER')" />
 		<security:intercept-url pattern="/article/user/create.do"
 			access="hasRole('USER')" />
+		<security:intercept-url pattern="/followUp/user/create.do"
+			access="hasRole('USER')" />
 		<security:intercept-url pattern="/follow/user/list.do"
 			access="hasRole('USER')" />
 		<security:intercept-url pattern="/follower/user/list.do"
+			access="hasRole('USER')" />
+		<security:intercept-url pattern="/user/user/list.do"
+			access="hasRole('USER')" />
+		<security:intercept-url pattern="/user/user/follow.do"
+			access="hasRole('USER')" />
+		<security:intercept-url pattern="/user/user/unfollow.do"
 			access="hasRole('USER')" />
 
 		<!-- Customer -->

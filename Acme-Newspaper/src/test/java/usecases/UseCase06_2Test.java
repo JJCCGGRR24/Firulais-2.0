@@ -36,7 +36,7 @@ public class UseCase06_2Test extends AbstractTest {
 			{
 
 				//comprobaremos que un user puede publicar un newspaper correctamente
-				"user1", "newspaper1", null
+				"user3", "newspaper3", null
 			}, {
 				//comprobaremos que un user al intentar publicar un newspaper que es suyo no se 
 				//				le permitirá

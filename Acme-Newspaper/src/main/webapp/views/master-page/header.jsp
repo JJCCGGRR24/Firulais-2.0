@@ -49,7 +49,7 @@
 		var exdate = new Date();
 		exdate.setDate(exdate.getDate() + exdays);
 		var c_value = escape(value) + ((exdays == null) ? "" : "; expires=" + exdate.toUTCString());
-		document.cookie = c_name + "=" + c_value;
+		document.cookie = c_name + "=" + c_value+"; path=/";
 	}
 
 	if (getCookie('tiendaaviso') != "1") {
@@ -72,11 +72,9 @@
 <div align="center">
 	<ul id="jMenu">
 		<!-- Do not forget the "fNiv" class for the first level links !! -->
-		<security:authorize access="isAnonymous()">
-
-			<li><a class="fNiv" href="newspaper/list.do"><spring:message
+		<li><a class="fNiv" href="newspaper/list.do"><spring:message
 						code="master.page.newspaper.published" /></a></li>
-
+		<security:authorize access="isAnonymous()">
 
 			<li><a class="fNiv" href="security/login.do"><spring:message
 						code="master.page.login" /></a></li>
@@ -93,6 +91,9 @@
 		</security:authorize>
 
 		<security:authorize access="hasRole('ADMIN')">
+		
+		<li><a href="user/list.do"><spring:message
+						code="master.users" /></a>
 			<li><a class="fNiv" href="admin/dashboard.do"><spring:message
 						code="master.page.administrator.dashboard" /></a></li>
 						
@@ -120,6 +121,8 @@
 		</security:authorize>
 
 		<security:authorize access="hasRole('CUSTOMER')">
+		<li><a href="user/list.do"><spring:message
+						code="master.users" /></a>
 			<li><a class="fNiv"><spring:message
 						code="master.page.customer" /></a>
 				<ul>
@@ -128,8 +131,19 @@
 		</security:authorize>
 
 		<security:authorize access="hasRole('USER')">
-			<li><a href="newspaper/user/myList.do"><spring:message
-						code="master.page.myNewspapers" /></a>
+			<li><a class="fNiv"><spring:message
+							code="master.page.newspapers" /></a>
+					<ul>
+						<li class="arrow"></li>
+						<li><a href="newspaper/list.do"><spring:message
+									code="template.all" /></a></li>
+						<li><a href="newspaper/user/create.do"><spring:message
+									code="template.new" /></a></li>
+						<li><a href="newspaper/user/myList.do"><spring:message
+									code="master.page.myNewspapers" /></a></li>
+					</ul></li>
+			<li><a href="user/user/list.do"><spring:message
+						code="master.users" /></a>
 			<li><a class="fNiv"><spring:message
 						code="master.page.chirps" /></a>
 				<ul>
@@ -140,6 +154,15 @@
 								code="master.page.toChirp" /></a></li>
 					<li><a href="chirp/user/followeds.do"><spring:message
 								code="master.page.fromFollows" /></a></li>
+				</ul></li>
+			<li><a class="fNiv"><spring:message
+						code="master.page.followUps" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="followUp/user/create.do"><spring:message
+								code="template.new" /></a></li>
+					<li><a href="followUp/user/myList.do"><spring:message
+								code="master.page.myFollowUps" /></a></li>
 				</ul></li>
 		</security:authorize>
 

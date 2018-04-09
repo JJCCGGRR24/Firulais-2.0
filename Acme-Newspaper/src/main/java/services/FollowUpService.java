@@ -2,6 +2,8 @@
 package services;
 
 import java.util.Collection;
+import java.util.Date;
+import java.util.List;
 
 import javax.transaction.Transactional;
 
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import repositories.FollowUpRepository;
+import security.LoginService;
 import domain.FollowUp;
 
 ;
@@ -21,6 +24,9 @@ public class FollowUpService {
 	// Managed repository -----------------------------------------------------
 	@Autowired
 	private FollowUpRepository	followUpRepository;
+
+	@Autowired
+	private LoginService		loginService;
 
 
 	// Supporting services ----------------------------------------------------
@@ -49,6 +55,9 @@ public class FollowUpService {
 
 	public FollowUp save(final FollowUp followUp) {
 		Assert.notNull(followUp);
+		Assert.isTrue(followUp.getArticle().getNewspaper().getUser().getId() == this.loginService.getPrincipalActor().getId());
+		followUp.setPublicationMoment(new Date());
+		followUp.getArticle().getFollowUps().add(followUp);
 		return this.followUpRepository.save(followUp);
 	}
 
@@ -60,6 +69,20 @@ public class FollowUpService {
 		this.followUpRepository.flush();
 	}
 
+	public List<FollowUp> getFollowUpsByUser(final int userId) {
+		return this.followUpRepository.getFollowUpsByUser(userId);
+	}
+
 	// Other business methods -------------------------------------------------
 
+	public String validate(final FollowUp c) {
+		String b = null;
+		if (c.getArticle().getMoment() == null)
+			b = "followUp.error.articlePublicated";
+		if (c.getArticle().getNewspaper().getPublicationDate() == null)
+			b = "followUp.error.newspaperPublicated";
+		if (c.getPublicationMoment() != null)
+			b = "followUp.error.followUpPublicated";
+		return b;
+	}
 }

@@ -18,7 +18,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import security.LoginService;
 import services.NewspaperService;
+import services.SubscribeService;
+import domain.Customer;
 import domain.Newspaper;
 
 @Controller
@@ -29,6 +32,12 @@ public class NewspaperController extends AbstractController {
 
 	@Autowired
 	private NewspaperService	newspaperService;
+
+	@Autowired
+	private LoginService		loginService;
+
+	@Autowired
+	private SubscribeService	subscribeService;
 
 
 	// Constructors -----------------------------------------------------------
@@ -46,6 +55,7 @@ public class NewspaperController extends AbstractController {
 		final List<Newspaper> newspapers = this.newspaperService.getPublishedNewspapers();
 		result = new ModelAndView("newspaper/list");
 		result.addObject("newspapers", newspapers);
+
 		result.addObject("requestURI", "newspaper/list.do");
 
 		return result;
@@ -54,9 +64,15 @@ public class NewspaperController extends AbstractController {
 	@RequestMapping("/details")
 	public ModelAndView details(@RequestParam final int newspaperId) {
 		ModelAndView result;
-
-		final Newspaper newspaper = this.newspaperService.findOne(newspaperId);
 		result = new ModelAndView("newspaper/details");
+		final Newspaper newspaper = this.newspaperService.findOne(newspaperId);
+		try {
+			final Customer c = (Customer) this.loginService.getPrincipalActor();
+			if (this.subscribeService.estaSubscrito(c, newspaper))
+				result.addObject("customerEstaSubscrito", true);
+
+		} catch (final Exception e) {
+		}
 		result.addObject("newspaper", newspaper);
 		result.addObject("articles", newspaper.getArticles());
 		return result;

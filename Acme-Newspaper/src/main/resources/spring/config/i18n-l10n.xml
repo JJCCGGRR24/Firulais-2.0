@@ -34,6 +34,7 @@
 		<value>/views/subscribe/messages</value>
 		<value>/views/taboo/messages</value>
 		<value>/views/law/messages</value>
+		<value>/views/followUp/messages</value>
 		
 		
 	</util:list>

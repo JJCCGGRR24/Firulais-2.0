@@ -9,12 +9,13 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import domain.Article;
+import domain.FollowUp;
 import domain.User;
 
 @Repository
 public interface ArticleRepository extends JpaRepository<Article, Integer> {
 
-	@Query("select a from Article a where a.finalMode = true and a.tabooWord = false and a.user = ?1")
+	@Query("select a from Article a where a.finalMode = true and a.user = ?1")
 	List<Article> findByUser(User user);
 
 	@Query("select a from Article a where a.newspaper.deprived = false and a.newspaper.publicationDate != null")
@@ -25,4 +26,7 @@ public interface ArticleRepository extends JpaRepository<Article, Integer> {
 
 	@Query("select a from Article a where a.tabooWord is true")
 	List<Article> getArticlesTabooWords();
+
+	@Query("select a from Article a where a.finalMode = true and a.newspaper.user.id = ?1")
+	List<FollowUp> getPublishedArticlesByUser(int id);
 }

@@ -28,6 +28,10 @@ th.sorted {
 	background-color: #7B0707;
 }
 
+th {
+	color:white;
+}
+
 th a,th a:visited {
 	color: black;
 }

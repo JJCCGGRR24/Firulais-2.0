@@ -32,7 +32,6 @@ public class FollowUp extends DomainEntity {
 	private Date				publicationMoment;
 	private String				summary;
 	private String				text;
-
 	private Collection<String>	pictures;
 
 
@@ -55,9 +54,11 @@ public class FollowUp extends DomainEntity {
 	public void setPublicationMoment(final Date publicationMoment) {
 		this.publicationMoment = publicationMoment;
 	}
+
+	@Size(max = 65000)
 	@NotBlank
 	@SafeHtml(whitelistType = WhiteListType.NONE)
-	@Size(max = 65000)
+	@Column(columnDefinition = "TEXT")
 	public String getSummary() {
 		return this.summary;
 	}

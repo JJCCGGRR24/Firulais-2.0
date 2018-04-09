@@ -86,31 +86,46 @@ public class LoginService implements UserDetailsService {
 
 	public static boolean isPrincipalAdmin() {
 		boolean res = false;
-		final UserAccount u = LoginService.getPrincipal();
-		final Authority a = new Authority();
-		a.setAuthority("ADMIN");
-		if (u.getAuthorities().contains(a))
-			res = true;
+		try {
+			final UserAccount u = LoginService.getPrincipal();
+			final Authority a = new Authority();
+			a.setAuthority("ADMIN");
+			if (u.getAuthorities().contains(a))
+				res = true;
+		} catch (final Exception e) {
+			// TODO: handle exception
+		}
+
 		return res;
 	}
 
 	public static boolean isPrincipalUser() {
 		boolean res = false;
-		final UserAccount u = LoginService.getPrincipal();
-		final Authority a = new Authority();
-		a.setAuthority("USER");
-		if (u.getAuthorities().contains(a))
-			res = true;
+		try {
+			final UserAccount u = LoginService.getPrincipal();
+			final Authority a = new Authority();
+			a.setAuthority("USER");
+			if (u.getAuthorities().contains(a))
+				res = true;
+		} catch (final Exception e) {
+			// TODO: handle exception
+		}
+
 		return res;
 	}
 
 	public static boolean isPrincipalCustomer() {
 		boolean res = false;
-		final UserAccount u = LoginService.getPrincipal();
-		final Authority a = new Authority();
-		a.setAuthority("CUSTOMER");
-		if (u.getAuthorities().contains(a))
-			res = true;
+		try {
+			final UserAccount u = LoginService.getPrincipal();
+			final Authority a = new Authority();
+			a.setAuthority("CUSTOMER");
+			if (u.getAuthorities().contains(a))
+				res = true;
+		} catch (final Exception e) {
+			// TODO: handle exception
+		}
+
 		return res;
 	}
 

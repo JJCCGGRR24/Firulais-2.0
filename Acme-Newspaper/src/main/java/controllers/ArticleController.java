@@ -9,9 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import security.LoginService;
 import services.ArticleService;
+import services.SubscribeService;
 import services.UserService;
 import domain.Article;
+import domain.Customer;
+import domain.Newspaper;
 import domain.User;
 
 @Controller()
@@ -20,10 +24,14 @@ public class ArticleController extends AbstractController {
 
 	//Services
 	@Autowired
-	private ArticleService	articleService;
+	private ArticleService		articleService;
 
 	@Autowired
-	private UserService		userService;
+	private UserService			userService;
+	@Autowired
+	private SubscribeService	subscribeService;
+	@Autowired
+	private LoginService		loginService;
 
 
 	//Constructor
@@ -57,10 +65,27 @@ public class ArticleController extends AbstractController {
 	@RequestMapping("/details")
 	public ModelAndView details(@RequestParam final int articleId) {
 		ModelAndView result;
-
 		final Article article = this.articleService.findOne(articleId);
-		result = new ModelAndView("article/details");
-		result.addObject("article", article);
+
+		if (this.subscribeService.tienePermisoParaVerArticulos(article)) {
+			//muestra el articulo
+			result = new ModelAndView("article/details");
+			result.addObject("article", article);
+		} else {
+			//muestra el details del periodico diciendo que no puede ver los articulos
+			result = new ModelAndView("newspaper/details");
+			final Newspaper newspaper = article.getNewspaper();
+			try {
+				final Customer c = (Customer) this.loginService.getPrincipalActor();
+				if (this.subscribeService.estaSubscrito(c, newspaper))
+					result.addObject("customerEstaSubscrito", true);
+
+			} catch (final Exception e) {
+			}
+			result.addObject("newspaper", newspaper);
+			result.addObject("articles", newspaper.getArticles());
+		}
+
 		return result;
 	}
 

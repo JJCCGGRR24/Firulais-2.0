@@ -28,5 +28,20 @@
 	 <a href="${editURL}"><jstl:out value="${view}"></jstl:out></a>
 	 </display:column>
 
+	<security:authorize access="hasRole('USER')">
+		<spring:message code="user.follow" var="follow" />
+		<spring:message code="user.unfollow" var="unfollow" />
+		<display:column >
+			<security:authentication property="principal.username" var="username"/>
+			<jstl:if test="${follows.contains(row) and !(row.userAccount.username eq username)}">
+				<input type="button"  value="${unfollow}"	
+						onclick="javascript: window.location.href = './user/user/unfollow.do?userId=${row.id}';" />
+			</jstl:if>
+			<jstl:if test="${!follows.contains(row) and !(row.userAccount.username eq username)}">
+				<input type="button" value="${follow}"	
+						onclick="javascript: window.location.href = './user/user/follow.do?userId=${row.id}';" />
+			</jstl:if>
+		</display:column>
+	</security:authorize>
 
 </display:table>

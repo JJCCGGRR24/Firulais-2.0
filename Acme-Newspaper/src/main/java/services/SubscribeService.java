@@ -12,7 +12,9 @@ import org.springframework.util.Assert;
 
 import repositories.SubscribeRepository;
 import security.LoginService;
+import domain.Article;
 import domain.Customer;
+import domain.Newspaper;
 import domain.Subscribe;
 
 ;
@@ -59,7 +61,7 @@ public class SubscribeService {
 
 	public Subscribe save(final Subscribe subscribe) {
 		Assert.notNull(subscribe);
-		Assert.isTrue(subscribe.getNewspaper().isDeprived() == true, "newspaperNotPrivated");
+		Assert.isTrue(subscribe.getNewspaper().getDeprived() == true, "newspaperNotPrivated");
 		Assert.isTrue(subscribe.getNewspaper().getPublicationDate() != null, "newspaperNotPublished");
 
 		subscribe.setCustomer((Customer) this.loginService.getPrincipalActor());
@@ -87,5 +89,27 @@ public class SubscribeService {
 		if (days < 30)
 			b = "subscribe.error.cc.dates";
 		return b;
+	}
+
+	public boolean estaSubscrito(final Customer c, final Newspaper n) {
+		boolean res = false;
+		if (this.subscribeRepository.getSubscripcion(c, n) != null)
+			res = true;
+		return res;
+	}
+
+	public boolean tienePermisoParaVerArticulos(final Article a) {
+		boolean res = true;
+		if (a.getNewspaper().getDeprived())
+			//Cuando no esta autenticado
+			if (!LoginService.isPrincipalUser() && !LoginService.isPrincipalCustomer() && !LoginService.isPrincipalAdmin())
+				res = false;
+			//Cuando es usuario y no es el propietario del periodico o del articulo
+			else if (LoginService.isPrincipalUser() && (!a.getUser().equals(this.loginService.getPrincipalActor()) && !a.getNewspaper().getUser().equals(this.loginService.getPrincipalActor())))
+				res = false;
+			//Cuando es customer y no esta subscrito
+			else if (LoginService.isPrincipalCustomer() && !this.estaSubscrito((Customer) this.loginService.getPrincipalActor(), a.getNewspaper()))
+				res = false;
+		return res;
 	}
 }

@@ -33,6 +33,7 @@
 		<value>/views/article/tiles.xml</value>
 		<value>/views/taboo/tiles.xml</value>
 		<value>/views/law/tiles.xml</value>
+		<value>/views/followUp/tiles.xml</value>
 		
 	</util:list>
 

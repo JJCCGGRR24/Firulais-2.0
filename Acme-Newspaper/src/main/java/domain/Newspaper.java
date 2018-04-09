@@ -79,7 +79,7 @@ public class Newspaper extends DomainEntity {
 		this.picture = picture;
 	}
 
-	public boolean isDeprived() {
+	public boolean getDeprived() {
 		return this.deprived;
 	}
 

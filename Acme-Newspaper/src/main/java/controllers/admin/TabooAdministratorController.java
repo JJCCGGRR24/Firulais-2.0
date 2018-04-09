@@ -124,7 +124,10 @@ public class TabooAdministratorController extends AbstractController {
 				this.tabooService.save(e);
 				result = new ModelAndView("redirect:/taboo/admin/list.do");
 			} catch (final Throwable oops) {
-				result = this.createEditModelAndView(e, "general.commit.error");
+				if (oops.getMessage().equals("Palabra taboo repetida"))
+					result = this.createEditModelAndView(e, "taboo.repeat");
+				else
+					result = this.createEditModelAndView(e, "general.commit.error");
 			}
 
 		return result;

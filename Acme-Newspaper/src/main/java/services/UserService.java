@@ -12,15 +12,15 @@ import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
-import repositories.UserRepository;
-import security.Authority;
-import security.LoginService;
-import security.UserAccount;
 import domain.Article;
 import domain.Chirp;
 import domain.Newspaper;
 import domain.User;
 import forms.RegisterForm;
+import repositories.UserRepository;
+import security.Authority;
+import security.LoginService;
+import security.UserAccount;
 
 ;
 
@@ -35,8 +35,8 @@ public class UserService {
 	@Autowired
 	private LoginService	loginservice;
 
-
 	// Supporting services ----------------------------------------------------
+
 
 	// Constructors -----------------------------------------------------------
 	public UserService() {
@@ -133,5 +133,26 @@ public class UserService {
 	public Collection<User> getMyFollowers() {
 		final User logueado = (User) this.loginservice.getPrincipalActor();
 		return logueado.getFollowers();
+	}
+
+	public void follow(final int userId) {
+
+		final User seguido = this.findOne(userId);
+		final User logueado = (User) this.loginservice.getPrincipalActor();
+		Assert.isTrue(!logueado.getFollows().contains(seguido));
+		Assert.isTrue(logueado.getId() != seguido.getId());
+		seguido.getFollowers().add(logueado);
+		logueado.getFollows().add(seguido);
+		this.save(logueado);
+	}
+
+	public void unfollow(final int userId) {
+
+		final User desseguido = this.findOne(userId);
+		final User logueado = (User) this.loginservice.getPrincipalActor();
+		Assert.isTrue(logueado.getId() != desseguido.getId());
+		desseguido.getFollowers().remove(logueado);
+		logueado.getFollows().remove(desseguido);
+		this.save(logueado);
 	}
 }

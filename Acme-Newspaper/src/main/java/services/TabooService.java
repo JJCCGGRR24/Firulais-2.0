@@ -49,6 +49,7 @@ public class TabooService {
 
 	public Taboo save(final Taboo taboo) {
 		Assert.notNull(taboo);
+		Assert.isTrue(!this.findAll().contains(this.getTabooFromWord(taboo.getWord())), "Palabra taboo repetida");
 		return this.tabooRepository.save(taboo);
 	}
 
@@ -62,4 +63,7 @@ public class TabooService {
 
 	// Other business methods -------------------------------------------------
 
+	public Taboo getTabooFromWord(final String word) {
+		return this.tabooRepository.getTabooFromWord(word);
+	}
 }
