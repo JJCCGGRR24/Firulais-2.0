@@ -9,45 +9,39 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import services.ChirpService;
+import services.NewspaperService;
 import utilities.AbstractTest;
-import domain.Chirp;
 
 @ContextConfiguration(locations = {
 	"classpath:spring/junit.xml"
 })
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
-public class UseCase17_5Test extends AbstractTest {
+public class UseCase05_2Test extends AbstractTest {
 
-	//SUT
-
-	//	@Autowired
-	//	private TabooService		tabooService;
-	//
-	//	@Autowired
-	//	private NewspaperService	newspaperService;
-	//
-	//	@Autowired
-	//	private ArticleService		articleService;
+	//5.2. An actor who is  authenticated must be able to list the newspapers that are published and browse their articles. 
 
 	@Autowired
-	private ChirpService	chirpService;
+	private NewspaperService	newspaperService;
 
-
-	//	17. An actor who is authenticated as an administrator must be able to:
-	//		5.Remove a chirp that he or she thinks is inappropriate.
 
 	@Test
 	public void driver() {
 		final Object testingData[][] = {
+			//Listamos los periódicos publicados autenticándonos, y el resultado debe ser positivo.
 			{
 
-				//Intento borrar un chirp siendo administrador. Todo correcto.
-				"admin", null
-			}, {
-				//Intento borrar un chirp siendo usuario. IlegalArgumentException
-				"user1", IllegalArgumentException.class
+				"user1", null
+			},
+			//Intentamos listar los periódicos publicados autenticados como un customer que no existe, y el resultado debe ser negativo.
+			{
+
+				" customer80", IllegalArgumentException.class
+			},
+			//Intentamos listar los periódicos publicados autenticados como un user que no existe, y el resultado debe ser negativo.
+			{
+
+				"user96", IllegalArgumentException.class
 			}
 
 		};
@@ -62,17 +56,14 @@ public class UseCase17_5Test extends AbstractTest {
 		caught = null;
 		try {
 			super.authenticate(username);
-			final Chirp chirp = this.chirpService.findOne(this.getEntityId("chirp1_1"));
-			System.out.println(chirp);
-			this.chirpService.delete(chirp);
+			this.newspaperService.getPublishedNewspapers();
 
-			super.unauthenticate();
-			this.chirpService.flush();
 		} catch (final Throwable oops) {
 			caught = oops.getClass();
 		}
 
 		super.checkExceptions(expected, caught);
+		super.unauthenticate();
 
 	}
 }

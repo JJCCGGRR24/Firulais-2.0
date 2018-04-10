@@ -9,9 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import domain.Chirp;
 import services.ChirpService;
 import utilities.AbstractTest;
+import domain.Chirp;
 
 @ContextConfiguration(locations = {
 	"classpath:spring/junit.xml"
@@ -23,11 +23,11 @@ public class UseCase16_1Test extends AbstractTest {
 	//SUT
 
 	@Autowired
-	private ChirpService chirpService;
+	private ChirpService	chirpService;
+
 
 	//	16. An actor who is authenticated as a user must be able to:
 	//		1. Post a chirp. Chirps may not be changed or deleted once they are posted.paper.
-
 
 	//DRIVERS-------------------------------------------------------------------------------
 
@@ -55,8 +55,7 @@ public class UseCase16_1Test extends AbstractTest {
 		System.out.println("---DELETE A CHIRP BY USER---");
 		final Object testingData[][] = {
 			{
-
-				"user1", "chirp1_1", java.lang.AssertionError.class
+				"user1", "chirp1_1", java.lang.IllegalArgumentException.class
 			}
 
 		};

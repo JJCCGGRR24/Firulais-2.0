@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import services.NewspaperService;
+import services.ArticleService;
 import utilities.AbstractTest;
 
 @ContextConfiguration(locations = {
@@ -17,31 +17,30 @@ import utilities.AbstractTest;
 })
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
-public class UseCase4_2Test extends AbstractTest {
+public class UseCase07_1Test extends AbstractTest {
 
-	//4.2. An actor who is not authenticated must be able to list the newspapers that are published and browse their articles. 
+	//SUT
+
+	//	@Autowired
+	//	private SubscribeService	subscribeService;
 
 	@Autowired
-	private NewspaperService	newspaperService;
+	private ArticleService	articleService;
 
+
+	//	7. An actor who is authenticated as an administrator must be able to:
+	//		1. Remove an article that he or she thinks is inappropriate.
 
 	@Test
 	public void driver() {
 		final Object testingData[][] = {
-			//Listamos los periódicos publicados sin autenticarnos, y el resultado debe ser positivo.
 			{
 
-				null, null
-			},
-			//Intentamos listar los periódicos publicados autenticados como customer, y el resultado debe ser negativo.
-			{
-
-				" customer80", IllegalArgumentException.class
-			},
-			//Intentamos listar los periódicos publicados autenticados como user, y el resultado debe ser negativo.
-			{
-
-				"user96", IllegalArgumentException.class
+				//eliminamos como admin un articulo no publicado
+				"article1", null
+			}, {
+				//eliminamos como user un articulo de otra persona
+				"article7", IllegalArgumentException.class
 			}
 
 		};
@@ -55,8 +54,9 @@ public class UseCase4_2Test extends AbstractTest {
 
 		caught = null;
 		try {
-			super.authenticate(username);
-			this.newspaperService.getPublishedNewspapers();
+			super.authenticate("user1");
+			this.articleService.delete(this.articleService.findOne(this.getEntityId(username)));
+			super.authenticate(null);
 
 		} catch (final Throwable oops) {
 			caught = oops.getClass();

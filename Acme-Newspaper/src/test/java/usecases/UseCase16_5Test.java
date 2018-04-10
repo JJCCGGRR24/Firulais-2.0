@@ -11,9 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import domain.Chirp;
 import services.ChirpService;
 import utilities.AbstractTest;
+import domain.Chirp;
 
 @ContextConfiguration(locations = {
 	"classpath:spring/junit.xml"
@@ -25,11 +25,11 @@ public class UseCase16_5Test extends AbstractTest {
 	//SUT
 
 	@Autowired
-	private ChirpService chirpService;
+	private ChirpService	chirpService;
+
 
 	//	16. An actor who is authenticated as a user must be able to:
 	//		5. Display a stream with the chirps posted by all of the users that he or she follows.
-
 
 	//DRIVERS-------------------------------------------------------------------------------
 
@@ -45,7 +45,7 @@ public class UseCase16_5Test extends AbstractTest {
 				"user1000", IllegalArgumentException.class
 			}, {
 
-				"admin", IllegalArgumentException.class
+				"admin", ClassCastException.class
 			}
 
 		};
@@ -64,14 +64,10 @@ public class UseCase16_5Test extends AbstractTest {
 
 		try {
 			super.authenticate(username);
-
-			final ArrayList<Chirp> chirps = new ArrayList<>(this.chirpService.getChirpsFromFolloweds());
-
+			final ArrayList<Chirp> chirps = new ArrayList<Chirp>(this.chirpService.getChirpsFromFolloweds());
 			for (final Chirp chirp : chirps)
 				System.out.println(chirp.getTitle());
-
 			System.out.println("Operation successful!");
-
 		} catch (final Throwable oops) {
 			System.out.println("----");
 			caught = oops.getClass();

@@ -14,4 +14,5 @@ public interface SubscribeRepository extends JpaRepository<Subscribe, Integer> {
 
 	@Query("select s from Subscribe s where s.customer = ?1 and s.newspaper = ?2")
 	public Subscribe getSubscripcion(Customer c, Newspaper n);
+
 }

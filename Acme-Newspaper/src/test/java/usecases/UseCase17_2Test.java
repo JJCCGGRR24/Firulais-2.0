@@ -44,7 +44,7 @@ public class UseCase17_2Test extends AbstractTest {
 			{
 
 				//Accedo a la lista y el tamaño de la lista debe ser 2. Todo correcto.
-				"admin", 2, null
+				"admin", 4, null
 			}, {
 				//Accedo a la lista pensando que el tamaño es 0 cuando debe ser 2. IlegalArgumentException
 				"admin", 0, IllegalArgumentException.class
@@ -64,6 +64,7 @@ public class UseCase17_2Test extends AbstractTest {
 			super.authenticate(username);
 			//listar
 			final List<Article> articles = this.articleService.getArticlesTabooWords();
+			System.out.println(articles.size());
 			Assert.isTrue(articles.size() == numArticlesTaboo);
 			super.unauthenticate();
 			this.articleService.flush();

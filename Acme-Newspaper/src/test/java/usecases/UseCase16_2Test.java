@@ -22,11 +22,11 @@ public class UseCase16_2Test extends AbstractTest {
 	//SUT
 
 	@Autowired
-	private UserService userService;
+	private UserService	userService;
+
 
 	//	16. An actor who is authenticated as a user must be able to:
 	//		2. Follow or unfollow another user.
-
 
 	//DRIVERS-------------------------------------------------------------------------------
 
@@ -38,11 +38,10 @@ public class UseCase16_2Test extends AbstractTest {
 
 				"user2", "user3", null
 			}, {
-				"user1", "user1000", java.lang.AssertionError.class
+				"user1", "user1000", NumberFormatException.class
 			}, {
 				"user1", "admin", java.lang.NullPointerException.class
 			}
-
 		};
 
 		for (int i = 0; i < testingData.length; i++)
@@ -58,7 +57,7 @@ public class UseCase16_2Test extends AbstractTest {
 
 				"user1", "user3", null
 			}, {
-				"user1", "user1000", java.lang.AssertionError.class
+				"user1", "user1000", NumberFormatException.class
 			}, {
 				"user1", "admin", java.lang.NullPointerException.class
 			}

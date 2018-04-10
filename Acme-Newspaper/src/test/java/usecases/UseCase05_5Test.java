@@ -17,7 +17,7 @@ import utilities.AbstractTest;
 })
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
-public class UseCase5_5Test extends AbstractTest {
+public class UseCase05_5Test extends AbstractTest {
 
 	//5.5. An actor who is  authenticated must be able to search for a published newspaper using a single keyword that 
 	//must appear somewhere in its title or its description. 

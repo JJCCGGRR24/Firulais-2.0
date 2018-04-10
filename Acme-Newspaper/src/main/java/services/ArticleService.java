@@ -73,6 +73,7 @@ public class ArticleService {
 		return this.articleRepository.save(article);
 	}
 	public void delete(final Article article) {
+		Assert.isTrue(LoginService.isPrincipalAdmin() || article.getUser().getId() == this.loginService.getPrincipalActor().getId());
 		this.articleRepository.delete(article);
 	}
 

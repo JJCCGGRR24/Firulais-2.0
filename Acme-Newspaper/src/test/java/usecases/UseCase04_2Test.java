@@ -17,9 +17,9 @@ import utilities.AbstractTest;
 })
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
-public class UseCase5_2Test extends AbstractTest {
+public class UseCase04_2Test extends AbstractTest {
 
-	//5.2. An actor who is  authenticated must be able to list the newspapers that are published and browse their articles. 
+	//4.2. An actor who is not authenticated must be able to list the newspapers that are published and browse their articles. 
 
 	@Autowired
 	private NewspaperService	newspaperService;
@@ -28,17 +28,17 @@ public class UseCase5_2Test extends AbstractTest {
 	@Test
 	public void driver() {
 		final Object testingData[][] = {
-			//Listamos los periódicos publicados autenticándonos, y el resultado debe ser positivo.
+			//Listamos los periódicos publicados sin autenticarnos, y el resultado debe ser positivo.
 			{
 
-				"user1", null
+				null, null
 			},
-			//Intentamos listar los periódicos publicados autenticados como un customer que no existe, y el resultado debe ser negativo.
+			//Intentamos listar los periódicos publicados autenticados como customer, y el resultado debe ser negativo.
 			{
 
 				" customer80", IllegalArgumentException.class
 			},
-			//Intentamos listar los periódicos publicados autenticados como un user que no existe, y el resultado debe ser negativo.
+			//Intentamos listar los periódicos publicados autenticados como user, y el resultado debe ser negativo.
 			{
 
 				"user96", IllegalArgumentException.class

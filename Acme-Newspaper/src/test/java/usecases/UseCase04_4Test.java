@@ -17,9 +17,9 @@ import utilities.AbstractTest;
 })
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
-public class UseCase5_4Test extends AbstractTest {
+public class UseCase04_4Test extends AbstractTest {
 
-	//5.4. An actor who is  authenticated must be able to search for a published article using a single key word
+	//4.4. An actor who is not authenticated must be able to search for a published article using a single key word
 	//that must appear somewhere in its title, summary, or body.
 
 	@Autowired
@@ -29,17 +29,17 @@ public class UseCase5_4Test extends AbstractTest {
 	@Test
 	public void driver() {
 		final Object testingData[][] = {
-			//Intentamos buscar un artículo mediante una palabra autenticándonos, y el resultado debe ser positivo.
+			//Intentamos buscar un artículo mediante una palabra sin autenticarnos, y el resultado debe ser positivo.
 			{
 
-				"user1", "galleta", null
+				null, "galleta", null
 			},
-			//Intentamos buscar un artículo mediante una palabra autenticados como un customer que no existe, y el resultado debe ser negativo.
+			//Intentamos buscar un artículo mediante una palabra autenticados como customer, y el resultado debe ser negativo.
 			{
 
 				" customer80", "galleta", IllegalArgumentException.class
 			},
-			//Intentamos buscar un artículo mediante una palabra autenticados como un user que no existe, y el resultado debe ser negativo.
+			//Intentamos buscar un artículo mediante una palabra autenticados como user, y el resultado debe ser negativo.
 			{
 
 				"user96", "galleta", IllegalArgumentException.class

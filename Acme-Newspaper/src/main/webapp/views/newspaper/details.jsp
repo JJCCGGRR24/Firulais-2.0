@@ -24,7 +24,7 @@
 
 <jstl:if test="${!(newspaper.picture eq null)}">
 	<div align="center">
-		<img src="${newspaper.picture }" alt="${picture.title }"></img>
+		<img src="${newspaper.picture }" alt="${picture.title }" style="max-height:350px;"/>
 	</div>
 </jstl:if>
 <b> <spring:message code="general.title" />:

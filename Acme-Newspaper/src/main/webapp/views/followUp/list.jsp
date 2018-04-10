@@ -39,7 +39,17 @@
 		</jstl:if>
 	</display:column>
 	
-	<display:column titleKey="followUp.moment" property ="publicationMoment" format="{0,date,dd/MM/yy HH:mm}"/>
+	<display:column titleKey="followUp.article">
+		<spring:url value="/article/details.do" var="editURL">
+			<spring:param name="articleId" value="${row.article.id}"/>
+		</spring:url>
+		<a href="${editURL}"><spring:message code="register.view"></spring:message></a>
+			
+	</display:column>
+	
+		<spring:message code="event.format.date" var="pattern"/>
+	
+	<display:column titleKey="followUp.moment" property ="publicationMoment" format="${pattern}"/>
 	
 	<security:authorize access="hasRole('ADMIN')">
 		<display:column>

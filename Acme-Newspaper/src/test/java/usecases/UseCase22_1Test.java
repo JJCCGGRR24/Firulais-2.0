@@ -40,12 +40,11 @@ public class UseCase22_1Test extends AbstractTest {
 			{
 
 				//comprobaremos que un customer puede suscribirse a un newspaper si este es privado
-				"customer1", "Jose Carlos", "VISA", "4000970618528905", 2020, 02, 451, "newspaper1", null
+				"customer1", "Jose Carlos", "MASTERCARD", "4000990618525905", 2020, 2, 451, "newspaper1", null
 			}, {
 				//comprobaremos que un customer no puede suscribirse a un newspapaer si este es publico
-				"customer1", "Jose Carlos", "VISA", "4000970618528905", 2020, 02, 450, "newspaper2", IllegalArgumentException.class
+				"customer1", "Jose Carlos", "VISA", "4000990618525905", 2020, 02, 450, "newspaper2", IllegalArgumentException.class
 			}
-
 		};
 
 		for (int i = 0; i < testingData.length; i++)

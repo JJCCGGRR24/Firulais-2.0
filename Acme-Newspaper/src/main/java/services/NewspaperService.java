@@ -18,6 +18,7 @@ import domain.Article;
 import domain.Customer;
 import domain.Newspaper;
 import domain.Subscribe;
+import domain.Taboo;
 import domain.User;
 
 @Service
@@ -30,6 +31,9 @@ public class NewspaperService {
 
 	@Autowired
 	private UserService			userService;
+
+	@Autowired
+	private TabooService		tabooService;
 
 
 	// Supporting services ----------------------------------------------------
@@ -68,6 +72,7 @@ public class NewspaperService {
 		Assert.notNull(newspaper);
 		Assert.isTrue(newspaper.getPublicationDate() == null);
 		Assert.isTrue(this.checkPrincipal(newspaper));
+		newspaper.setTabooWord(this.isTaboo(newspaper));
 		return this.newspaperRepository.save(newspaper);
 	}
 
@@ -143,6 +148,18 @@ public class NewspaperService {
 	public List<Newspaper> getNewspaperSubscribes(final Customer customer) {
 		return this.newspaperRepository.getNewspaperSubscribes(customer);
 
+	}
+
+	public boolean isTaboo(final Newspaper c) {
+		boolean b = false;
+		for (final Taboo t : this.tabooService.findAll()) {
+			final String s = t.getWord().toLowerCase();
+			if (c.getTitle().toLowerCase().contains(s) || c.getDescription().toLowerCase().contains(s)) {
+				b = true;
+				break;
+			}
+		}
+		return b;
 	}
 
 }

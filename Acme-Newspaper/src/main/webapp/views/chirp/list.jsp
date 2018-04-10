@@ -18,6 +18,19 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
+<script>
+	function preguntar(id) {
+		eliminar = confirm('<spring:message code="newspaper.confirmDelete"/>');
+		if (eliminar)
+			//Redireccionamos si das a aceptar
+			window.location.href = "chirp/admin/delete.do?chirpId=" + id; //página web a la que te redirecciona si confirmas la eliminación
+		else
+			//Y aquí pon cualquier cosa que quieras que salga si le diste al boton de cancelar
+			alert('<spring:message code="newspaper.negativeDelete"/>');
+	}
+	
+	
+</script>
 
 <security:authorize access="hasRole('USER')">
 	<spring:message code="register.name" var="name" />
@@ -30,6 +43,7 @@
 <display:table name="chirps" id="row" requestURI="${requestURI}"
 	pagesize="5" class="displaytag" sort="list" defaultsort="1"
 	defaultorder="descending">
+	
 	<display:column sortProperty="moment">
 		<div style="justify-content: space-between; display: flex;">
 			<b>${row.title}</b><a href="user/details.do?userId=${row.user.id}">${row.user.name}</a>
@@ -45,7 +59,7 @@
 					<div>
 						<input type="button" name="cancel"
 							value="<spring:message code="template.delete"/>"
-							onclick="javascript: relativeRedir('chirp/admin/delete.do?chirpId='+${row.id});" />
+							onclick="javascript:preguntar(${row.id});" />
 					</div>
 				</div>
 			</security:authorize>

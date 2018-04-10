@@ -72,7 +72,8 @@
 		</jstl:if>
 	</display:column>
 	
-	<display:column titleKey="article.moment" property ="moment" format="{0,date,dd/MM/yy HH:mm}"/>
+	<spring:message code="event.format.dateWithoutHour" var="pattern"/>
+	<display:column titleKey="article.moment" property ="moment" format="${pattern}"/>
 	
 	<jstl:if test="${requestURI eq 'article/user/myList.do'}">
 		<display:column titleKey="template.edit">

@@ -88,6 +88,8 @@ public class SubscribeService {
 		final long days = (cc.getTime() - now.getTime()) / (1000 * 60 * 60 * 24);
 		if (days < 30)
 			b = "subscribe.error.cc.dates";
+		if (this.newspaperService.getNewspaperSubscribes((Customer) this.loginService.getPrincipalActor()).contains(c.getNewspaper()))
+			b = "subscribe.error.already";
 		return b;
 	}
 

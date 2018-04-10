@@ -9,9 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import domain.Newspaper;
 import services.NewspaperService;
 import utilities.AbstractTest;
+import domain.Newspaper;
 
 @ContextConfiguration(locations = {
 	"classpath:spring/junit.xml"
@@ -23,7 +23,7 @@ public class UseCase23_1Test extends AbstractTest {
 	//SUT
 
 	@Autowired
-	private NewspaperService newspaperService;
+	private NewspaperService	newspaperService;
 
 
 	//DRIVERS-------------------------------------------------------------------------------
@@ -37,7 +37,7 @@ public class UseCase23_1Test extends AbstractTest {
 				"user3", "newspaper3", null
 			}, {
 
-				"user2", "newspaper1_3", java.lang.AssertionError.class
+				"user2", "newspaper1_3", java.lang.IllegalArgumentException.class
 			}, {
 
 				"user1", "newspaper1", java.lang.IllegalArgumentException.class

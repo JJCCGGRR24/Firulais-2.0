@@ -20,7 +20,7 @@ import domain.User;
 })
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
-public class UseCase4_1Test extends AbstractTest {
+public class UseCase04_1Test extends AbstractTest {
 
 	// 4.1. An actor who is not authenticated must be able to register to the system as a user. 
 

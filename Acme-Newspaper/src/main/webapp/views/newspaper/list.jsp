@@ -58,7 +58,8 @@
 <display:table name="newspapers" id="row" requestURI="${requestURI}"
 	pagesize="10" class="displaytag" sort="list" defaultsort="1" defaultorder="descending">
 
-	<display:column property="publicationDate" titleKey="newspaper.publicationDate" format="{0,date,dd/MM/yyyy}"/>
+	<spring:message code="event.format.dateWithoutHour" var="pattern"/>
+	<display:column property="publicationDate" titleKey="newspaper.publicationDate" format="${pattern}"/>
 	<display:column property="title" titleKey="general.title" />
 	<display:column>
 			<input type="button"  value="<spring:message code="general.details"/>" 

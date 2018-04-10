@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -99,6 +100,7 @@ public class FollowUp extends DomainEntity {
 
 
 	@ManyToOne(optional = true)
+	@NotNull
 	@Valid
 	public Article getArticle() {
 		return this.article;

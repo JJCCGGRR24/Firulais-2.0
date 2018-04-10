@@ -17,9 +17,9 @@ import utilities.AbstractTest;
 })
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
-public class UseCase5_3Test extends AbstractTest {
+public class UseCase04_3Test extends AbstractTest {
 
-	//5.3. An actor who is authenticated must be able to list the users of the system and display their profiles, 
+	//4.3. An actor who is not authenticated must be able to list the users of the system and display their profiles, 
 	//which must include their personal data and the list of articles that they have written as long as they are published in a newspaper. 
 
 	@Autowired
@@ -29,17 +29,17 @@ public class UseCase5_3Test extends AbstractTest {
 	@Test
 	public void driver() {
 		final Object testingData[][] = {
-			//Listamos los usuarios del sistema autenticándonos, y el resultado debe ser positivo.
+			//Listamos los usuarios del sistema sin autenticarnos, y el resultado debe ser positivo.
 			{
 
-				"user1", null
+				null, null
 			},
-			//Intentamos listar los usuarios del sistema autenticados como un customer que no exisste, y el resultado debe ser negativo.
+			//Intentamos listar los usuarios del sistema autenticados como customer, y el resultado debe ser negativo.
 			{
 
 				" customer80", IllegalArgumentException.class
 			},
-			//Intentamos listar los usuarios del sistema autenticados como un user que no existe, y el resultado debe ser negativo.
+			//Intentamos listar los usuarios del sistema autenticados como user, y el resultado debe ser negativo.
 			{
 
 				"user96", IllegalArgumentException.class

@@ -16,6 +16,6 @@ public interface FollowUpRepository extends JpaRepository<FollowUp, Integer> {
 	@Query("delete from FollowUp where article = ?1")
 	void deleteFollowUps(Article a);
 
-	@Query("select a  from FollowUp a where a.article.newspaper.user.id = ?1")
+	@Query("select a  from FollowUp a where a.article.newspaper.user.id = ?1 order by a.publicationMoment desc")
 	List<FollowUp> getFollowUpsByUser(int user);
 }
