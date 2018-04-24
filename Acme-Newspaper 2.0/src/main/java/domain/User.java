@@ -5,6 +5,7 @@ import java.util.Collection;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
@@ -21,7 +22,19 @@ public class User extends Actor {
 	private Collection<Newspaper>	newspapers;
 	private Collection<Chirp>		chirps;
 	private Collection<Article>		articles;
+	private Collection<Volume>		volumes;
 
+
+	@NotNull
+	@Valid
+	@OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+	public Collection<Volume> getVolumes() {
+		return this.volumes;
+	}
+
+	public void setVolumes(final Collection<Volume> volumes) {
+		this.volumes = volumes;
+	}
 
 	// Constructor
 	public User() {

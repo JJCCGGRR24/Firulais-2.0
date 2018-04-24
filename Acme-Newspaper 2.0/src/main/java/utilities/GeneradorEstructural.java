@@ -12,7 +12,7 @@ import java.util.List;
 public class GeneradorEstructural {
 
 	List<String>	a				= new ArrayList<String>();
-	static String	keyword			= "Dalem";
+	static String	keyword			= "Question";
 	static String	rutaEstructura	= "C:/Documents and Settings/Student/Desktop/generator/copy/" + GeneradorEstructural.keyword + "Service.java";
 	static String	rutaDestino		= "C:/Documents and Settings/Student/Desktop/generator/servis";
 
@@ -42,7 +42,7 @@ public class GeneradorEstructural {
 
 	}
 	public void doIt() {
-		this.a.add("Taboo");
+		this.a.add("SubscribeVol");
 
 		final File f1 = new File(GeneradorEstructural.rutaEstructura);
 		final String lowKeyword = GeneradorEstructural.keyword.substring(0, 1).toLowerCase() + GeneradorEstructural.keyword.substring(1);

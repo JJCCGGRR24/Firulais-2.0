@@ -121,7 +121,7 @@
 		<property name="userAccount" ref="adminAccount" />
 	</bean>
 
-	<!-- #User -->
+	<!-- #Users -->
 	<bean id="user1" class="domain.User">
 		<property name="name" value="Allen" />
 		<property name="surname" value="R. Chilson" />
@@ -159,7 +159,13 @@
 				<ref bean="article6" />
 			</list>
 		</property>
+		<property name="volumes">
+			<list>
+			</list>
+		</property>
 	</bean>
+
+
 
 	<bean id="user2" class="domain.User">
 		<property name="name" value="Chioma" />
@@ -193,6 +199,10 @@
 			<list>
 				<ref bean="article4" />
 				<ref bean="article7" />
+			</list>
+		</property>
+		<property name="volumes">
+			<list>
 			</list>
 		</property>
 	</bean>
@@ -231,6 +241,10 @@
 				<ref bean="article10" />
 			</list>
 		</property>
+		<property name="volumes">
+			<list>
+			</list>
+		</property>
 	</bean>
 
 	<!-- #Customer -->
@@ -244,6 +258,9 @@
 		<property name="subscribes">
 			<list></list>
 		</property>
+		<property name="subscribesVol">
+			<list></list>
+		</property>
 	</bean>
 
 	<bean id="customer2" class="domain.Customer">
@@ -255,6 +272,98 @@
 		<property name="userAccount" ref="customerAccount2" />
 		<property name="subscribes">
 			<list></list>
+		</property>
+		<property name="subscribesVol">
+			<list></list>
+		</property>
+	</bean>
+
+	<!-- #SubscribesVol -->
+	<bean id="subscribeVol1_1" class="domain.SubscribeVol">
+		<property name="creditCard" ref="cc1" />
+		<property name="customer" ref="customer1" />
+		<property name="volume" ref="volume1" />
+	</bean>
+
+	<bean id="subscribeVol1_2" class="domain.SubscribeVol">
+		<property name="creditCard" ref="cc1" />
+		<property name="customer" ref="customer1" />
+		<property name="volume" ref="volume2" />
+	</bean>
+
+	<bean id="subscribeVol1_3" class="domain.SubscribeVol">
+		<property name="creditCard" ref="cc1" />
+		<property name="customer" ref="customer1" />
+		<property name="volume" ref="volume3" />
+	</bean>
+
+	<bean id="subscribeVol2_1" class="domain.SubscribeVol">
+		<property name="creditCard" ref="cc2" />
+		<property name="customer" ref="customer2" />
+		<property name="volume" ref="volume1" />
+	</bean>
+
+	<bean id="subscribeVol2_2" class="domain.SubscribeVol">
+		<property name="creditCard" ref="cc2" />
+		<property name="customer" ref="customer2" />
+		<property name="volume" ref="volume2" />
+	</bean>
+
+
+
+	<!-- Volumes -->
+
+	<bean id="volume1" class="domain.Volume">
+		<property name="title" value="Lista personalizada 1" />
+		<property name="description"
+			value="Lista de periódicos personalizada por el user 1" />
+		<property name="year" value="2018" />
+		<property name="user" ref="user1" />
+		<property name="subscribesVol">
+			<list>
+			</list>
+		</property>
+		<property name="newspapers">
+			<list>
+				<ref bean="newspaper1" />
+				<ref bean="newspaper1_2" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="volume2" class="domain.Volume">
+		<property name="title" value="Lista personalizada 2" />
+		<property name="description"
+			value="Lista de periódicos personalizada por el user2" />
+		<property name="year" value="2018" />
+		<property name="user" ref="user2" />
+		<property name="subscribesVol">
+			<list>
+			</list>
+		</property>
+		<property name="newspapers">
+			<list>
+				<ref bean="newspaper1" />
+				<ref bean="newspaper2_2" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="volume3" class="domain.Volume">
+		<property name="title" value="Lista personalizada user2" />
+		<property name="description"
+			value="Lista de periódicos personalizada por el user3" />
+		<property name="year" value="2019" />
+		<property name="user" ref="user3" />
+		<property name="subscribesVol">
+			<list>
+			</list>
+		</property>
+		<property name="newspapers">
+			<list>
+				<ref bean="newspaper1" />
+				<ref bean="newspaper2" />
+			</list>
 		</property>
 	</bean>
 
@@ -300,6 +409,8 @@
 		<property name="subscribes">
 			<list></list>
 		</property>
+
+
 	</bean>
 
 	<bean id="newspaper1_2" class="domain.Newspaper">
@@ -438,13 +549,13 @@
 			<list></list>
 		</property>
 	</bean>
-	
+
 	<bean id="newspaper4" class="domain.Newspaper">
 		<property name="title" value="Marca" />
 		<property name="picture"
 			value="https://elcorreodesalvadorcortes.files.wordpress.com/2012/11/marca_com.jpg" />
 		<property name="description"
-			value="Marca es un diario español de información deportiva, con sede en Madrid, con una tirada media de 413 252 ejemplares diarios y un promedio de difusión de 287 641 ejemplares (OJD).​"/>
+			value="Marca es un diario español de información deportiva, con sede en Madrid, con una tirada media de 413 252 ejemplares diarios y un promedio de difusión de 287 641 ejemplares (OJD).​" />
 		<property name="deprived" value="false" />
 		<property name="tabooWord" value="false" />
 		<property name="user" ref="user1" />
@@ -455,7 +566,7 @@
 			<list></list>
 		</property>
 	</bean>
-	
+
 	<bean id="newspaper5" class="domain.Newspaper">
 		<property name="title" value="AS" />
 		<property name="publicationDate">
@@ -477,7 +588,7 @@
 			<list></list>
 		</property>
 	</bean>
-	
+
 	<bean id="newspaper6" class="domain.Newspaper">
 		<property name="title" value="AS" />
 		<property name="publicationDate">
@@ -778,9 +889,8 @@
 		</property>
 	</bean>
 
-<bean id="article12" class="domain.Article">
-		<property name="title"
-			value="Casemiro, solución de urgencia" />
+	<bean id="article12" class="domain.Article">
+		<property name="title" value="Casemiro, solución de urgencia" />
 		<property name="moment">
 			<bean factory-bean="date" factory-method="parse">
 				<constructor-arg value="08/04/2018" />
@@ -804,17 +914,15 @@
 			<list></list>
 		</property>
 	</bean>
-	
+
 	<bean id="article13" class="domain.Article">
-		<property name="title"
-			value="Un Cristiano inigualable" />
+		<property name="title" value="Un Cristiano inigualable" />
 		<property name="moment">
 			<bean factory-bean="date" factory-method="parse">
 				<constructor-arg value="08/04/2018" />
 			</bean>
 		</property>
-		<property name="summary"
-			value="El vértigo de un Madrid sin Cristiano." />
+		<property name="summary" value="El vértigo de un Madrid sin Cristiano." />
 		<property name="body"
 			value="A Cristiano Ronaldo se le ha roto el reloj. Con 33 años, el portugués se ha empeñado en negar las cifras que arroja su DNI y sigue mejorando al 'coche fantasma' que le marca el paso de los mejores números de su carrera. Este 2018 está reventando las estadísticas. Nunca ha marcado más a estas alturas... ni ha jugado menos.Con su tanto del derbi, el delantero blanco suma 24 goles en 15 encuentros en lo que va de año natural. A razón de 1.6 dianas por partido. Una bestialidad con la que supera a todos los anteriores 'Cristianos'. Los que eran más jóvenes que él, a los que les importaba menos su físico, las rotaciones o los descansos." />
 		<property name="pictures">
@@ -831,17 +939,15 @@
 			<list></list>
 		</property>
 	</bean>
-	
+
 	<bean id="article14" class="domain.Article">
-		<property name="title"
-			value="Vicente Gómez vuelve a la órbita del Betis" />
+		<property name="title" value="Vicente Gómez vuelve a la órbita del Betis" />
 		<property name="moment">
 			<bean factory-bean="date" factory-method="parse">
 				<constructor-arg value="08/04/2018" />
 			</bean>
 		</property>
-		<property name="summary"
-			value="El Betis preguntó por Vicente Gómez" />
+		<property name="summary" value="El Betis preguntó por Vicente Gómez" />
 		<property name="body"
 			value=" Como ya informó ESTADIO Deportivo en el pasado mes de febrero, el Betis se interesó por la situación de Vicente Gómez en el pasado mercado de invierno. El centrocampista canario fue uno de los jugadores más utilizados por Quique Setién cuando este aún entraba a Las Palmas, además tuvo un gran rendimiento y a día de hoy sigue manteniendo una gran relación de amistad con el actual entrenador del Betis.Ahora, según informa el diario Marca, el Betis podría volver a a la carga por el jugador este verano. Hay que recordar que, a pesar de que Vicente Gómez tiene contrato con la entidad canaria hasta 2020 y una cláusula de rescisión de 30 millones de euros, el más que posible descenso de Las Palmas haría que su situación cambiase de forma radical. " />
 		<property name="pictures">
@@ -859,10 +965,9 @@
 			<list></list>
 		</property>
 	</bean>
-	
+
 	<bean id="article15" class="domain.Article">
-		<property name="title"
-			value="El Betis debe ganar" />
+		<property name="title" value="El Betis debe ganar" />
 		<property name="moment">
 			<bean factory-bean="date" factory-method="parse">
 				<constructor-arg value="08/04/2018" />
@@ -887,7 +992,7 @@
 			<list></list>
 		</property>
 	</bean>
-	
+
 	<!-- #Chirps -->
 	<bean id="chirp1_1" class="domain.Chirp">
 		<property name="moment">
@@ -1079,11 +1184,28 @@
 	</bean>
 
 	<!-- #Subscribes -->
+
+	<bean id="subscribe1_0" class="domain.Subscribe">
+		<property name="creditCard" ref="cc1" />
+		<property name="customer" ref="customer1" />
+		<property name="newspaper" ref="newspaper1" />
+	</bean>
+
+
+	<bean id="subscribe1_02" class="domain.Subscribe">
+		<property name="creditCard" ref="cc1" />
+		<property name="customer" ref="customer1" />
+		<property name="newspaper" ref="newspaper2" />
+	</bean>
+
+
 	<bean id="subscribe1_1" class="domain.Subscribe">
 		<property name="creditCard" ref="cc1" />
 		<property name="customer" ref="customer1" />
 		<property name="newspaper" ref="newspaper1_2" />
 	</bean>
+
+
 
 	<bean id="subscribe1_2" class="domain.Subscribe">
 		<property name="creditCard" ref="cc1" />
@@ -1114,6 +1236,26 @@
 		<property name="customer" ref="customer2" />
 		<property name="newspaper" ref="newspaper1_3" />
 	</bean>
+
+	<bean id="subscribe2_3" class="domain.Subscribe">
+		<property name="creditCard" ref="cc2" />
+		<property name="customer" ref="customer2" />
+		<property name="newspaper" ref="newspaper1" />
+	</bean>
+
+	<bean id="subscribe2_4" class="domain.Subscribe">
+		<property name="creditCard" ref="cc2" />
+		<property name="customer" ref="customer2" />
+		<property name="newspaper" ref="newspaper1_2" />
+	</bean>
+
+	<bean id="subscribe2_5" class="domain.Subscribe">
+		<property name="creditCard" ref="cc2" />
+		<property name="customer" ref="customer2" />
+		<property name="newspaper" ref="newspaper2_2" />
+	</bean>
+
+
 
 	<!-- #FollowUps -->
 	<bean id="followUp1" class="domain.FollowUp">

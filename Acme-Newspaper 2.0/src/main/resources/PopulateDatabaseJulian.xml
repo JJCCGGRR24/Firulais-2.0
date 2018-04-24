@@ -111,6 +111,54 @@
 		</property>
 	</bean>
 
+	<bean id="agentAccount1" class="security.UserAccount">
+		<property name="username" value="agent1" />
+		<property name="password" value="83a87fd756ab57199c0bb6d5e11168cb" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="AGENT" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="agentAccount2" class="security.UserAccount">
+		<property name="username" value="agent2" />
+		<property name="password" value="b1a4a6b01cc297d4677c4ca6656e14d7" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="AGENT" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="agentAccount3" class="security.UserAccount">
+		<property name="username" value="agent3" />
+		<property name="password" value="6f097a447415dd5030d579a9051165f0" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="AGENT" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="agentAccount4" class="security.UserAccount">
+		<property name="username" value="agent4" />
+		<property name="password" value="0d7745d57a8ae3fcacdd9fe6e54cac8a" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="AGENT" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
 	<!-- #Admin -->
 	<bean id="admin" class="domain.Administrator">
 		<property name="name" value="Jose" />
@@ -121,7 +169,7 @@
 		<property name="userAccount" ref="adminAccount" />
 	</bean>
 
-	<!-- #Users -->
+	<!-- #User -->
 	<bean id="user1" class="domain.User">
 		<property name="name" value="Allen" />
 		<property name="surname" value="R. Chilson" />
@@ -159,13 +207,7 @@
 				<ref bean="article6" />
 			</list>
 		</property>
-		<property name="volumes">
-			<list>
-			</list>
-		</property>
 	</bean>
-
-
 
 	<bean id="user2" class="domain.User">
 		<property name="name" value="Chioma" />
@@ -199,10 +241,6 @@
 			<list>
 				<ref bean="article4" />
 				<ref bean="article7" />
-			</list>
-		</property>
-		<property name="volumes">
-			<list>
 			</list>
 		</property>
 	</bean>
@@ -241,10 +279,6 @@
 				<ref bean="article10" />
 			</list>
 		</property>
-		<property name="volumes">
-			<list>
-			</list>
-		</property>
 	</bean>
 
 	<!-- #Customer -->
@@ -256,9 +290,6 @@
 		<property name="postalAddress" value="C/ falsa 123" />
 		<property name="userAccount" ref="customerAccount1" />
 		<property name="subscribes">
-			<list></list>
-		</property>
-		<property name="subscribesVol">
 			<list></list>
 		</property>
 	</bean>
@@ -273,99 +304,58 @@
 		<property name="subscribes">
 			<list></list>
 		</property>
-		<property name="subscribesVol">
+	</bean>
+
+	<!-- #Agent -->
+
+	<bean id="agent1" class="domain.Agent">
+		<property name="name" value="Agent Name 1" />
+		<property name="surname" value="Agent Surname 1" />
+		<property name="email" value="agent1@hotmail.com" />
+		<property name="phone" value="693448959" />
+		<property name="postalAddress" value="C/ falsa 123" />
+		<property name="userAccount" ref="agentAccount1" />
+		<property name="advertisements">
 			<list></list>
 		</property>
 	</bean>
 
-	<!-- #SubscribesVol -->
-	<bean id="subscribeVol1_1" class="domain.SubscribeVol">
-		<property name="creditCard" ref="cc1" />
-		<property name="customer" ref="customer1" />
-		<property name="volume" ref="volume1" />
-	</bean>
-
-	<bean id="subscribeVol1_2" class="domain.SubscribeVol">
-		<property name="creditCard" ref="cc1" />
-		<property name="customer" ref="customer1" />
-		<property name="volume" ref="volume2" />
-	</bean>
-
-	<bean id="subscribeVol1_3" class="domain.SubscribeVol">
-		<property name="creditCard" ref="cc1" />
-		<property name="customer" ref="customer1" />
-		<property name="volume" ref="volume3" />
-	</bean>
-
-	<bean id="subscribeVol2_1" class="domain.SubscribeVol">
-		<property name="creditCard" ref="cc2" />
-		<property name="customer" ref="customer2" />
-		<property name="volume" ref="volume1" />
-	</bean>
-
-	<bean id="subscribeVol2_2" class="domain.SubscribeVol">
-		<property name="creditCard" ref="cc2" />
-		<property name="customer" ref="customer2" />
-		<property name="volume" ref="volume2" />
-	</bean>
-
-
-
-	<!-- Volumes -->
-
-	<bean id="volume1" class="domain.Volume">
-		<property name="title" value="Lista personalizada 1" />
-		<property name="description"
-			value="Lista de periódicos personalizada por el user 1" />
-		<property name="year" value="2018" />
-		<property name="user" ref="user1" />
-		<property name="subscribesVol">
-			<list>
-			</list>
-		</property>
-		<property name="newspapers">
-			<list>
-				<ref bean="newspaper1" />
-				<ref bean="newspaper1_2" />
-			</list>
+	<bean id="agent2" class="domain.Agent">
+		<property name="name" value="Agent Name 2" />
+		<property name="surname" value="Agent Surname 2" />
+		<property name="email" value="agent2@hotmail.com" />
+		<property name="phone" value="693448959" />
+		<property name="postalAddress" value="C/ falsa 123" />
+		<property name="userAccount" ref="agentAccount2" />
+		<property name="advertisements">
+			<list></list>
 		</property>
 	</bean>
 
-	<bean id="volume2" class="domain.Volume">
-		<property name="title" value="Lista personalizada 2" />
-		<property name="description"
-			value="Lista de periódicos personalizada por el user2" />
-		<property name="year" value="2018" />
-		<property name="user" ref="user2" />
-		<property name="subscribesVol">
-			<list>
-			</list>
-		</property>
-		<property name="newspapers">
-			<list>
-				<ref bean="newspaper1" />
-				<ref bean="newspaper2_2" />
-			</list>
+	<bean id="agent3" class="domain.Agent">
+		<property name="name" value="Agent Name 3" />
+		<property name="surname" value="Agent Surname 3" />
+		<property name="email" value="agent3@hotmail.com" />
+		<property name="phone" value="693448959" />
+		<property name="postalAddress" value="C/ falsa 123" />
+		<property name="userAccount" ref="agentAccount3" />
+		<property name="advertisements">
+			<list></list>
 		</property>
 	</bean>
 
-	<bean id="volume3" class="domain.Volume">
-		<property name="title" value="Lista personalizada user2" />
-		<property name="description"
-			value="Lista de periódicos personalizada por el user3" />
-		<property name="year" value="2019" />
-		<property name="user" ref="user3" />
-		<property name="subscribesVol">
-			<list>
-			</list>
-		</property>
-		<property name="newspapers">
-			<list>
-				<ref bean="newspaper1" />
-				<ref bean="newspaper2" />
-			</list>
+	<bean id="agent4" class="domain.Agent">
+		<property name="name" value="Agent Name 4" />
+		<property name="surname" value="Agent Surname 4" />
+		<property name="email" value="agent4@hotmail.com" />
+		<property name="phone" value="693448959" />
+		<property name="postalAddress" value="C/ falsa 123" />
+		<property name="userAccount" ref="agentAccount4" />
+		<property name="advertisements">
+			<list></list>
 		</property>
 	</bean>
+
 
 	<!-- #CreditCard -->
 	<bean id="cc1" class="domain.CreditCard">
@@ -409,8 +399,6 @@
 		<property name="subscribes">
 			<list></list>
 		</property>
-
-
 	</bean>
 
 	<bean id="newspaper1_2" class="domain.Newspaper">
@@ -1184,28 +1172,11 @@
 	</bean>
 
 	<!-- #Subscribes -->
-
-	<bean id="subscribe1_0" class="domain.Subscribe">
-		<property name="creditCard" ref="cc1" />
-		<property name="customer" ref="customer1" />
-		<property name="newspaper" ref="newspaper1" />
-	</bean>
-
-
-	<bean id="subscribe1_02" class="domain.Subscribe">
-		<property name="creditCard" ref="cc1" />
-		<property name="customer" ref="customer1" />
-		<property name="newspaper" ref="newspaper2" />
-	</bean>
-
-
 	<bean id="subscribe1_1" class="domain.Subscribe">
 		<property name="creditCard" ref="cc1" />
 		<property name="customer" ref="customer1" />
 		<property name="newspaper" ref="newspaper1_2" />
 	</bean>
-
-
 
 	<bean id="subscribe1_2" class="domain.Subscribe">
 		<property name="creditCard" ref="cc1" />
@@ -1236,26 +1207,6 @@
 		<property name="customer" ref="customer2" />
 		<property name="newspaper" ref="newspaper1_3" />
 	</bean>
-
-	<bean id="subscribe2_3" class="domain.Subscribe">
-		<property name="creditCard" ref="cc2" />
-		<property name="customer" ref="customer2" />
-		<property name="newspaper" ref="newspaper1" />
-	</bean>
-
-	<bean id="subscribe2_4" class="domain.Subscribe">
-		<property name="creditCard" ref="cc2" />
-		<property name="customer" ref="customer2" />
-		<property name="newspaper" ref="newspaper1_2" />
-	</bean>
-
-	<bean id="subscribe2_5" class="domain.Subscribe">
-		<property name="creditCard" ref="cc2" />
-		<property name="customer" ref="customer2" />
-		<property name="newspaper" ref="newspaper2_2" />
-	</bean>
-
-
 
 	<!-- #FollowUps -->
 	<bean id="followUp1" class="domain.FollowUp">
@@ -1341,6 +1292,62 @@
 		<property name="pictures">
 			<list></list>
 		</property>
+	</bean>
+
+	<!-- #Advertisement -->
+
+	<bean id="advertisement1" class="domain.Advertisement">
+		<property name="title" value="Advertisement 1" />
+		<property name="banner" value="http://advertisement1.com" />
+		<property name="targetPage" value="http://advertisement1.com" />
+		<property name="creditCard" ref="cc1" />
+		<property name="tabooWord" value="false" />
+		<property name="agent" ref="agent1" />
+	</bean>
+
+	<bean id="advertisement2" class="domain.Advertisement">
+		<property name="title" value="Advertisement 2" />
+		<property name="banner" value="http://advertisement2.com" />
+		<property name="targetPage" value="http://advertisement2.com" />
+		<property name="creditCard" ref="cc1" />
+		<property name="tabooWord" value="false" />
+		<property name="agent" ref="agent1" />
+	</bean>
+
+	<bean id="advertisement3" class="domain.Advertisement">
+		<property name="title" value="Advertisement 3" />
+		<property name="banner" value="http://advertisement3.com" />
+		<property name="targetPage" value="http://advertisement3.com" />
+		<property name="creditCard" ref="cc1" />
+		<property name="tabooWord" value="false" />
+		<property name="agent" ref="agent1" />
+	</bean>
+
+	<bean id="advertisement4" class="domain.Advertisement">
+		<property name="title" value="Advertisement 4" />
+		<property name="banner" value="http://advertisement4.com" />
+		<property name="targetPage" value="http://advertisement4.com" />
+		<property name="creditCard" ref="cc2" />
+		<property name="tabooWord" value="false" />
+		<property name="agent" ref="agent2" />
+	</bean>
+
+	<bean id="advertisement5" class="domain.Advertisement">
+		<property name="title" value="Advertisement 5" />
+		<property name="banner" value="http://advertisement5.com" />
+		<property name="targetPage" value="http://advertisement5.com" />
+		<property name="creditCard" ref="cc2" />
+		<property name="tabooWord" value="false" />
+		<property name="agent" ref="agent2" />
+	</bean>
+
+	<bean id="advertisement6" class="domain.Advertisement">
+		<property name="title" value="Advertisement 6" />
+		<property name="banner" value="http://advertisement6.com" />
+		<property name="targetPage" value="http://advertisement6.com" />
+		<property name="creditCard" ref="cc3" />
+		<property name="tabooWord" value="false" />
+		<property name="agent" ref="agent3" />
 	</bean>
 
 </beans>

@@ -17,17 +17,17 @@ public class Customer extends Actor {
 
 	//Relationships
 	private Collection<Subscribe>		subscribes;
-	private Collection<SubscribeVol>	suscribesVol;
+	private Collection<SubscribeVol>	subscribesVol;
 
 
 	@Valid
 	@OneToMany(cascade = CascadeType.REMOVE, mappedBy = "customer")
-	public Collection<SubscribeVol> getSuscribesVol() {
-		return this.suscribesVol;
+	public Collection<SubscribeVol> getSubscribesVol() {
+		return this.subscribesVol;
 	}
 
-	public void setSuscribesVol(final Collection<SubscribeVol> suscribesVol) {
-		this.suscribesVol = suscribesVol;
+	public void setSubscribesVol(final Collection<SubscribeVol> subscribesVol) {
+		this.subscribesVol = subscribesVol;
 	}
 
 	@OneToMany(mappedBy = "customer")

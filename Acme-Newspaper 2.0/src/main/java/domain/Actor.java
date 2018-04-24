@@ -1,10 +1,13 @@
 
 package domain;
 
+import java.util.List;
+
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -86,8 +89,41 @@ public abstract class Actor extends DomainEntity {
 
 	// Relationships ----------------------------------------------------------
 
-	private UserAccount	userAccount;
+	private UserAccount		userAccount;
+	private List<Message>	messagesSents;
+	private List<Message>	messagesReceiveds;
+	private List<Folder>	folders;
 
+
+	@NotNull
+	@OneToMany(mappedBy = "sender")
+	public List<Message> getMessagesSents() {
+		return this.messagesSents;
+	}
+
+	public void setMessagesSents(final List<Message> messagesSents) {
+		this.messagesSents = messagesSents;
+	}
+
+	@NotNull
+	@OneToMany(mappedBy = "recipient")
+	public List<Message> getMessagesReceiveds() {
+		return this.messagesReceiveds;
+	}
+
+	public void setMessagesReceiveds(final List<Message> messagesReceiveds) {
+		this.messagesReceiveds = messagesReceiveds;
+	}
+
+	@NotNull
+	@OneToMany(mappedBy = "actor")
+	public List<Folder> getFolders() {
+		return this.folders;
+	}
+
+	public void setFolders(final List<Folder> folders) {
+		this.folders = folders;
+	}
 
 	@NotNull
 	@Valid
