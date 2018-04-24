@@ -29,7 +29,7 @@
 			alert('<spring:message code="newspaper.negativeDelete"/>');
 	}
 </script>
-
+<jstl:if test="${requestURI eq 'newspaper/all/list.do'}">
 <input type="text" id="textSearch" value="">
 <input type="button" id="buttonSearch"
 	value="<spring:message code="newspaper.search"/>" />
@@ -47,7 +47,7 @@
 		});
 	});
 </script>
-
+</jstl:if>
 <br><br>
 <security:authorize access="hasRole('USER')" >	
 <input type="button"  value="<spring:message code="template.create"/>" 

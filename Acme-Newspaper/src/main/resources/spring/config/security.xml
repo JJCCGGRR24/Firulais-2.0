@@ -22,7 +22,7 @@
 
 	<security:http auto-config="true" use-expressions="true">
 		<security:intercept-url pattern="/" access="permitAll" />
-		
+
 		<security:intercept-url pattern="/law/**"
 			access="permitAll" />
 
@@ -55,7 +55,7 @@
 		<!-- Admin -->
 		<security:intercept-url pattern="/newspaper/admin/delete.do"
 			access="hasRole('ADMIN')" />
-		<security:intercept-url pattern="/article/admin/delete.do"
+		<security:intercept-url pattern="/article/admin/**"
 			access="hasRole('ADMIN')" />
 		<security:intercept-url pattern="/admin/dashboard.do"
 			access="hasRole('ADMIN')" />
@@ -143,7 +143,7 @@
 
 		<security:intercept-url pattern="/article/all/list.do"
 			access="permitAll" />
-		
+
 		<security:intercept-url pattern="/article/details.do"
 			access="permitAll" />
 

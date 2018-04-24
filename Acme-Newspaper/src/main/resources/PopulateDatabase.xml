@@ -458,10 +458,37 @@
 	
 	<bean id="newspaper5" class="domain.Newspaper">
 		<property name="title" value="AS" />
+		<property name="publicationDate">
+			<bean factory-bean="date" factory-method="parse">
+				<constructor-arg value="07/04/2018" />
+			</bean>
+		</property>
 		<property name="picture"
 			value="https://upload.wikimedia.org/wikipedia/commons/5/51/Logo_diario_AS.svg" />
 		<property name="description"
 			value="El diario As es una publicación deportiva española de tirada diaria, de pago y con distribución matinal editado por el Grupo PRISA." />
+		<property name="deprived" value="false" />
+		<property name="tabooWord" value="false" />
+		<property name="user" ref="user1" />
+		<property name="articles">
+			<list></list>
+		</property>
+		<property name="subscribes">
+			<list></list>
+		</property>
+	</bean>
+	
+	<bean id="newspaper6" class="domain.Newspaper">
+		<property name="title" value="AS" />
+		<property name="publicationDate">
+			<bean factory-bean="date" factory-method="parse">
+				<constructor-arg value="09/04/2018" />
+			</bean>
+		</property>
+		<property name="picture"
+			value="https://upload.wikimedia.org/wikipedia/commons/5/51/Logo_diario_AS.svg" />
+		<property name="description"
+			value="Diario deportivo online, aquí encontraras toda la información de tu deporte favorito,fútbol, motociclismo,formula 1,fichajes,partidos en directo y mucho más" />
 		<property name="deprived" value="false" />
 		<property name="tabooWord" value="false" />
 		<property name="user" ref="user1" />
@@ -743,7 +770,7 @@
 			</list>
 		</property>
 		<property name="finalMode" value="false" />
-		<property name="tabooWord" value="true" />
+		<property name="tabooWord" value="false" />
 		<property name="user" ref="user1" />
 		<property name="newspaper" ref="newspaper3" />
 		<property name="followUps">
@@ -770,7 +797,7 @@
 			</list>
 		</property>
 		<property name="finalMode" value="false" />
-		<property name="tabooWord" value="true" />
+		<property name="tabooWord" value="false" />
 		<property name="user" ref="user1" />
 		<property name="newspaper" ref="newspaper5" />
 		<property name="followUps">
@@ -797,13 +824,70 @@
 			</list>
 		</property>
 		<property name="finalMode" value="false" />
-		<property name="tabooWord" value="true" />
+		<property name="tabooWord" value="false" />
 		<property name="user" ref="user1" />
 		<property name="newspaper" ref="newspaper4" />
 		<property name="followUps">
 			<list></list>
 		</property>
 	</bean>
+	
+	<bean id="article14" class="domain.Article">
+		<property name="title"
+			value="Vicente Gómez vuelve a la órbita del Betis" />
+		<property name="moment">
+			<bean factory-bean="date" factory-method="parse">
+				<constructor-arg value="08/04/2018" />
+			</bean>
+		</property>
+		<property name="summary"
+			value="El Betis preguntó por Vicente Gómez" />
+		<property name="body"
+			value=" Como ya informó ESTADIO Deportivo en el pasado mes de febrero, el Betis se interesó por la situación de Vicente Gómez en el pasado mercado de invierno. El centrocampista canario fue uno de los jugadores más utilizados por Quique Setién cuando este aún entraba a Las Palmas, además tuvo un gran rendimiento y a día de hoy sigue manteniendo una gran relación de amistad con el actual entrenador del Betis.Ahora, según informa el diario Marca, el Betis podría volver a a la carga por el jugador este verano. Hay que recordar que, a pesar de que Vicente Gómez tiene contrato con la entidad canaria hasta 2020 y una cláusula de rescisión de 30 millones de euros, el más que posible descenso de Las Palmas haría que su situación cambiase de forma radical. " />
+		<property name="pictures">
+			<list>
+				<value>http://www.timejust.es/wp-content/uploads/2018/02/Betis_-_Real_Madrid_-_Fernando_Ruso_-_2293.JPG.950x600_q85_crop-center.jpg
+
+				</value>
+			</list>
+		</property>
+		<property name="finalMode" value="true" />
+		<property name="tabooWord" value="false" />
+		<property name="user" ref="user1" />
+		<property name="newspaper" ref="newspaper6" />
+		<property name="followUps">
+			<list></list>
+		</property>
+	</bean>
+	
+	<bean id="article15" class="domain.Article">
+		<property name="title"
+			value="El Betis debe ganar" />
+		<property name="moment">
+			<bean factory-bean="date" factory-method="parse">
+				<constructor-arg value="08/04/2018" />
+			</bean>
+		</property>
+		<property name="summary"
+			value="El Betis, con la necesidad de repetir la hazaña de 2008 en el Palau" />
+		<property name="body"
+			value=" El Betis visita este miércoles el Palau Blaugrana para enfrentarse al Barcelona Lassa en una cancha de máxima dificultad donde solo venció tres veces en su historia, la última en 2008, un espejo donde los sevillanos quieren reflejarse con la necesidad de salir del descenso. El Barcelona del serbio Svetislav Pesic, que se encuentra tercero en la tabla pero es el segundo que más puntos anota (2.303), quiere seguir mostrando su fortaleza en el Palau tras ganar en Gran Canaria la pasada jornada." />
+		<property name="pictures">
+			<list>
+				<value>http://zetaestaticos.com/diariolagrada/img/noticias/0/017/17566_1.jpg
+
+				</value>
+			</list>
+		</property>
+		<property name="finalMode" value="true" />
+		<property name="tabooWord" value="false" />
+		<property name="user" ref="user1" />
+		<property name="newspaper" ref="newspaper6" />
+		<property name="followUps">
+			<list></list>
+		</property>
+	</bean>
+	
 	<!-- #Chirps -->
 	<bean id="chirp1_1" class="domain.Chirp">
 		<property name="moment">

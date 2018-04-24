@@ -21,18 +21,15 @@
 
 <spring:message code="newspaper.private.permiss" var="permiss" />
 
-
+<div align="center"><u><h1>${newspaper.title}</h1></u></div>
 <jstl:if test="${!(newspaper.picture eq null)}">
 	<div align="center">
 		<img src="${newspaper.picture }" alt="${picture.title }" style="max-height:350px;"/>
 	</div>
 </jstl:if>
-<b> <spring:message code="general.title" />:
-</b>
-${newspaper.title} - (${newspaper.publicationDate})
 <br>
-<b> <spring:message code="general.description" />:
-</b>
+(${newspaper.publicationDate})
+<br>
 ${newspaper.description }
 <br>
 
