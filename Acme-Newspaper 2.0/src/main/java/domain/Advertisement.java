@@ -20,13 +20,9 @@ public class Advertisement extends Actor {
 	//Attributes
 
 	private String		title;
-
 	private String		banner;
-
 	private String		targetPage;
-
 	private CreditCard	creditCard;
-
 	private boolean		tabooWord;
 
 
@@ -82,7 +78,8 @@ public class Advertisement extends Actor {
 
 	//Relationships
 
-	private Agent	agent;
+	private Agent		agent;
+	private Newspaper	newspaper;
 
 
 	@NotNull
@@ -94,6 +91,17 @@ public class Advertisement extends Actor {
 
 	public void setAgent(final Agent agent) {
 		this.agent = agent;
+	}
+
+	@NotNull
+	@Valid
+	@ManyToOne(optional = false)
+	public Newspaper getNewspaper() {
+		return this.newspaper;
+	}
+
+	public void setNewspaper(final Newspaper newspaper) {
+		this.newspaper = newspaper;
 	}
 
 }

@@ -105,10 +105,11 @@ public class Newspaper extends DomainEntity {
 
 	//Relationships
 
-	private Collection<Article>		articles;
-	private User					user;
-	private Collection<Subscribe>	subscribes;
-	private Collection<Volume>		volumes;
+	private Collection<Article>			articles;
+	private User						user;
+	private Collection<Subscribe>		subscribes;
+	private Collection<Volume>			volumes;
+	private Collection<Advertisement>	advertisements;
 
 
 	@Valid
@@ -141,6 +142,17 @@ public class Newspaper extends DomainEntity {
 
 	public void setArticles(final Collection<Article> articles) {
 		this.articles = articles;
+	}
+
+	@OneToMany(mappedBy = "newspaper", cascade = CascadeType.REMOVE)
+	@Valid
+	@NotNull
+	public Collection<Advertisement> getAdvertisements() {
+		return this.advertisements;
+	}
+
+	public void setAdvertisements(final Collection<Advertisement> advertisements) {
+		this.advertisements = advertisements;
 	}
 
 	@ManyToOne(optional = true)
