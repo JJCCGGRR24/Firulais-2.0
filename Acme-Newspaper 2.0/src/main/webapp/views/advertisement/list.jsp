@@ -20,6 +20,19 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+<script>
+	function preguntar(id) {
+		eliminar = confirm('<spring:message code="newspaper.confirmDelete"/>');
+		if (eliminar)
+			//Redireccionamos si das a aceptar
+			window.location.href = "advertisement/admin/delete.do?advertisementId=" + id; //página web a la que te redirecciona si confirmas la eliminación
+		else
+			//Y aquí pon cualquier cosa que quieras que salga si le diste al boton de cancelar
+			alert('<spring:message code="newspaper.negativeDelete"/>');
+	}
+	
+	
+</script>
 
 <display:table name="advertisements" id="row" requestURI="${requestURI}"
 	pagesize="10" class="displaytag" sort="list" defaultsort="1"
@@ -34,6 +47,10 @@
 	<security:authorize access="hasRole('ADMIN')">
 		<display:column property="tabooWord"
 			titleKey="advertisement.tabooWord" />
+		
+		<display:column>
+			<a href="javascript:preguntar(${row.id})"> <spring:message code="chirp.delete"/> </a>
+		</display:column>
 	</security:authorize>
 
 </display:table>
