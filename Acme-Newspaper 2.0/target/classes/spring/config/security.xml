@@ -83,7 +83,7 @@
 
 		<security:intercept-url pattern="/advertisement/admin/**"
 			access="hasRole('ADMIN')" />
-			
+
 		<security:intercept-url pattern="/advertisement/admin/delete.do"
 			access="hasRole('ADMIN')" />
 
@@ -134,6 +134,8 @@
 		<security:intercept-url pattern="/register/user.do"
 			access="permitAll" />
 		<security:intercept-url pattern="/register/customer.do"
+			access="permitAll" />
+		<security:intercept-url pattern="/register/agent.do"
 			access="permitAll" />
 		<security:intercept-url pattern="/user/list.do"
 			access="permitAll" />

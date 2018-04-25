@@ -30,7 +30,9 @@
 		<value>/views/law/messages</value>
 		<value>/views/followUp/messages</value>
 		<value>/views/advertisement/messages</value>
-
+		<value>/views/agent/messages</value>
+		
+	
 
 	</util:list>
 

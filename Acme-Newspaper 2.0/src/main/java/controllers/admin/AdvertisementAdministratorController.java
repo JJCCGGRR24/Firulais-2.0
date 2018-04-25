@@ -52,9 +52,9 @@ public class AdvertisementAdministratorController extends AbstractController {
 		final Advertisement a = this.advertisementService.findOne(advertisementId);
 		try {
 			this.advertisementService.delete(a);
-			res = new ModelAndView("advertisement/admin/list");
+			res = new ModelAndView("advertisement/list");
 		} catch (final Throwable oops) {
-			res = new ModelAndView("advertisement/admin/list");
+			res = new ModelAndView("advertisement/list");
 			res.addObject("message", "chirp.commit.error");
 		}
 

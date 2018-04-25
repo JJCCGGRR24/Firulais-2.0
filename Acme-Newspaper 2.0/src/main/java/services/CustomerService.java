@@ -16,6 +16,8 @@ import repositories.CustomerRepository;
 import security.Authority;
 import security.UserAccount;
 import domain.Customer;
+import domain.Folder;
+import domain.Message;
 import domain.Subscribe;
 import forms.RegisterForm;
 
@@ -50,6 +52,15 @@ public class CustomerService {
 		r.setUserAccount(uA);
 
 		r.setSubscribes(new ArrayList<Subscribe>());
+
+		final List<Message> messagesRec = new ArrayList<Message>();
+		r.setMessagesReceiveds(messagesRec);
+
+		final List<Message> messagesSend = new ArrayList<Message>();
+		r.setMessagesSents(messagesSend);
+
+		final List<Folder> folders = new ArrayList<Folder>();
+		r.setFolders(folders);
 		return r;
 	}
 

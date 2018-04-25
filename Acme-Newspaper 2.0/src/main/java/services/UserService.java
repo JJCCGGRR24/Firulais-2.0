@@ -12,15 +12,17 @@ import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
-import domain.Article;
-import domain.Chirp;
-import domain.Newspaper;
-import domain.User;
-import forms.RegisterForm;
 import repositories.UserRepository;
 import security.Authority;
 import security.LoginService;
 import security.UserAccount;
+import domain.Article;
+import domain.Chirp;
+import domain.Folder;
+import domain.Message;
+import domain.Newspaper;
+import domain.User;
+import forms.RegisterForm;
 
 ;
 
@@ -35,8 +37,8 @@ public class UserService {
 	@Autowired
 	private LoginService	loginservice;
 
-	// Supporting services ----------------------------------------------------
 
+	// Supporting services ----------------------------------------------------
 
 	// Constructors -----------------------------------------------------------
 	public UserService() {
@@ -70,6 +72,15 @@ public class UserService {
 
 		final Collection<Article> articles = new ArrayList<Article>();
 		r.setArticles(articles);
+
+		final List<Message> messagesRec = new ArrayList<Message>();
+		r.setMessagesReceiveds(messagesRec);
+
+		final List<Message> messagesSend = new ArrayList<Message>();
+		r.setMessagesSents(messagesSend);
+
+		final List<Folder> folders = new ArrayList<Folder>();
+		r.setFolders(folders);
 
 		return r;
 	}

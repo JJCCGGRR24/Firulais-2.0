@@ -29,6 +29,8 @@
 		<value>/views/law/tiles.xml</value>
 		<value>/views/followUp/tiles.xml</value>
 		<value>/views/advertisement/tiles.xml</value>
+		<value>/views/agent/tiles.xml</value>
+		
 
 	</util:list>
 

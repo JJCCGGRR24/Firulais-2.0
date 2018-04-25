@@ -1,16 +1,25 @@
 
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import repositories.AgentRepository;
+import security.Authority;
+import security.UserAccount;
+import domain.Advertisement;
 import domain.Agent;
+import domain.Folder;
+import domain.Message;
+import forms.RegisterForm;
 
 ;
 
@@ -33,6 +42,27 @@ public class AgentService {
 	// Simple CRUD methods ----------------------------------------------------
 	public Agent create() {
 		final Agent r = new Agent();
+
+		final UserAccount userAccount = new UserAccount();
+		final Authority auth = new Authority();
+		auth.setAuthority("AGENT");
+		final List<Authority> authorities = new ArrayList<Authority>();
+		authorities.add(auth);
+		userAccount.setAuthorities(authorities);
+		r.setUserAccount(userAccount);
+
+		final Collection<Advertisement> advertisements = new ArrayList<Advertisement>();
+		r.setAdvertisements(advertisements);
+
+		final List<Message> messagesRec = new ArrayList<Message>();
+		r.setMessagesReceiveds(messagesRec);
+
+		final List<Message> messagesSend = new ArrayList<Message>();
+		r.setMessagesSents(messagesSend);
+
+		final List<Folder> folders = new ArrayList<Folder>();
+		r.setFolders(folders);
+
 		return r;
 	}
 
@@ -57,6 +87,28 @@ public class AgentService {
 
 	public void flush() {
 		this.agentRepository.flush();
+	}
+
+	public Agent reconstruct(final RegisterForm registerForm) {
+
+		final Agent a = this.create();
+		final String pass = registerForm.getPassword();
+		final String username = registerForm.getUsername();
+
+		final Md5PasswordEncoder encoder = new Md5PasswordEncoder();
+		final UserAccount u = a.getUserAccount();
+		u.setUsername(username);
+		u.setPassword(encoder.encodePassword(pass, null));
+		a.setUserAccount(u);
+
+		a.setName(registerForm.getName());
+		a.setPhone(registerForm.getPhone());
+		a.setPostalAddress(registerForm.getPostalAddress());
+		a.setSurname(registerForm.getUsername());
+		a.setEmail(registerForm.getEmail());
+
+		return a;
+
 	}
 
 	// Other business methods -------------------------------------------------

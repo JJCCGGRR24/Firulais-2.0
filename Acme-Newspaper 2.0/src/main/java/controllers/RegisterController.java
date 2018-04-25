@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.AgentService;
 import services.CustomerService;
 import services.UserService;
+import domain.Agent;
 import domain.Customer;
 import domain.User;
 import forms.RegisterForm;
@@ -27,6 +29,9 @@ public class RegisterController extends AbstractController {
 
 	@Autowired
 	private CustomerService	customerService;
+
+	@Autowired
+	private AgentService	agentService;
 
 
 	//Constructor---------------------------------------------------------------------
@@ -121,6 +126,53 @@ public class RegisterController extends AbstractController {
 	protected ModelAndView createEditModelAndViewCustomer(final RegisterForm r, final String message) {
 		ModelAndView result;
 		result = new ModelAndView("customer/register");
+		result.addObject("registerForm", r);
+		result.addObject("message", message);
+		return result;
+	}
+
+	@RequestMapping(value = "/agent", method = RequestMethod.GET)
+	public ModelAndView createAgent() {
+		ModelAndView r = new ModelAndView();
+		final RegisterForm registerForm = new RegisterForm();
+		r = this.createEditModelAndViewAgent(registerForm);
+		return r;
+	}
+
+	@RequestMapping(value = "/agent", method = RequestMethod.POST, params = "save")
+	public ModelAndView saveAgent(@Valid final RegisterForm registerForm, final BindingResult bindingResult) {
+		ModelAndView res = new ModelAndView();
+		final Agent agent = this.agentService.reconstruct(registerForm);
+
+		if (bindingResult.hasErrors())
+			res = this.createEditModelAndViewAgent(registerForm, "commit.error");
+		else if (!(registerForm.getConfirmPassword().equals(registerForm.getPassword())))
+			res = this.createEditModelAndViewAgent(registerForm, "commit.password.error");
+		else if (!(registerForm.isCheck()))
+			res = this.createEditModelAndViewAgent(registerForm, "commit.check.error");
+		else
+			try {
+
+				this.agentService.save(agent);
+				res = new ModelAndView("redirect: /security/login.do");
+
+			} catch (final DataIntegrityViolationException oops) {
+				res = this.createEditModelAndViewAgent(registerForm, "error.username");
+			} catch (final Throwable oops) {
+				res = this.createEditModelAndViewAgent(registerForm, "commit.error");
+			}
+		return res;
+	}
+
+	protected ModelAndView createEditModelAndViewAgent(final RegisterForm r) {
+		ModelAndView result;
+		result = this.createEditModelAndViewAgent(r, null);
+		return result;
+	}
+
+	protected ModelAndView createEditModelAndViewAgent(final RegisterForm r, final String message) {
+		ModelAndView result;
+		result = new ModelAndView("agent/register");
 		result.addObject("registerForm", r);
 		result.addObject("message", message);
 		return result;
