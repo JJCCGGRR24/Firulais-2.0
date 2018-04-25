@@ -103,6 +103,9 @@
 
 			<li><a class="fNiv" href="article/admin/list.do"><spring:message
 						code="master.page.administrator.articles" /></a></li>
+						
+			<li><a class="fNiv" href="advertisement/admin/list.do"><spring:message
+						code="master.page.administrator.advertisements" /></a></li>
 
 			<li><a class="fNiv"><spring:message
 						code="master.page.administrator.taboowords" /></a>

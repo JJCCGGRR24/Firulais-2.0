@@ -1,6 +1,7 @@
 
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.transaction.Transactional;
@@ -9,8 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
-import repositories.AdvertisementRepository;
 import domain.Advertisement;
+import repositories.AdvertisementRepository;
 
 ;
 
@@ -20,10 +21,10 @@ public class AdvertisementService {
 
 	// Managed repository -----------------------------------------------------
 	@Autowired
-	private AdvertisementRepository	advertisementRepository;
-
+	private AdvertisementRepository advertisementRepository;
 
 	// Supporting services ----------------------------------------------------
+
 
 	// Constructors -----------------------------------------------------------
 	public AdvertisementService() {
@@ -60,5 +61,20 @@ public class AdvertisementService {
 	}
 
 	// Other business methods -------------------------------------------------
+
+	public Collection<Advertisement> getAdvertisementsWithTabbooWords() {
+		return this.advertisementRepository.getAdvertisementsWithTabooWords();
+	}
+
+	public Advertisement chooseOne() {
+		final ArrayList<Advertisement> advertisements = new ArrayList<>(this.findAll());
+		Advertisement advertisement = advertisements.get(0);
+		final int ramdon = (int) (Math.random() * advertisements.size());
+
+		if (ramdon < advertisements.size())
+			advertisement = advertisements.get(ramdon);
+
+		return advertisement;
+	}
 
 }

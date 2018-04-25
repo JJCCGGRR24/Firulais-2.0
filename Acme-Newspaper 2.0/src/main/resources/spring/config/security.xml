@@ -81,6 +81,9 @@
 		<security:intercept-url pattern="/chirp/admin/**"
 			access="hasRole('ADMIN')" />
 
+		<security:intercept-url pattern="/advertisement/admin/**"
+			access="hasRole('ADMIN')" />
+
 
 		<!-- User -->
 		<security:intercept-url pattern="/newspaper/user/create.do"
