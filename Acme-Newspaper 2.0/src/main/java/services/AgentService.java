@@ -14,6 +14,7 @@ import org.springframework.util.Assert;
 
 import repositories.AgentRepository;
 import security.Authority;
+import security.LoginService;
 import security.UserAccount;
 import domain.Advertisement;
 import domain.Agent;
@@ -89,6 +90,8 @@ public class AgentService {
 		this.agentRepository.flush();
 	}
 
+	// Other business methods -------------------------------------------------
+
 	public Agent reconstruct(final RegisterForm registerForm) {
 
 		final Agent a = this.create();
@@ -111,6 +114,10 @@ public class AgentService {
 
 	}
 
-	// Other business methods -------------------------------------------------
-
+	public Agent findByPrincipal() {
+		final UserAccount userAccount = LoginService.getPrincipal();
+		final Agent user = this.agentRepository.findByPrincipal(userAccount.getId());
+		Assert.isTrue(user.getUserAccount().equals(userAccount));
+		return user;
+	}
 }

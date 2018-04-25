@@ -88,6 +88,12 @@
 			access="hasRole('ADMIN')" />
 
 
+		<!-- Agent -->
+		<security:intercept-url pattern="/newspaper/agent/list.do"
+			access="hasRole('AGENT')" />
+		<security:intercept-url pattern="/newspaper/agent/noList.do"
+			access="hasRole('AGENT')" />
+		
 		<!-- User -->
 		<security:intercept-url pattern="/newspaper/user/create.do"
 			access="hasRole('USER')" />

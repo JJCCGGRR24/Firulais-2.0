@@ -3,6 +3,7 @@ package repositories;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -31,4 +32,10 @@ public interface NewspaperRepository extends JpaRepository<Newspaper, Integer> {
 
 	@Query("select s.newspaper from Subscribe s where s.customer = ?1")
 	public List<Newspaper> getNewspaperSubscribes(Customer customer);
+
+	@Query("select n from Newspaper n join n.advertisements e where e.agent.id = ?1 and n.publicationDate != null")
+	public Set<Newspaper> findByAgent(int id);
+
+	@Query("select n from Newspaper n join n.advertisements e where e.agent.id != ?1 and n.publicationDate != null")
+	public Set<Newspaper> findNoByAgent(int id);
 }

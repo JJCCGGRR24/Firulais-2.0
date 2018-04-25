@@ -162,4 +162,12 @@ public class NewspaperService {
 		return b;
 	}
 
+	public List<Newspaper> findByAgent(final int id) {
+		return new ArrayList<Newspaper>(this.newspaperRepository.findByAgent(id));
+	}
+
+	public List<Newspaper> findByNoAgent(final int id) {
+		return new ArrayList<Newspaper>(this.newspaperRepository.findNoByAgent(id));
+	}
+
 }

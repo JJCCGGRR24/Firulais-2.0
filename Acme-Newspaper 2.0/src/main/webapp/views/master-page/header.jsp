@@ -137,6 +137,18 @@
 					<li class="arrow"></li>
 				</ul></li>
 		</security:authorize>
+		
+		<security:authorize access="hasRole('AGENT')">
+			<li><a><spring:message
+						code="master.page.administrator.advertisements" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="newspaper/agent/list.do"><spring:message
+						code="master.page.np.list" /></a>
+					<li><a href="newspaper/agent/noList.do"><spring:message
+						code="master.page.np.nolist" /></a>
+				</ul></li>
+		</security:authorize>
 
 		<security:authorize access="hasRole('USER')">
 			<li><a class="fNiv"><spring:message
