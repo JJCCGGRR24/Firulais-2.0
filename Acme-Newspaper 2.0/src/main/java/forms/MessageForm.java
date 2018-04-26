@@ -31,6 +31,9 @@ public class MessageForm {
 	public Date getDate() {
 		return this.date;
 	}
+	public void setDate(final Date date) {
+		this.date = date;
+	}
 
 	@Valid
 	@NotNull
@@ -41,10 +44,6 @@ public class MessageForm {
 
 	public void setRecipient(final Actor recipient) {
 		this.recipient = recipient;
-	}
-
-	public void setDate(final Date date) {
-		this.date = date;
 	}
 
 	@NotBlank
