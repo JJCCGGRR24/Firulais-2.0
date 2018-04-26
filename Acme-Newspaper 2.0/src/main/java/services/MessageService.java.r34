@@ -17,8 +17,6 @@ import security.LoginService;
 import domain.Actor;
 import domain.Folder;
 import domain.Message;
-import forms.BroadcastForm;
-import forms.MessageForm;
 
 @Service
 @Transactional
@@ -246,35 +244,21 @@ public class MessageService {
 	//		return res;
 	//	}
 
-	public Message sendBroadcast(final BroadcastForm message) {
-		Message res = null;
+	public boolean sendBroadcast(final Message message) {
+		boolean res = false;
 		for (final Actor a : this.actorService.findAll()) {
 			//Mensaje recibido
 			final Message message2 = this.create();
 			message2.setDate(new Date(System.currentTimeMillis() - 1000));
 			message2.setRecipient(a);
-			message2.setSender(this.loginService.getPrincipalActor());
+			message2.setSender(message.getSender());
 			message2.setPriority(message.getPriority());
 			message2.setBody(message.getBody());
 			message2.setSubject(message.getSubject());
 			message2.setFolder(this.folderService.getNotificationmbox(a));
-			final Message saved = this.messageRepository.save(message2);
-			if (saved.getRecipient().equals(saved.getSender()))
-				res = saved;
+			this.messageRepository.save(message2);
 		}
+		res = true;
 		return res;
-	}
-
-	public Message reconstruct(final MessageForm messageForm) {
-
-		final Message a = this.create();
-		a.setDate(new Date(System.currentTimeMillis() - 1000));
-		a.setBody(messageForm.getBody());
-		a.setSubject(messageForm.getSubject());
-		a.setPriority(messageForm.getPriority());
-		a.setRecipient(messageForm.getRecipient());
-
-		return a;
-
 	}
 }

@@ -13,6 +13,7 @@ import org.springframework.util.Assert;
 import repositories.SubscribeRepository;
 import security.LoginService;
 import domain.Article;
+import domain.CreditCard;
 import domain.Customer;
 import domain.Newspaper;
 import domain.Subscribe;
@@ -113,5 +114,13 @@ public class SubscribeService {
 			else if (LoginService.isPrincipalCustomer() && !this.estaSubscrito((Customer) this.loginService.getPrincipalActor(), a.getNewspaper()))
 				res = false;
 		return res;
+	}
+
+	public Subscribe subscribe(final Newspaper n, final CreditCard cc) {
+		final Subscribe s = new Subscribe();
+		s.setCreditCard(cc);
+		s.setCustomer((Customer) this.loginService.getPrincipalActor());
+		s.setNewspaper(n);
+		return this.save(s);
 	}
 }

@@ -109,23 +109,23 @@ public class FolderService {
 
 	public Actor addFolders(final Actor actor) {
 		final Folder inbox = this.create();
-		inbox.setName("Inbox");
+		inbox.setName("in box");
 		inbox.setActor(actor);
 		inbox.setModifiable(false);
 		final Folder outbox = this.create();
-		outbox.setName("Outbox");
+		outbox.setName("out box");
 		outbox.setActor(actor);
 		outbox.setModifiable(false);
 		final Folder trashbox = this.create();
-		trashbox.setName("Trashbox");
+		trashbox.setName("trash box");
 		trashbox.setActor(actor);
 		trashbox.setModifiable(false);
 		final Folder spambox = this.create();
-		spambox.setName("Spambox");
+		spambox.setName("spam box");
 		spambox.setActor(actor);
 		spambox.setModifiable(false);
 		final Folder notification = this.create();
-		notification.setName("Notificationbox");
+		notification.setName("notification box");
 		notification.setActor(actor);
 		notification.setModifiable(false);
 		final List<Folder> folders = new ArrayList<Folder>();
@@ -149,29 +149,29 @@ public class FolderService {
 	}
 
 	public Folder getOutbox(final Actor a) {
-		return this.getFolderByName(a, "Outbox");
+		return this.getFolderByName(a, "out box");
 	}
 
 	public Folder getInbox(final Actor a) {
-		return this.getFolderByName(a, "Inbox");
+		return this.getFolderByName(a, "in box");
 	}
 
 	public Folder getTrashbox(final Actor a) {
-		return this.getFolderByName(a, "Trashbox");
+		return this.getFolderByName(a, "trash box");
 	}
 
 	public Folder getSpambox(final Actor a) {
-		return this.getFolderByName(a, "Spambox");
+		return this.getFolderByName(a, "spam box");
 	}
 
 	public Folder getNotificationmbox(final Actor a) {
-		return this.getFolderByName(a, "Notificationbox");
+		return this.getFolderByName(a, "notification box");
 	}
 
 	public boolean isReservedName(final Folder f) {
 		boolean res = false;
 		final String s = f.getName().toLowerCase();
-		if (s.equals("inbox") || s.equals("spambox") || s.equals("trashbox") || s.equals("outbox") || s.equals("notificationbox"))
+		if (s.equals("in box") || s.equals("spam box") || s.equals("tras hbox") || s.equals("out box") || s.equals("notification box"))
 			res = true;
 		return res;
 	}

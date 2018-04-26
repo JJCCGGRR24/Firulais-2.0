@@ -13,6 +13,7 @@ import org.springframework.util.Assert;
 import repositories.SubscribeVolRepository;
 import security.LoginService;
 import domain.Customer;
+import domain.Newspaper;
 import domain.SubscribeVol;
 import domain.Volume;
 
@@ -25,6 +26,9 @@ public class SubscribeVolService {
 	// Managed repository -----------------------------------------------------
 	@Autowired
 	private SubscribeVolRepository	subscribeVolRepository;
+
+	@Autowired
+	private SubscribeService		subscribeService;
 
 	@Autowired
 	private VolumeService			volumeService;
@@ -60,11 +64,13 @@ public class SubscribeVolService {
 
 	public SubscribeVol save(final SubscribeVol subscribeVol) {
 		Assert.notNull(subscribeVol);
-
 		subscribeVol.setCustomer((Customer) this.loginService.getPrincipalActor());
 		subscribeVol.getCustomer().getSubscribesVol().add(subscribeVol);
 		subscribeVol.getVolume().getSubscribesVol().add(subscribeVol);
-		return this.subscribeVolRepository.save(subscribeVol);
+		final SubscribeVol res = this.subscribeVolRepository.save(subscribeVol);
+		for (final Newspaper n : res.getVolume().getNewspapers())
+			this.subscribeService.subscribe(n, subscribeVol.getCreditCard());
+		return res;
 	}
 
 	public void delete(final SubscribeVol subscribeVol) {
@@ -84,7 +90,7 @@ public class SubscribeVolService {
 		final Date cc = new Date(c.getCreditCard().getExpirationYear() - 1900, c.getCreditCard().getExpirationMonth(), 0);
 		final long days = (cc.getTime() - now.getTime()) / (1000 * 60 * 60 * 24);
 		if (days < 30)
-			b = "subscribeVol.error.cc.dates";
+			b = "subscribe.error.cc.dates";
 		return b;
 	}
 

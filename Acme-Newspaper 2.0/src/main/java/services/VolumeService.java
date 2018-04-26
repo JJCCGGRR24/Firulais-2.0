@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import repositories.VolumeRepository;
+import domain.Newspaper;
+import domain.SubscribeVol;
 import domain.Volume;
 
 ;
@@ -21,6 +23,9 @@ public class VolumeService {
 	// Managed repository -----------------------------------------------------
 	@Autowired
 	private VolumeRepository	volumeRepository;
+
+	@Autowired
+	private SubscribeService	subscribeService;
 
 
 	// Supporting services ----------------------------------------------------
@@ -48,7 +53,15 @@ public class VolumeService {
 
 	public Volume save(final Volume volume) {
 		Assert.notNull(volume);
+		this.updateSubscribes(volume);
 		return this.volumeRepository.save(volume);
+	}
+
+	private void updateSubscribes(final Volume volume) {
+		for (final SubscribeVol c : volume.getSubscribesVol())
+			for (final Newspaper n : volume.getNewspapers())
+				if (!this.subscribeService.estaSubscrito(c.getCustomer(), n))
+					this.subscribeService.subscribe(n, c.getCreditCard());
 	}
 
 	public void delete(final Volume volume) {
