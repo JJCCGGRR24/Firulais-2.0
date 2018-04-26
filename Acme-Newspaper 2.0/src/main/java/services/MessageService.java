@@ -17,6 +17,7 @@ import security.LoginService;
 import domain.Actor;
 import domain.Folder;
 import domain.Message;
+import forms.MessageForm;
 
 @Service
 @Transactional
@@ -260,5 +261,17 @@ public class MessageService {
 		}
 		res = true;
 		return res;
+	}
+
+	public Message reconstruct(final MessageForm messageForm) {
+
+		final Message a = this.create();
+
+		a.setBody(messageForm.getBody());
+		a.setSubject(messageForm.getSubject());
+		a.setPriority(messageForm.getPriority());
+
+		return a;
+
 	}
 }

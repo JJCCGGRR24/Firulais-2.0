@@ -167,7 +167,7 @@
 
 
 		<!-- AUTENTICADO -->
-		<security:intercept-url pattern="/profile/action-1.do"
+		<security:intercept-url pattern="/message/sent.do"
 			access="isAuthenticated()" />
 		<security:intercept-url pattern="/profile/action-2.do"
 			access="isAuthenticated()" />

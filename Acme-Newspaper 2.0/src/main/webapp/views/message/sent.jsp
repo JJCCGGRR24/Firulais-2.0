@@ -15,7 +15,18 @@
 	<acme:textbox code="message.subject" path="subject" size="100"/><br>
 	<acme:textarea code="message.body" path="body"/>
 	<acme:select items="${actors}" itemLabel="${row.name}" code="message.recipient" path="recipient"/>
-	 
+	<div>
+	<form:label path="priority">
+		<spring:message code="${code}" />
+	</form:label>	
+	<form:select path="priority">
+		<form:option value="0" label="----" />
+		<form:option value="HIGH" label="HIGH" />			
+		<form:option value="NEUTRAL" label="LOW" />		
+		<form:option value="NEUTRAL" label="LOW" />		
+	</form:select>
+	<form:errors path="priority" cssClass="error" />
+	</div>
 	
 	<br>
 	<input type="submit" name="save" value="<spring:message code="message.send"/>" />
