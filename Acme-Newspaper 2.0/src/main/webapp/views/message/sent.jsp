@@ -21,8 +21,8 @@
 	<form:select path="priority">
 		<form:option value="0" label="----" />
 		<form:option value="HIGH" label="HIGH" />			
-		<form:option value="NEUTRAL" label="LOW" />		
-		<form:option value="NEUTRAL" label="LOW" />		
+		<form:option value="NEUTRAL" label="NEUTRAL" />		
+		<form:option value="LOW" label="LOW" />		
 	</form:select>
 	<form:errors path="priority" cssClass="error" />
 	</div>

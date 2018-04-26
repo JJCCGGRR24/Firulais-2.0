@@ -64,7 +64,6 @@ public class MessageController extends AbstractController {
 		r.addObject("requestURI", "message/sent.do");
 		r.addObject("actors", this.actorService.findAll());
 
-		//		javax.persistence.RollbackException
 		return r;
 	}
 	@RequestMapping(value = "/sent", method = RequestMethod.POST, params = "save")
@@ -75,13 +74,13 @@ public class MessageController extends AbstractController {
 
 		if (bindingResult.hasErrors())
 			res = this.createEditModelAndView(messageForm, "message.commit.error");
-
-		try {
-			this.messageService.sendMessage(a);
-			res = new ModelAndView("redirect:/welcome/index.do");
-		} catch (final Throwable oops) {
-			res = this.createEditModelAndView(messageForm, "message.commit.error");
-		}
+		else
+			try {
+				this.messageService.sendMessage(a);
+				res = new ModelAndView("redirect:/welcome/index.do");
+			} catch (final Throwable oops) {
+				res = this.createEditModelAndView(messageForm, "message.commit.error");
+			}
 
 		return res;
 	}
@@ -93,7 +92,9 @@ public class MessageController extends AbstractController {
 
 	protected ModelAndView createEditModelAndView(final MessageForm a, final String message) {
 		ModelAndView result;
-		result = new ModelAndView("message/sent");
+		result = new ModelAndView();
+		result.addObject("requestURI", "message/sent.do");
+
 		//		result.addObject("requestURI", "message/sent.do");
 		final Collection<Actor> actors = this.actorService.findAll();
 		result.addObject("actors", actors);
