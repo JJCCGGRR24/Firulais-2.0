@@ -266,10 +266,11 @@ public class MessageService {
 	public Message reconstruct(final MessageForm messageForm) {
 
 		final Message a = this.create();
-
+		a.setDate(new Date(System.currentTimeMillis() - 1000));
 		a.setBody(messageForm.getBody());
 		a.setSubject(messageForm.getSubject());
 		a.setPriority(messageForm.getPriority());
+		a.setRecipient(messageForm.getRecipient());
 
 		return a;
 

@@ -8,16 +8,15 @@
 	
 <form:form action="${requestURI}" modelAttribute="messageForm">
 	
-	<form:hidden path="id"/>
-	<form:hidden path="version"/>
+		
 	
 	
 	<acme:textbox code="message.subject" path="subject" size="100"/><br>
 	<acme:textarea code="message.body" path="body"/>
-	<acme:select items="${actors}" itemLabel="${row.name}" code="message.recipient" path="recipient"/>
+	<acme:select items="${actors}" itemLabel="name" code="message.recipient" path="recipient"/>
 	<div>
 	<form:label path="priority">
-		<spring:message code="${code}" />
+		<spring:message code="message.priority" />
 	</form:label>	
 	<form:select path="priority">
 		<form:option value="0" label="----" />
